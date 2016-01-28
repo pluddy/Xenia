@@ -6,14 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel='stylesheet'
 	href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
-<title>Login</title>
+<title>Register</title>
 </head>
 <body>
 	<div class="container">
 
-		<h1>Login</h1>
+		<h1>Register</h1>
 
-		<form class="form-horizontal" method="post">
+		<form class="form-horizontal" method="get">
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 				<div class="col-sm-10">
@@ -30,21 +30,10 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<div class="checkbox">
-						<label> <input type="checkbox"> Remember me
-						</label>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Sign in</button>
+					<button type="submit" class="btn btn-default">Register</button>
 				</div>
 			</div>
 		</form>
-
-		<button class="btn btn-default" type="submit" action="/Register">Register</button>
-
 	</div>
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
