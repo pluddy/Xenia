@@ -9,23 +9,38 @@
 <title>Login</title>
 </head>
 <body>
+	<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Xenia</a>
+		</div>
+	</div>
+	<!-- /.container-fluid --> </nav>
 	<div class="container">
 
 		<h1>Login</h1>
 
-		<form class="form-horizontal" method="post">
+		<form class="form-horizontal" action="Login" method="post">
 			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+				<label for="inputEmail3" class="col-sm-2 control-label">Username</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control" id="inputEmail3"
-						placeholder="Email" name="username">
+					<input type="username" class="form-control" placeholder="Username"
+						name="username">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
 				<div class="col-sm-10">
-					<input type="password" class="form-control" id="inputPassword3"
-						placeholder="Password" name="password">
+					<input type="password" class="form-control" placeholder="Password"
+						name="password">
 				</div>
 			</div>
 			<div class="form-group">
@@ -43,8 +58,9 @@
 			</div>
 		</form>
 
-		<button class="btn btn-default" type="submit" action="/Register">Register</button>
-
+		<form class="form" action="Register.jsp">
+			<button class="btn btn-default" type="submit">Register</button>
+		</form>
 	</div>
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import classes.*;
+
 /**
  * Servlet implementation class Login
  */
@@ -29,46 +31,7 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String user = request.getParameter("username");
-		String pass = request.getParameter("password");
-		
-		ServletContext sc = this.getServletContext();
-		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
-		
-		Properties p = new Properties();
-		
-		FileInputStream fis = null;
-		
-		try {
-			fis = new FileInputStream(propFilePath);
-			
-			p.load(fis);
-			String password = p.getProperty(user);
-			
-			if (password != null) {
-				if (password.equals(pass)) {
-					response.sendRedirect("CustomerHomepage.jsp");
-				} else {
-					response.sendRedirect("Login.jsp");
-				}
-			} else {
-				response.sendRedirect("Login.jsp");
-			}
-		} catch (FileNotFoundException e) {
-			System.out.println("FileNotFound");
-		} catch (IOException e) {
-			System.out.println("IOException");
-		} finally {
-			if (fis != null) {
-				try {
-					fis.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		
+		response.sendRedirect("Login.jsp");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -76,7 +39,16 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		ServletContext sc = this.getServletContext();
+		
+		User user = new User(username, password);
+		
+		if (DBManager.validateUser(user, sc)) {
+			response.sendRedirect("CustomerHomepage.jsp");
+		}
 	}
 
 }
