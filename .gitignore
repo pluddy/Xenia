@@ -66,3 +66,5 @@ buildNumber.properties
 .mvn/timing.properties
 
 Servers/
+.recommenders/
+
