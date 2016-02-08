@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Manage Reservations</title>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -22,38 +22,27 @@
 		</div>
 	</div>
 	<!-- /.container-fluid --> </nav>
-		
-	 <button id="ManageReservations" class="btn btn-default">Manage Reservations</button>
-	 <button id="Logout" class="btn btn-default">Log Out</button>
-		
-	<div id="ReservationDiv">
-	<table id="ReservationTable">
-	<thead>
-	<tr>
-	<th>Name</th>
-	<th>Address</th>
-	<th>Description</th>
-	<th>Room Type</th>
-	<th>Rating</th>
-	<th>Price Per Night</th>
-	<th>Amenities</th>
-	<th></th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> <input type="button" id="ViewAndBook" class="btn btn-default">View and Book</input> </td>
-	</tr>
-	</tbody>
-	</table>
-	</div>	
+	
+		 <button id="Home" class="btn btn-default">Home</button>
+		 
+		 <table>
+		 <thead>
+		 <tr>
+		 <th>Hotel</th>
+		 <th>City</th>
+		 <th>Dates</th>
+		 <th></th>
+		 </tr>
+		 </thead>
+		 <tbody>
+		 <tr>
+		 <td> </td>
+		 <td> </td>
+		 <td> </td>
+		 <td> </td>
+		 </tr>
+		 </tbody>
+		 </table>
 	
 </body>
 </html>

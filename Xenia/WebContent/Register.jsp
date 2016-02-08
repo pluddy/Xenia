@@ -40,14 +40,14 @@
 				<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
 				<div class="col-sm-10">
 					<input type="password" class="form-control" placeholder="Password"
-						name="password">
+						name="password" id="password">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputPassword3" class="col-sm-2 control-label">Confirm Password</label>
 				<div class="col-sm-10">
 					<input type="password" class="form-control" placeholder="Password"
-						name="confirmPassword">
+						name="confirmPassword" id="confirmPassword">
 				</div>
 			</div>
 			<div class="form-group">
@@ -57,17 +57,23 @@
 			</div>
 		</form>
 	</div>
+		<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js">
-	$('registerButton').click(){
-	if ($('#password').text == $('#confirmPassword')){
-	return true;	
-	} else {
-		alert("Password and Confirm Password don't match!");
-		return false;
-	}
-	}
+	<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
+
+	<script>
+	$('#registerButton').click(function(){
+		alert($('#password').text());
+		alert($('#confirmPassword').text());
+		alert($('#password').text() == $('#confirmPassword').text());
+		if ($('#password').text() == $('#confirmPassword').text()){
+		return true;	
+		} else {
+			alert("Password and Confirm Password don't match!");
+			return false;
+		}
+		});
 	</script>
 </body>
 </html>
