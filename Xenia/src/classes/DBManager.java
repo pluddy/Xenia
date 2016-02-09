@@ -7,14 +7,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 
 public final class DBManager {
-	
-	public static boolean isPasswordSupported (HttpServletRequest request) {
-		String grantTypes = request.getHeader("grant_type");
-		return ((grantTypes != null) && (grantTypes.indexOf("password") != -1));
-	}
 	
 	public static void addUser(User user, ServletContext sc) {
 		String username = user.username;
@@ -49,7 +43,7 @@ public final class DBManager {
 		}
 	}
 	
-	public static Boolean validateUser(User user, ServletContext sc) {
+	public static boolean validateUser(User user, ServletContext sc) {
 		String username = user.username;
 		String password = user.password;
 				
