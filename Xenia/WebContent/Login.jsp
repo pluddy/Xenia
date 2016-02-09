@@ -10,7 +10,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-default">
-	<div class="container-fluid">
+	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -32,14 +32,14 @@
 		<form class="form-horizontal" action="Login" method="post">
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-				<div class="col-sm-10">
+				<div class="col-sm-4">
 					<input type="username" class="form-control" placeholder="Username"
 						name="username" id="username">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-				<div class="col-sm-10">
+				<div class="col-sm-4">
 					<input type="password" class="form-control" placeholder="Password"
 						name="password" id="password">
 				</div>
@@ -54,7 +54,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default disabled" id="signinButton">Sign in</button>
+					<button type="submit" class="btn btn-primary disabled" id="signinButton">Sign in</button>
 				</div>
 			</div>
 		</form>

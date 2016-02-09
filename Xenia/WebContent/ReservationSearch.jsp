@@ -50,13 +50,13 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>Hotel California</td>
+						<td>9999 Disney Dr.<br>Orlando, FL, USA</td>
+						<td>A beautiful suite overlooking the Disney Hollywood Studios Park</td>
+						<td>Suite</td>
+						<td>4.5 Stars</td>
+						<td>$499.00</td>
+						<td>Pool, Paid Internet Access, Pet Friendly</td>
 						<td>
 							<form class="form" action="ViewAndBookReservations.jsp">
 								<button class="btn btn-default pull-right" type="submit">View & Book</button>

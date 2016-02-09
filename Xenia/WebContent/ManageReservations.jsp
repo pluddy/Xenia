@@ -34,7 +34,7 @@
 	<!-- /.container-fluid --> </nav>
 	<div class="container">
 		<div class="table-responsive">
-			<table class="table table-bordered">
+			<table class="table">
 				<thead>
 					<tr>
 						<th>Hotel</th>
@@ -45,12 +45,12 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>Hotel California</td>
+						<td>Orlando, Florida</td>
+						<td>10/31/2016 - 11/1/2016</td>
 						<td>
 							<form class="form" action="CancelReservations.jsp">
-								<button class="btn btn-danger pull-right" type="submit">Cancel</button>
+								<button class="btn btn-danger pull-right" type="submit">Cancel Reservation</button>
 							</form>
 						</td>
 					</tr>

@@ -87,7 +87,7 @@
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">Amenities</label>
-						<div class="col-sm-2 btn-group-vertical" data-toggle="buttons">
+						<div class="col-sm-4 btn-group-vertical" data-toggle="buttons">
 							<label class="btn btn-primary"><input type="checkbox"
 								autocomplete="off" value="Bathtub">Bathtub</label> <label
 								class="btn btn-primary"><input type="checkbox"

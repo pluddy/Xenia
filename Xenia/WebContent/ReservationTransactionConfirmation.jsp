@@ -10,7 +10,7 @@
 </head>
 <body>
 		<nav class="navbar navbar-default">
-	<div class="container-fluid">
+	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -20,78 +20,111 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Xenia</a>
-			<a class="navbar-brand" href="ManageReservations.jsp">Manage Reservations</a>
-			<a class="navbar-brand" href="Login.jsp">Log Out</a>
-			
+			<a class="navbar-brand" href="CustomerHomepage.jsp">Xenia</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="ManageReservations.jsp">Manage</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="Login.jsp">Logout</a></li>
+			</ul>
 		</div>
 	</div>
 	<!-- /.container-fluid --> </nav>
-	
-	<div class="Container">
-	
-	<div class="col-sm-12">
-	<label class="col-sm-12">Your reservation has been confirmed!</label>
+	<div class="container">
+	<div class="alert alert-success" role="alert">Your Reservation has been Confirmed</div>
+		<form class="form-horizontal" id="reservationTransaction" action="ReservationTransactionConfirmation.jsp" method="post">
+			<div class="panel panel-default">
+				<div class="panel-heading">Booking Summary</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Hotel: </label>
+						<div class="col-sm-10">
+		      				<p class="form-control-static">Hotel California</p>
+		    			</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Location: </label>
+						<div class="col-sm-10">
+		      				<p class="form-control-static">Orlando, FL</p>
+		    			</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Number of Rooms: </label>
+						<div class="col-sm-10">
+		      				<p class="form-control-static">4</p>
+		    			</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Dates: </label>
+						<div class="col-sm-10">
+		      				<p class="form-control-static">10/31/2016-11/1/2016</p>
+		    			</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Price: </label>
+						<div class="col-sm-10">
+		      				<p class="form-control-static">$499.00</p>
+		    			</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Credit Card Information</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">First Name </label>
+						<div class="col-sm-10">
+		      				<p class="form-control-static">John</p>
+		    			</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Last Name </label>
+						<div class="col-sm-10">
+		      				<p class="form-control-static">Smith</p>
+		    			</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Card Type </label>
+						<div class="col-sm-10">
+		      				<p class="form-control-static">American Express</p>
+		    			</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Card Number </label>
+						<div class="col-sm-10">
+		      				<p class="form-control-static">XXXX-XXXX-XXXX-1234</p>
+		    			</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Security Code </label>
+						<div class="col-sm-10">
+		      				<p class="form-control-static">XXX</p>
+		    			</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Expires</label>
+						<div class="col-sm-10">
+		      				<p class="form-control-static">2/2020</p>
+		    			</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Billing Information</div>
+				<div class="panel-body">
+					<address class="col-sm-offset-2">
+						<strong>John Smith</strong><br>
+						1900 Appleseed Dr., Apt 104<br>
+						Potomac, VA, USA  22152<br>
+					</address>
+				</div>
+			</div>
+		</form>
 	</div>
 	
-	<div class="col-sm-12">
-		<label class="col-sm-3">Hotel: </label>
-		<label id="Hotel" class="col-sm-12"></label>
-		<label class="col-sm-6">Location: </label>
-		<label id="Location" class="col-sm-12"></label>
-		<label class="col-sm-6">Number of Rooms: </label>
-		<label id="NumberOfRooms" class="col-sm-12"></label>
-		<label class="col-sm-6">Dates: </label>
-		<label id="Dates" class="col-sm-12"></label>
-		<label class="col-sm-6">Price: </label>
-		<label id="Price" class="col-sm-12"></label>
-	</div>
-	
-	
-		<div id="BillingAddress" class="col-sm-12">
-				<label for="BillingInformation" class="col-sm-12 control-label">Billing Address</label>
-				</div>
-			
-	
-							<label for="Name" class="col-sm-2 control-label">Name</label>
-				<div class="col-sm-4">
-							<label for="Name" class="col-sm-6 control-label">Name</label>
-				</div>
-				
-					<label for="Address1" class="col-sm-2 control-label">Address 1</label>
-				<div class="col-sm-4">
-							<label for="Address1" class="col-sm-6 control-label">Address 1</label>
-				</div>
-				
-					<label for="Address2" class="col-sm-2 control-label">Address 2(Apt, PO Box, etc.)</label>
-				<div class="col-sm-4">
-					<label for="Address2" class="col-sm-6 control-label">Address 2(Apt, PO Box, etc.)</label>
-
-				</div>
-				
-					<label for="City" class="col-sm-2 control-label">City</label>
-				<div class="col-sm-4">
-					<label for="City" class="col-sm-6 control-label">City</label>
-				</div>
-				
-					<label for="State" class="col-sm-2 control-label">State</label>
-				<div class="col-sm-4">
-					<label for="State" class="col-sm-6 control-label">State</label>
-				</div>
-				
-					<label for="Country" class="col-sm-2 control-label">Country</label>
-				<div class="col-sm-4">
-					<label for="Country" class="col-sm-6 control-label">Country</label>
-				</div>
-				
-					<label for="ZipCode" class="col-sm-2 control-label">Zip Code</label>
-				<div class="col-sm-4">
-					<label for="ZipCode" class="col-sm-6 control-label">Zip Code</label>
-				</div>
-	
-	</div>
-	
-			<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
+			<script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>

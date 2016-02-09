@@ -41,5 +41,10 @@
     	<artifactId>bootstrap-datepicker</artifactId>
     	<version>1.6.0</version>
 	</dependency>
+	<dependency>
+		<groupId>org.webjars.bower</groupId>
+		<artifactId>bootstrap-star-rating</artifactId>
+		<version>3.5.4</version>
+	</dependency>
   </dependencies>
 </project>

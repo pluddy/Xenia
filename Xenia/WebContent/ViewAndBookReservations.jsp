@@ -36,71 +36,82 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">View and Book Reservation</div>
 			<div class="panel-body">
-				<div class="col-sm-12">
-					<label class="col-sm-6">Hotel: </label> <label id="Hotel"
-						class="col-sm-6"></label>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Hotel:</label>
+					<div class="col-sm-10">
+	      				<p class="form-control-static">Hotel California</p>
+	    			</div>
 				</div>
-
-				<div class="col-sm-12">
-					<label class="col-sm-6">Address: </label> <label id="Address"
-						class="col-sm-6"></label>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Address:</label>
+					<div class="col-sm-10">
+	      				<p class="form-control-static">9999 Disney Dr.<br>Orlando, FL, USA</p>
+	    			</div>
 				</div>
-
-				<div class="col-sm-12">
-					<label class="col-sm-6">Dates: </label> <label id="Dates"
-						class="col-sm-6"></label>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Dates:</label>
+					<div class="col-sm-10">
+	      				<p class="form-control-static">10/31/2016-11/1/2016</p>
+	    			</div>
 				</div>
-
-				<div class="col-sm-12">
-					<label class="col-sm-6">Number Of Rooms: </label> <input
-						type="number" class="form-control col-sm-4"
-						placeholder="Number Of Rooms" name="numberOfRooms" min="1"
-						max="15" />
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Number Of Rooms:</label>
+					<div class="col-sm-10">
+	      				<input type="number" class="form-control col-sm-4" placeholder="Number Of Rooms" name="numberOfRooms" min="1" max="15" />
+	    			</div>
 				</div>
-
-				<div class="col-sm-12">
-					<label class="col-sm-6">Price Per Night: </label> <label
-						id="PricePerNight" class="col-sm-6"></label>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Price Per Night:</label>
+					<div class="col-sm-10">
+	      				<p class="form-control-static">$499.00</p>
+	    			</div>
 				</div>
-
-				<div class="col-sm-12">
-					<label class="col-sm-6">Full Description: </label> <label
-						id="FullDescription" class="col-sm-6"></label>
-				</div>
-
-				<div class="col-sm-12">
-					<label class="col-sm-6">Amenities: </label> <label id="Amenities"
-						class="col-sm-6"></label>
-				</div>
-
-				<div class="col-sm-12">
-					<label class="col-sm-6">Rating: </label> <label id="Rating"
-						class="col-sm-6"></label>
-				</div>
-
-				<div class="col-sm-12">
-					<label class="col-sm-6">Reviews: </label> <label id="Reviews"
-						class="col-sm-6"></label>
-				</div>
-				</div>
-
-				<div class="panel-footer clearfix">
-					<div class="pull-right">
-						<div class="col-sm-5">
-							<form class="form" action="ReservationSearch.jsp">
-								<button class="btn btn-default" type="submit">Back</button>
-							</form>
-						</div>
-						<div class="col-sm-5">
-							<form class="form" action="ConfirmCancellation.jsp">
-								<button class="btn btn-primary" type="submit">Book</button>
-							</form>
-						</div>
-					</div>
 				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Full Description:</label>
+					<div class="col-sm-10">
+	      				<p class="form-control-static">A beautiful suite overlooking the Disney Hollywood Studios Park.  A bunch of fun as long as you survive the elevator ride!</p>
+	    			</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Amenities:</label>
+					<div class="col-sm-12">
+						<span class="label label-default">Pool</span>
+						<span class="label label-default">Paid Internet Access</span>
+						<span class="label label-default">Pet Friendly</span>
+	    			</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Rating:</label>
+					<div class="col-sm-10">
+	      				<p class="form-control-static">4.5 Stars</p>
+	    			</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Reviews:</label>
+					<div class="col-sm-10">
+	      				<p class="form-control-static">"For some reason we had to go to the basement to ride the elevator, but it was a great time and a beautiful hotel!"</p>
+	    			</div>
+				</div>
+			</div>
+			<div class="panel-footer clearfix">
+				<div class="pull-right">
+					<div class="col-sm-5">
+						<form class="form" action="ReservationSearch.jsp">
+							<button class="btn btn-default" type="submit">Back</button>
+						</form>
+					</div>
+					<div class="col-sm-5">
+						<form class="form" action="ReservationTransaction.jsp">
+							<button class="btn btn-primary" type="submit">Book</button>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 
 	<script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>

@@ -41,7 +41,7 @@
 		<label class="col-sm-2">City: </label>
 		<label id="City" class="col-sm-10">Orlando, FL</label>
 		<label class="col-sm-2">Dates:</label>
-		<label id="Dates" class="col-sm-10">test</label>
+		<label id="Dates" class="col-sm-10">10/31/2016 - 11/1/2016</label>
 		</div>
 		<div class="panel-footer clearfix">
 		<div class="pull-right">
