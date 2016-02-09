@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel='stylesheet'
 	href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
-<title>Manage Reservations</title>
+<title>Cancellation Confirmation</title>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -21,18 +21,21 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="CustomerHomepage.jsp">Home</a>
+			<a class="navbar-brand" href="ManageReservations.jsp">Manage Reservations</a>
 			<a class="navbar-brand" href="#">Xenia</a>
+			<a class="navbar-brand" href="Login.jsp">Login</a>
 		</div>
 	</div>
 	<!-- /.container-fluid --> </nav>
-	<div class="table-responsive">	 
+		<div class="table-responsive">	 
 		 <table class="table table-bordered">
 		 <thead>
 		 <tr>
 		 <th>Hotel</th>
 		 <th>City</th>
 		 <th>Dates</th>
-		 <th></th>
+		 <th>Status</th>
+		 <th>Money Credited Back to Card</th>
 		 </tr>
 		 </thead>
 		 <tbody>
@@ -40,17 +43,14 @@
 		 <td> </td>
 		 <td> </td>
 		 <td> </td>
-		 <td> 
-		 <form class="form" action="CancelReservations.jsp">
-		 <button class="btn btn-default" type="submit">Cancel Reservations</button>
-		 </form>
-		 </td>
+		 <td>Canceled </td>
+		 <td>$150 to Card XXXX-XXXX-XXXX-1234 </td>
 		 </tr>
 		 </tbody>
 		 </table>
 	</div>
 	
-			<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
+				<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
