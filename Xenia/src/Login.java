@@ -48,6 +48,8 @@ public class Login extends HttpServlet {
 		
 		if (DBManager.validateUser(user, sc)) {
 			response.sendRedirect("CustomerHomepage.jsp");
+		} else {
+			response.sendRedirect("Login.jsp");
 		}
 	}
 

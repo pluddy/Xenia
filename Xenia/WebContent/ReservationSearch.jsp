@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel='stylesheet'
+	href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
+<title>Reservation Search Results</title>
 </head>
 <body>
 	<nav class="navbar navbar-default">
-	<div class="container-fluid">
+	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -18,42 +20,57 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Xenia</a>
+			<a class="navbar-brand" href="CustomerHomepage.jsp">Xenia</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="ManageReservations.jsp">Manage</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="Login.jsp">Logout</a></li>
+			</ul>
 		</div>
 	</div>
 	<!-- /.container-fluid --> </nav>
-		
-	 <button id="ManageReservations" class="btn btn-default">Manage Reservations</button>
-	 <button id="Logout" class="btn btn-default">Log Out</button>
-		
-	<div id="ReservationDiv">
-	<table id="ReservationTable">
-	<thead>
-	<tr>
-	<th>Name</th>
-	<th>Address</th>
-	<th>Description</th>
-	<th>Room Type</th>
-	<th>Rating</th>
-	<th>Price Per Night</th>
-	<th>Amenities</th>
-	<th></th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> <input type="button" id="ViewAndBook" class="btn btn-default">View and Book</input> </td>
-	</tr>
-	</tbody>
-	</table>
-	</div>	
-	
+	<div class="container">
+
+		<div id="ReservationDiv">
+			<table id="ReservationTable" class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Address</th>
+						<th>Description</th>
+						<th>Room Type</th>
+						<th>Rating</th>
+						<th>Price Per Night</th>
+						<th>Amenities</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<form class="form" action="ViewAndBookReservations.jsp">
+								<button class="btn btn-default pull-right" type="submit">View & Book</button>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 </body>
 </html>

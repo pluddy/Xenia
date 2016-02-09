@@ -10,7 +10,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-default">
-	<div class="container-fluid">
+	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -20,37 +20,46 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="CustomerHomepage.jsp">Home</a>
-			<a class="navbar-brand" href="#">Xenia</a>
+			<a class="navbar-brand" href="CustomerHomepage.jsp">Xenia</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="ManageReservations.jsp">Manage</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="Login.jsp">Logout</a></li>
+			</ul>
 		</div>
 	</div>
 	<!-- /.container-fluid --> </nav>
-	<div class="table-responsive">	 
-		 <table class="table table-bordered">
-		 <thead>
-		 <tr>
-		 <th>Hotel</th>
-		 <th>City</th>
-		 <th>Dates</th>
-		 <th></th>
-		 </tr>
-		 </thead>
-		 <tbody>
-		 <tr>
-		 <td> </td>
-		 <td> </td>
-		 <td> </td>
-		 <td> 
-		 <form class="form" action="CancelReservations.jsp">
-		 <button class="btn btn-default" type="submit">Cancel Reservations</button>
-		 </form>
-		 </td>
-		 </tr>
-		 </tbody>
-		 </table>
+	<div class="container">
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Hotel</th>
+						<th>City</th>
+						<th>Dates</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<form class="form" action="CancelReservations.jsp">
+								<button class="btn btn-danger pull-right" type="submit">Cancel</button>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-	
-			<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
