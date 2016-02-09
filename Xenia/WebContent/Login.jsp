@@ -22,6 +22,7 @@
 			</button>
 			<a class="navbar-brand" href="#">Xenia</a>
 		</div>
+
 	</div>
 	<!-- /.container-fluid --> </nav>
 	<div class="container">
@@ -62,8 +63,8 @@
 			<button class="btn btn-default" type="submit">Register</button>
 		</form>
 	</div>
-	<script type="text/javascript"
-		src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
 </body>
 </html>

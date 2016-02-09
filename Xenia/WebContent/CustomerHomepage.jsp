@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel='stylesheet'
 	href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
+<link rel='stylesheet'
+	href='webjars/bootstrap-datepicker/1.6.0/dist/css/bootstrap-datepicker.min.css'>
 <title>Xenia</title>
 </head>
 <body>
@@ -24,60 +26,71 @@
 		</div>
 	</div>
 	<!-- /.container-fluid --> </nav>
-	
+
 	<div class="container">
-		<h1>Customer Homepage</h1>
-	</div>
-	
-	<form class="form-horizontal" method="post">
+		<h2>Customer Homepage</h2>
+		<form class="form-horizontal" method="post">
 			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-2 control-label">Check In Date:</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" placeholder="Check In Date"
-						name="checkInDate">
+				<label for="inputEmail3" class="col-sm-2 control-label">Check
+					In Date</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control datepicker"
+						placeholder="Check In Date" name="checkInDate">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword3" class="col-sm-2 control-label">Check Out Date:</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" placeholder="Check Out Date"
-						name="checkOutDate">
+				<label for="inputPassword3" class="col-sm-2 control-label">Check
+					Out Date</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control datepicker"
+						placeholder="Check Out Date" name="checkOutDate">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword3" class="col-sm-2 control-label">Location City</label>
-				<div class="col-sm-4">
+				<label for="inputPassword3" class="col-sm-2 control-label">Location
+					City</label>
+				<div class="col-sm-6">
 					<input type="text" class="form-control" placeholder="Location City"
 						name="locationCity">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword3" class="col-sm-2 control-label">Number of Rooms</label>
-				<div class="col-sm-4">
-					<input type="number" class="form-control" placeholder="Number Of Rooms"
-						name="numberOfRooms" min="1" max="100">
+				<label for="inputPassword3" class="col-sm-2 control-label">Number
+					of Rooms</label>
+				<div class="col-sm-6">
+					<input type="number" class="form-control"
+						placeholder="Number Of Rooms" name="numberOfRooms" min="1"
+						max="100">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword3" class="col-sm-2 control-label">Room Type</label>
-				<div class="col-sm-4">
-					<select>
-					<option value="Standard">Standard</option>
-					<option value="Family">Family</option>
-					<option value="Suite">Suite</option>
+				<label for="inputPassword3" class="col-sm-2 control-label">Room
+					Type</label>
+				<div class="col-sm-6">
+					<select class="form-control">
+						<option value="Standard">Standard</option>
+						<option value="Family">Family</option>
+						<option value="Suite">Suite</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputPassword3" class="col-sm-2 control-label">Amenities</label>
-				<div class="col-sm-4 checkbox">
-					<label><input type="checkbox" value="BathtubInRoom">Bathtub In Room</label>
-					<label><input type="checkbox" value="FreeBreakfast">Free Breakfast</label>
-					<label><input type="checkbox" value="FreeWiFi">Free Wi-Fi</label>
-					<label><input type="checkbox" value="Gym">Gym</label>
-					<label><input type="checkbox" value="PaidInternetAccess">Paid Internet Access</label>
-					<label><input type="checkbox" value="Pool">Pool</label>
-					<label><input type="checkbox" value="PetFriendly">Pet Friendly</label>
+				<div class="col-sm-2 btn-group-vertical" data-toggle="buttons">
+					<label class="btn btn-primary"><input type="checkbox"
+						autocomplete="off" value="Bathtub">Bathtub</label> <label
+						class="btn btn-primary"><input type="checkbox"
+						autocomplete="off" value="FreeBreakfast">Free Breakfast</label> <label
+						class="btn btn-primary"><input type="checkbox"
+						autocomplete="off" value="FreeWiFi">Free Wi-Fi</label> <label
+						class="btn btn-primary"><input type="checkbox"
+						autocomplete="off" value="Gym">Gym</label> <label
+						class="btn btn-primary"><input type="checkbox"
+						autocomplete="off" value="PaidInternetAccess">Paid
+						Internet Access</label> <label class="btn btn-primary"><input
+						type="checkbox" autocomplete="off" value="Pool">Pool</label> <label
+						class="btn btn-primary"><input type="checkbox"
+						autocomplete="off" value="PetFriendly">Pet Friendly</label>
 				</div>
 			</div>
 			<div class="form-group">
@@ -86,15 +99,19 @@
 				</div>
 			</div>
 		</form>
+	</div>
+	<script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js">
-	  $(function() {
-		    $("#checkInDate").datepicker();
-		  });
-	  $(function() {
-		    $("#checkOutDate").datepicker();
-		  });
+	<script type="text/javascript"
+		src="webjars/bootstrap-datepicker/1.6.0/dist/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('.datepicker').datepicker({
+				format : 'mm/dd/yyyy',
+				todayHighlight : 'true'
+			});
+		});
 	</script>
 </body>
 </html>
