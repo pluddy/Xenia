@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel='stylesheet'
 	href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
-<title>Manage Reservations</title>
+<title>Cancel Reservations</title>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -20,35 +20,33 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="CustomerHomepage.jsp">Home</a>
+			<a class="navbar-brand" href="ManageReservations.jsp">Manage Reservations</a>
 			<a class="navbar-brand" href="#">Xenia</a>
+			<a class="navbar-brand" href="Login.jsp">Login</a>
 		</div>
 	</div>
 	<!-- /.container-fluid --> </nav>
-	<div class="table-responsive">	 
-		 <table class="table table-bordered">
-		 <thead>
-		 <tr>
-		 <th>Hotel</th>
-		 <th>City</th>
-		 <th>Dates</th>
-		 <th></th>
-		 </tr>
-		 </thead>
-		 <tbody>
-		 <tr>
-		 <td> </td>
-		 <td> </td>
-		 <td> </td>
-		 <td> 
-		 <form class="form" action="CancelReservations.jsp">
-		 <button class="btn btn-default" type="submit">Cancel Reservations</button>
+		<label class="col-sm-2">Hotel: </label>
+		<label id="Hotel" class="col-sm-4"></label>
+		
+		<label class="col-sm-2">City: </label>
+		<label id="City" class="col-sm-4"></label>
+		
+		<label class="col-sm-2">Dates: </label>
+		<label id="Dates" class="col-sm-4"></label>
+		
+		<div class="col-sm-12">
+		<div class="col-sm-3">
+		 <form class="form" action="ConfirmCancellation.jsp">
+		 <button class="btn btn-default" type="submit">Confirm Cancellation</button>
 		 </form>
-		 </td>
-		 </tr>
-		 </tbody>
-		 </table>
-	</div>
+		 </div>
+		 <div class="col-sm-3">
+		 <form class="form" action="CustomerHomepage.jsp">
+		 <button class="btn btn-default" type="submit">Cancel</button>
+		 </form>
+		 </div>
+		</div>
 	
 			<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript"
