@@ -1,24 +1,44 @@
+package servlets;
 
 
 import java.io.IOException;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import classes.*;
+import managers.UserManager;
+import managers.GzipManager;
+import models.User;
 
 /**
- * Servlet implementation class Register
+ * Servlet implementation class Login
  */
-public class Register extends HttpServlet {
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
+	private long modTime; 
+    
+	/* (non-Javadoc)
+	 * @see javax.servlet.GenericServlet#init()
+	 */
+	public void init() throws ServletException {
+		modTime = System.currentTimeMillis()/1000*1000;  
+	}
+    
+    /* (non-Javadoc)
+     * @see javax.servlet.http.HttpServlet#getLastModified(javax.servlet.http.HttpServletRequest)
+     */
+    public long getLastModified(HttpServletRequest request) {
+    	return(modTime);
+    }
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Register() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,8 +47,7 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("Register.jsp");
-		
+		response.sendRedirect("Login.jsp");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -43,9 +62,16 @@ public class Register extends HttpServlet {
 		
 		User user = new User(username, password);
 		
-		DBManager.addUser(user, sc);
-
-		response.sendRedirect("Login.jsp");
+		if (UserManager.validateUser(user, sc)) {
+			if (GzipManager.isGzipSupported(request)) {
+				response.setHeader("Content-Encoding", "gzip");
+				response.sendRedirect("CustomerHomepage.jsp");
+			} else {
+				response.sendRedirect("CustomerHomepage.jsp");
+			}
+		} else {
+			response.sendRedirect("Login.jsp");
+		}
 	}
 
 }

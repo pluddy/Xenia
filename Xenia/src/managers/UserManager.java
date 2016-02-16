@@ -1,4 +1,4 @@
-package classes;
+package managers;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,11 +8,13 @@ import java.util.Properties;
 
 import javax.servlet.ServletContext;
 
-public final class DBManager {
+import models.User;
+
+public final class UserManager {
 	
 	public static void addUser(User user, ServletContext sc) {
-		String username = user.username;
-		String password = user.password;
+		String username = user.getUsername();
+		String password = user.getPassword();
 		
 		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
 		
@@ -44,8 +46,8 @@ public final class DBManager {
 	}
 	
 	public static boolean validateUser(User user, ServletContext sc) {
-		String username = user.username;
-		String password = user.password;
+		String username = user.getUsername();
+		String password = user.getPassword();
 				
 		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
 		
@@ -88,8 +90,8 @@ public final class DBManager {
 	}
 	
 	public static void removeUser(User user, ServletContext sc) {
-		if (DBManager.validateUser(user, sc)) {
-			String username = user.username;
+		if (UserManager.validateUser(user, sc)) {
+			String username = user.getUsername();
 			
 			String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
 			
