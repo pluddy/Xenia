@@ -20,10 +20,16 @@ public class Login extends HttpServlet {
 	
 	private long modTime; 
     
+	/* (non-Javadoc)
+	 * @see javax.servlet.GenericServlet#init()
+	 */
 	public void init() throws ServletException {
 		modTime = System.currentTimeMillis()/1000*1000;  
 	}
     
+    /* (non-Javadoc)
+     * @see javax.servlet.http.HttpServlet#getLastModified(javax.servlet.http.HttpServletRequest)
+     */
     public long getLastModified(HttpServletRequest request) {
     	return(modTime);
     }

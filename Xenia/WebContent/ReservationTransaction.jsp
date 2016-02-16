@@ -1,39 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel='stylesheet'
-	href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
-	<link rel='stylesheet'
-	href='webjars/bootstrap-datepicker/1.6.0/dist/css/bootstrap-datepicker.min.css'>
 <title>Reservation Transaction</title>
 </head>
 <body>
-	<nav class="navbar navbar-default">
-	<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-				aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="CustomerHomepage.jsp">Xenia</a>
-		</div>
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="ManageReservations.jsp">Manage</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="Login.jsp">Logout</a></li>
-			</ul>
-		</div>
-	</div>
-	<!-- /.container-fluid --> </nav>
+	<jsp:include page="/Header.jsp"/>
 	<div class="container">
 		<form class="form-horizontal" id="reservationTransaction" action="ReservationTransactionConfirmation.jsp" method="post">
 			<div class="panel panel-default">
@@ -42,32 +15,32 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Hotel: </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">Hotel California</p>
-		    			</div>
+							<p class="form-control-static">Hotel California</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Location: </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">Orlando, FL</p>
-		    			</div>
+							<p class="form-control-static">Orlando, FL</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Number of Rooms: </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">4</p>
-		    			</div>
+							<p class="form-control-static">4</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Dates: </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">10/31/2016-11/1/2016</p>
-		    			</div>
+							<p class="form-control-static">10/31/2016-11/1/2016</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Price: </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">$499.00</p>
-		    			</div>
+							<p class="form-control-static">$499.00</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -77,37 +50,37 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">First Name </label>
 						<div class="col-sm-4">
-		      				<input class="form-control" placeholder="John">
-		    			</div>
+							<input class="form-control" placeholder="John">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Last Name </label>
 						<div class="col-sm-4">
-		      				<input class="form-control" placeholder="Smith">
-		    			</div>
+							<input class="form-control" placeholder="Smith">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Card Type </label>
 						<div class="col-sm-2">
-		      				<select class="form-control">
+							<select class="form-control">
 								<option value="Visa">Visa</option>
 								<option value="Master Card">Master Card</option>
 								<option value="Discover">Discover</option>
 								<option value="American Express">American Express</option>
 							</select>
-		    			</div>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Card Number </label>
 						<div class="col-sm-4">
-		      				<input class="form-control" placeholder="XXXX-XXXX-XXXX-1234">
-		    			</div>
+							<input class="form-control" placeholder="XXXX-XXXX-XXXX-1234">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Security Code </label>
 						<div class="col-sm-2">
-		      				<input class="form-control" placeholder="XXX">
-		    			</div>
+							<input class="form-control" placeholder="XXX">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Expires</label>
@@ -123,50 +96,50 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">First Name</label>
 						<div class="col-sm-4">
-		      				<input class="form-control" placeholder="John">
-		    			</div>
+							<input class="form-control" placeholder="John">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Last Name</label>
 						<div class="col-sm-4">
-		      				<input class="form-control" placeholder="Smith">
-		    			</div>
+							<input class="form-control" placeholder="Smith">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Address 1</label>
 						<div class="col-sm-4">
-		      				<input class="form-control" placeholder="1900 Appleseed Dr.">
-		    			</div>
+							<input class="form-control" placeholder="1900 Appleseed Dr.">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Address 2 </label>
 						<div class="col-sm-4">
-		      				<input class="form-control" placeholder="Apt 104">
-		    			</div>
+							<input class="form-control" placeholder="Apt 104">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">City </label>
 						<div class="col-sm-4">
-		      				<input class="form-control" placeholder="Potomac">
-		    			</div>
+							<input class="form-control" placeholder="Potomac">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">State </label>
 						<div class="col-sm-2">
-		      				<input class="form-control" placeholder="VA">
-		    			</div>
+							<input class="form-control" placeholder="VA">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Country </label>
 						<div class="col-sm-4">
-		      				<input class="form-control" placeholder="United States of America">
-		    			</div>
+							<input class="form-control" placeholder="United States of America">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">ZIP Code</label>
 						<div class="col-sm-4">
-		      				<input class="form-control" placeholder="22152">
-		    			</div>
+							<input class="form-control" placeholder="22152">
+						</div>
 					</div>
 				</div>
 				<div class="panel-footer clearfix">
@@ -178,13 +151,8 @@
 	</div>
 
 
-		<script type="text/javascript"
-			src="webjars/jquery/2.1.4/jquery.min.js"></script>
-		<script type="text/javascript"
-			src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-			<script type="text/javascript"
-		src="webjars/bootstrap-datepicker/1.6.0/dist/js/bootstrap-datepicker.min.js"></script>
-			<script type="text/javascript">
+	<jsp:include page="/Footer.jsp"/>
+	<script type="text/javascript">
 			$(".datepicker").datepicker( {
 			    format: "mm/yyyy",
 			    startView: "months", 

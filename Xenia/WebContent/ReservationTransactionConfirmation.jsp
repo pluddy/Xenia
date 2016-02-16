@@ -1,39 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel='stylesheet'
-	href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
 <title>Reservation Transaction Confirmation</title>
 </head>
 <body>
-		<nav class="navbar navbar-default">
+	<jsp:include page="/Header.jsp"/>
 	<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-				aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="CustomerHomepage.jsp">Xenia</a>
-		</div>
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="ManageReservations.jsp">Manage</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="Login.jsp">Logout</a></li>
-			</ul>
-		</div>
-	</div>
-	<!-- /.container-fluid --> </nav>
-	<div class="container">
-	<div class="alert alert-success" role="alert">Your Reservation has been Confirmed</div>
+		<div class="alert alert-success" role="alert">Your Reservation has been Confirmed</div>
 		<form class="form-horizontal" id="reservationTransaction" action="ReservationTransactionConfirmation.jsp" method="post">
 			<div class="panel panel-default">
 				<div class="panel-heading">Booking Summary</div>
@@ -41,32 +16,32 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Hotel: </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">Hotel California</p>
-		    			</div>
+							<p class="form-control-static">Hotel California</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Location: </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">Orlando, FL</p>
-		    			</div>
+							<p class="form-control-static">Orlando, FL</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Number of Rooms: </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">4</p>
-		    			</div>
+							<p class="form-control-static">4</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Dates: </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">10/31/2016-11/1/2016</p>
-		    			</div>
+							<p class="form-control-static">10/31/2016-11/1/2016</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Price: </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">$499.00</p>
-		    			</div>
+							<p class="form-control-static">$499.00</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -76,38 +51,38 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">First Name </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">John</p>
-		    			</div>
+							<p class="form-control-static">John</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Last Name </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">Smith</p>
-		    			</div>
+							<p class="form-control-static">Smith</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Card Type </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">American Express</p>
-		    			</div>
+							<p class="form-control-static">American Express</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Card Number </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">XXXX-XXXX-XXXX-1234</p>
-		    			</div>
+							<p class="form-control-static">XXXX-XXXX-XXXX-1234</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Security Code </label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">XXX</p>
-		    			</div>
+							<p class="form-control-static">XXX</p>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Expires</label>
 						<div class="col-sm-10">
-		      				<p class="form-control-static">2/2020</p>
-		    			</div>
+							<p class="form-control-static">2/2020</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -115,17 +90,12 @@
 				<div class="panel-heading">Billing Information</div>
 				<div class="panel-body">
 					<address class="col-sm-offset-2">
-						<strong>John Smith</strong><br>
-						1900 Appleseed Dr., Apt 104<br>
-						Potomac, VA, USA  22152<br>
+						<strong>John Smith</strong><br> 1900 Appleseed Dr., Apt 104<br> Potomac, VA, USA 22152<br>
 					</address>
 				</div>
 			</div>
 		</form>
 	</div>
-	
-			<script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
-	<script type="text/javascript"
-		src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<jsp:include page="/Footer.jsp"/>
 </body>
 </html>
