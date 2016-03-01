@@ -3,19 +3,8 @@ package models;
 import java.util.Date;
 
 public class Reservation {
-	public Reservation(Integer iD, Integer hotelID, Date checkInDate, Date checkOutDate, Integer numberOfRooms,
-			String reservationNumber, Integer userID, Integer status, String notes, Integer roomTypeID) {
-		super();
-		ID = iD;
-		HotelID = hotelID;
-		CheckInDate = checkInDate;
-		CheckOutDate = checkOutDate;
-		NumberOfRooms = numberOfRooms;
-		ReservationNumber = reservationNumber;
-		UserID = userID;
-		Status = status;
-		Notes = notes;
-		RoomTypeID = roomTypeID;
+	public Reservation() {
+
 	}
 	
 	private Integer ID;

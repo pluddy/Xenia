@@ -10,16 +10,8 @@ public class Transaction {
 	 * @param userID
 	 * @param cVV
 	 */
-	public Transaction(Integer iD, String cardHolderNumber, String creditCardNumber, Float balance, String cardNickname,
-			Integer userID, String cVV) {
-		super();
-		ID = iD;
-		CardHolderNumber = cardHolderNumber;
-		CreditCardNumber = creditCardNumber;
-		Balance = balance;
-		CardNickname = cardNickname;
-		UserID = userID;
-		CVV = cVV;
+	public Transaction() {
+
 	}
 	private Integer ID;
 	private String CardHolderNumber;
