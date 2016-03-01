@@ -4,6 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.ServletContext;
@@ -11,6 +14,43 @@ import javax.servlet.ServletContext;
 import models.User;
 
 public final class UserManager {
+	
+	public static List<User> getUsers() {
+		Connection con = DBConnectionManager.getConnection();
+		List<User> users = new ArrayList<User>();
+		Statement getUsers = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM Users";
+		try {
+			getUsers = con.createStatement();
+			rs = getUsers.executeQuery(sql);
+			while (rs.next()){
+				User user = new User();
+				user.setUsername(rs.getString("Username"));
+				user.setFirstName(rs.getString("FirstName"));
+				user.setLastName(rs.getString("LastName"));
+				user.setAddress1(rs.getString("AddressLine1"));
+				user.setAddress2(rs.getString("AddressLine2"));
+				user.setCity(rs.getString("City"));
+				user.setState(rs.getString("State"));
+				users.add(user);
+			}
+			System.out.println("[UserManager] - Get Users Successful");
+		} catch (SQLException e) {
+			System.out.println("[UserManager] - Get Users Failed");
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				getUsers.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return users;
+	}
 	
 	public static void addUser(User user, ServletContext sc) {
 		String username = user.getUsername();

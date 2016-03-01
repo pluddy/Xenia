@@ -4,33 +4,33 @@ public class User {
 
 	private String username;
 	private String password;
-	private String address;
+	private String firstName;
+	private String lastName;
+	private String address1;
+	private String address2;
 	private String city;
 	private String state;
+	private String zip;
 	
 	/**
-	 * @param username
-	 * @param password
+	 * 
 	 */
-	public User(String username, String password) {
-		this.username = username;
-		this.password = password;
+	public User() {
+		
+	}
+	
+	/**
+	 * @return
+	 */
+	public String getZip() {
+		return zip;
 	}
 
 	/**
-	 * @param username
-	 * @param password
-	 * @param address
-	 * @param city
-	 * @param state
+	 * @param zip
 	 */
-	public User(String username, String password, String address, String city, String state) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.address = address;
-		this.city = city;
-		this.state = state;
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 
 	/**
@@ -60,19 +60,61 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	/**
+	 * @return
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * @param firstName
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
 	/**
 	 * @return
 	 */
-	public String getAddress() {
-		return address;
+	public String getLastName() {
+		return lastName;
 	}
 
 	/**
-	 * @param address
+	 * @param lastName
 	 */
-	public void setAddress(String address) {
-		this.address = address;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getAddress1() {
+		return address1;
+	}
+
+	/**
+	 * @param address1
+	 */
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getAddress2() {
+		return address2;
+	}
+
+	/**
+	 * @param address2
+	 */
+	public void setAddress2(String address2) {
+		this.address2 = address2;
 	}
 
 	/**
