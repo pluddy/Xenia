@@ -7,40 +7,40 @@ public class Reservation {
 
 	}
 	
-	private Integer ID;
-	private Integer HotelID;
+	private int ID;
+	private int HotelID;
 	private Date CheckInDate;
 	private Date CheckOutDate;
-	private Integer NumberOfRooms;
+	private int NumberOfRooms;
 	private String ReservationNumber;
-	private Integer UserID;
-	private Integer Status;
+	private int UserID;
+	private int Status;
 	private String Notes;
-	private Integer RoomTypeID;
+	private int RoomTypeID;
 	
 	
 	/**
 	 * @return the iD
 	 */
-	public Integer getID() {
+	public int getID() {
 		return ID;
 	}
 	/**
 	 * @param iD the iD to set
 	 */
-	public void setID(Integer iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 	/**
 	 * @return the hotelID
 	 */
-	public Integer getHotelID() {
+	public int getHotelID() {
 		return HotelID;
 	}
 	/**
 	 * @param hotelID the hotelID to set
 	 */
-	public void setHotelID(Integer hotelID) {
+	public void setHotelID(int hotelID) {
 		HotelID = hotelID;
 	}
 	/**
@@ -70,13 +70,13 @@ public class Reservation {
 	/**
 	 * @return the numberOfRooms
 	 */
-	public Integer getNumberOfRooms() {
+	public int getNumberOfRooms() {
 		return NumberOfRooms;
 	}
 	/**
 	 * @param numberOfRooms the numberOfRooms to set
 	 */
-	public void setNumberOfRooms(Integer numberOfRooms) {
+	public void setNumberOfRooms(int numberOfRooms) {
 		NumberOfRooms = numberOfRooms;
 	}
 	/**
@@ -94,25 +94,25 @@ public class Reservation {
 	/**
 	 * @return the userID
 	 */
-	public Integer getUserID() {
+	public int getUserID() {
 		return UserID;
 	}
 	/**
 	 * @param userID the userID to set
 	 */
-	public void setUserID(Integer userID) {
+	public void setUserID(int userID) {
 		UserID = userID;
 	}
 	/**
 	 * @return the status
 	 */
-	public Integer getStatus() {
+	public int getStatus() {
 		return Status;
 	}
 	/**
 	 * @param status the status to set
 	 */
-	public void setStatus(Integer status) {
+	public void setStatus(int status) {
 		Status = status;
 	}
 	/**
@@ -130,13 +130,13 @@ public class Reservation {
 	/**
 	 * @return the roomTypeID
 	 */
-	public Integer getRoomTypeID() {
+	public int getRoomTypeID() {
 		return RoomTypeID;
 	}
 	/**
 	 * @param roomTypeID the roomTypeID to set
 	 */
-	public void setRoomTypeID(Integer roomTypeID) {
+	public void setRoomTypeID(int roomTypeID) {
 		RoomTypeID = roomTypeID;
 	}
 }

@@ -13,23 +13,23 @@ public class Transaction {
 	public Transaction() {
 
 	}
-	private Integer ID;
+	private int ID;
 	private String CardHolderNumber;
 	private String CreditCardNumber;
-	private Float Balance;
+	private double Balance;
 	private String CardNickname;
-	private Integer UserID;
+	private int UserID;
 	private String CVV;
 	/**
 	 * @return the iD
 	 */
-	public Integer getID() {
+	public int getID() {
 		return ID;
 	}
 	/**
 	 * @param iD the iD to set
 	 */
-	public void setID(Integer iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 	/**
@@ -59,13 +59,13 @@ public class Transaction {
 	/**
 	 * @return the balance
 	 */
-	public Float getBalance() {
+	public double getBalance() {
 		return Balance;
 	}
 	/**
 	 * @param balance the balance to set
 	 */
-	public void setBalance(Float balance) {
+	public void setBalance(double balance) {
 		Balance = balance;
 	}
 	/**
@@ -83,13 +83,13 @@ public class Transaction {
 	/**
 	 * @return the userID
 	 */
-	public Integer getUserID() {
+	public int getUserID() {
 		return UserID;
 	}
 	/**
 	 * @param userID the userID to set
 	 */
-	public void setUserID(Integer userID) {
+	public void setUserID(int userID) {
 		UserID = userID;
 	}
 	/**

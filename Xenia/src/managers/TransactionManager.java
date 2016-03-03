@@ -1,22 +1,21 @@
 package managers;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-
-import javax.servlet.ServletContext;
-
+import org.apache.commons.lang3.StringUtils;
 import models.Transaction;
 
 public final class TransactionManager {
 	
-	public static List<Transaction> getTransactions(Integer ID, String CardHolderNumber, 
-			String CreditCardNumber, Float Balance, String CardNickname, Integer UserID, String CVV) {
+	public static List<Transaction> getTransactions(
+			int Id, 
+			String CardHolderNumber, 
+			String CreditCardNumber, 
+			double Balance, 
+			String CardNickname, 
+			int userId, 
+			String CVV) {
 		Connection con = DBConnectionManager.getConnection();
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		PreparedStatement ps = null;
@@ -27,9 +26,9 @@ public final class TransactionManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (ID != null && ID > 0) {
+		if (Id > 0) {
 		    clauses.add("ID = ?");
-		    parameters.add(ID);
+		    parameters.add(Id);
 		}
 		if (CardHolderNumber != null) {
 		    clauses.add("CardHolderNumber = ?");
@@ -39,7 +38,7 @@ public final class TransactionManager {
 		    clauses.add("CreditCardNumber = ?");
 		    parameters.add(CreditCardNumber);
 		} 
-		if (Balance != null && Balance > 0) {
+		if (Balance > 0) {
 		    clauses.add("Balance = ?");
 		    parameters.add(Balance);
 		} 
@@ -47,9 +46,9 @@ public final class TransactionManager {
 		    clauses.add("CardNickname = ?");
 		    parameters.add(CardNickname);
 		} 
-		if (UserID != null && UserID > 0) {
+		if (userId > 0) {
 		    clauses.add("UserID = ?");
-		    parameters.add(UserID);
+		    parameters.add(userId);
 		}
 		 if (CVV != null) {
 		    clauses.add("CVV = ?");
@@ -69,8 +68,6 @@ public final class TransactionManager {
 			
 			rs = ps.executeQuery();
 			
-			//getTransactions = con.createStatement();
-			//rs = getTransactions.executeQuery(sql);
 			while (rs.next()){
 
 				Transaction transaction = new Transaction();
@@ -101,7 +98,6 @@ public final class TransactionManager {
 	
 	public static void addTransaction(Transaction transaction) {
 		Connection con = DBConnectionManager.getConnection();
-		List<Transaction> transactions = new ArrayList<Transaction>();
 		Statement addTransaction = null;
 		ResultSet rs = null;
 	
@@ -122,26 +118,11 @@ public final class TransactionManager {
 		 + transaction.getUserID() + ", "
 		 + transaction.getCVV();
 		
-		//String username = user.getUsername();
-		//String password = user.getPassword();
-		
-		//String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
-		
-		//Properties p = new Properties();
-		
-		//FileInputStream fis = null;
-		
 		try {
 			addTransaction = con.createStatement();
 			rs = addTransaction.executeQuery(sql);
-			
-			//fis = new FileInputStream(propFilePath);
-			
-			//p.load(fis);
-			//p.setProperty(username, password);
+
 			System.out.println("[DBManager] - Transaction " + transaction.getID() + " created.");
-			
-			//p.store(new FileOutputStream(propFilePath), null);
 		} catch (SQLException e) {
 			System.out.println("[TransactionManager] - Get Transactions Failed");
 			e.printStackTrace();
@@ -158,7 +139,6 @@ public final class TransactionManager {
 	
 	public static void updateTransaction(Transaction transaction) {
 		Connection con = DBConnectionManager.getConnection();
-		List<Transaction> transactions = new ArrayList<Transaction>();
 		Statement updateTransaction = null;
 		ResultSet rs = null;
 	
@@ -172,7 +152,6 @@ public final class TransactionManager {
 	private String CVV;
 		 */
 		
-		
 		String sql = "UPDATE CreditCards SET CardHolderNumber = " + transaction.getCardHolderNumber() 
 		+ " CreditCardNumber = " + transaction.getCreditCardNumber()
 		+ " Balance = " + transaction.getBalance()
@@ -180,30 +159,15 @@ public final class TransactionManager {
 		+ " UserID = " + transaction.getUserID()
 		+ " CVV = " + transaction.getCVV() 
 		+ " WHERE ID = " + transaction.getID(); 
-		 
-		
-		//String username = user.getUsername();
-		//String password = user.getPassword();
-		
-		//String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
-		
-		//Properties p = new Properties();
-		
-		//FileInputStream fis = null;
 		
 		try {
 			updateTransaction = con.createStatement();
 			rs = updateTransaction.executeQuery(sql);
 			
-			//fis = new FileInputStream(propFilePath);
+			System.out.println("[DBManager] - Transaction " + transaction.getID() + " updated.");
 			
-			//p.load(fis);
-			//p.setProperty(username, password);
-			System.out.println("[DBManager] - Transaction " + transaction.getID() + " created.");
-			
-			//p.store(new FileOutputStream(propFilePath), null);
 		} catch (SQLException e) {
-			System.out.println("[TransactionManager] - Get Transactions Failed");
+			System.out.println("[TransactionManager] - Update Transactions Failed");
 			e.printStackTrace();
 		} finally {
 			try {
@@ -232,7 +196,6 @@ public final class TransactionManager {
 	
 	public static void removeTransaction(Integer transactionID) {
 		Connection con = DBConnectionManager.getConnection();
-		List<Transaction> transactions = new ArrayList<Transaction>();
 		Statement removeTransaction = null;
 		ResultSet rs = null;
 		
@@ -241,16 +204,10 @@ public final class TransactionManager {
 		try {
 			removeTransaction = con.createStatement();
 			rs = removeTransaction.executeQuery(sql);
-			
-			//fis = new FileInputStream(propFilePath);
-			
-			//p.load(fis);
-			//p.setProperty(username, password);
+
 			System.out.println("[DBManager] - Transaction " + transactionID + " removed.");
-			
-			//p.store(new FileOutputStream(propFilePath), null);
 		} catch (SQLException e) {
-			System.out.println("[TransactionManager] - Remove Transactions Failed");
+			System.out.println("[TransactionManager] - Remove Transaction Failed");
 			e.printStackTrace();
 		} finally {
 			try {

@@ -1,49 +1,85 @@
 package managers;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-
-import javax.servlet.ServletContext;
-
+import org.apache.commons.lang3.*;
 import models.User;
 
 public final class UserManager {
 	
-	public static List<User> getUsers() {
+	public static List<User> getUsers(
+			int Id,
+			String username, 
+			String firstName, 
+			String lastName, 
+			String addressLine1, 
+			String addressLine2,
+			String city,
+			String state,
+			String zip
+			) {
 		Connection con = DBConnectionManager.getConnection();
 		List<User> users = new ArrayList<User>();
 		Statement getUsers = null;
 		ResultSet rs = null;
 		
-	/*	String query = "select * from foo f";
+		String sql = "SELECT * FROM Users u";
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
-
-		if (firstName != null) {
-		    clauses.add("f.name = ?");
-		    parameters.add(firstName);
-		}
-		// ...
-		if (!clauses.isEmpty()) {
-		    query += " where " + StringUtils.join(clauses, " and ");
-		}
-
-		PreparedStatement ps = connection.prepareStatement(query);
-		for (int i = 0; i < parameters.size(); i++) {
-		    ps.setObject(i + 1, paremeters.get(i));
-		}
-		*/
 		
-		String sql = "SELECT * FROM Users";
+		if (username != null){
+			clauses.add("u.Username = ?");
+			parameters.add(username);
+		}
+		
+		if (firstName != null){
+			clauses.add("u.FirstName = ?");
+			parameters.add(firstName);
+		}
+		
+		if (lastName != null){
+			clauses.add("u.LastName = ?");
+			parameters.add(lastName);
+		}
+		
+		if (addressLine1 != null){
+			clauses.add("u.AddressLine1 = ?");
+			parameters.add(addressLine1);
+		}
+		
+		if (addressLine2 != null){
+			clauses.add("u.AddressLine2 = ?");
+			parameters.add(addressLine2);
+		}
+		
+		if (city != null){
+			clauses.add("u.City = ?");
+			parameters.add(city);
+		}
+		
+		if (state != null){
+			clauses.add("u.State = ?");
+			parameters.add(state);
+		}
+		
+		if (zip != null){
+			clauses.add("u.Zip = ?");
+			parameters.add(zip);
+		}
+		
+		if (!clauses.isEmpty()) {
+		    sql += " WHERE " + StringUtils.join(clauses, " AND ");
+		}
+		
 		try {
-			getUsers = con.createStatement();
-			rs = getUsers.executeQuery(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
+			for (int i = 0; i < parameters.size(); i++) {
+			    ps.setObject(i + 1, parameters.get(i));
+			}
+			
+			rs = ps.executeQuery();
+			
 			while (rs.next()){
 				User user = new User();
 				user.setUsername(rs.getString("Username"));
@@ -53,6 +89,7 @@ public final class UserManager {
 				user.setAddress2(rs.getString("AddressLine2"));
 				user.setCity(rs.getString("City"));
 				user.setState(rs.getString("State"));
+				user.setZip(rs.getString("PostalCode"));
 				users.add(user);
 			}
 			System.out.println("[UserManager] - Get Users Successful");
@@ -71,116 +108,139 @@ public final class UserManager {
 		return users;
 	}
 	
-	public static void addUser(User user, ServletContext sc) {
-		String username = user.getUsername();
-		String password = user.getPassword();
+	public static void addUser(User user) {
 		
-		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
+		Connection con = DBConnectionManager.getConnection();
+		Statement addUser = null;
+		ResultSet rs = null;
 		
-		Properties p = new Properties();
-		
-		FileInputStream fis = null;
-		
-		try {
-			fis = new FileInputStream(propFilePath);
-			
-			p.load(fis);
-			p.setProperty(username, password);
-			System.out.println("[DBManager] - User " + username + " created.");
-			
-			p.store(new FileOutputStream(propFilePath), null);
-		} catch (FileNotFoundException e) {
-			System.out.println("FileNotFound");
-		} catch (IOException e) {
-			System.out.println("IOException");
-		} finally {
-			if (fis != null) {
-				try {
-					fis.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-	
-	public static boolean validateUser(User user, ServletContext sc) {
-		String username = user.getUsername();
-		String password = user.getPassword();
-				
-		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
-		
-		Properties p = new Properties();
-		
-		FileInputStream fis = null;
+		String sql = "INSERT INTO Users ( Username, FirstName, LastName, AddressLine1, AddressLine2, City, State, PostalCode ) VALUES ("
+				+ user.getUsername() + ", "
+				+ user.getFirstName() + ", "
+				+ user.getLastName() + ", "
+				+ user.getAddress1() + ", "
+				+ user.getAddress2() + ", "
+				+ user.getCity() + ", "
+				+ user.getState() + ", "
+				+ user.getZip() + " )";
 		
 		try {
-			fis = new FileInputStream(propFilePath);
+			addUser = con.createStatement();
 			
-			p.load(fis);
-			String validatePassword = p.getProperty(username);
-			if (validatePassword != null) {
-				System.out.println("[DBManager] - User " + username + " found.");
-				if (password.equals(validatePassword)) {
-					System.out.println("[DBManager] - User " + username + " has valid password.");
-					return true;
-				} else {
-					System.out.println("[DBManager] - User " + username + " has invalid password.");
-					return false;
-				}
-			} else {
-				System.out.println("[DBManager] - User " + username + " not found.");
-				return false;
-			}
-		} catch (FileNotFoundException e) {
-			System.out.println("FileNotFound");
-		} catch (IOException e) {
-			System.out.println("IOException");
+			rs = addUser.executeQuery(sql);
+			
+			System.out.println("[UserManager] - User " + user.getUsername() + " Added");
+		} catch (SQLException e) {
+			System.out.println("[UserManager] - Add User Failed");
+			e.printStackTrace();
 		} finally {
-			if (fis != null) {
-				try {
-					fis.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return false;
-	}
-	
-	public static void removeUser(User user, ServletContext sc) {
-		if (UserManager.validateUser(user, sc)) {
-			String username = user.getUsername();
-			
-			String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
-			
-			Properties p = new Properties();
-			
-			FileInputStream fis = null;
-			
 			try {
-				fis = new FileInputStream(propFilePath);
-				
-				p.load(fis);
-				String validatePassword = p.getProperty(username);
-				if (validatePassword != null) {
-					p.remove(username);
-					System.out.println("[DBManager] - User " + username + " deleted.");
-				} else {
-					System.out.println("[DBManager] - User " + username + " not found.");
-				}
-			} catch (FileNotFoundException e) {
-				System.out.println("[DBManager] - FileNotFound");
-			} catch (IOException e) {
-				System.out.println("[DBManager] - IOException");
-			} finally {
-				if (fis != null) {
-					try {
-						fis.close();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void updateUser(User user) {
+		Connection con = DBConnectionManager.getConnection();
+		Statement updateUser = null;
+		ResultSet rs = null;
+	
+		/*
+			private String username;
+			private String password;
+			private String firstName;
+			private String lastName;
+			private String address1;
+			private String address2;
+			private String city;
+			private String state;
+			private String zip;
+		*/
+		
+		
+		String sql = "UPDATE Users SET Username = " + user.getUsername() 
+		+ " Password = " + user.getPassword()
+		+ " FirstName = " + user.getFirstName()
+		+ " LastName = " + user.getLastName()
+		+ " AddressLine1 = " + user.getAddress1()
+		+ " AddressLine2 = " + user.getAddress2() 
+		+ " City = " + user.getCity()
+		+ " State = " + user.getState()
+		+ " PostalCode = " + user.getZip()
+		+ " WHERE ID = " + user.getId(); 
+		
+		try {
+			updateUser = con.createStatement();
+			rs = updateUser.executeQuery(sql);
+			
+			
+			System.out.println("[DBManager] - User " + user.getId() + " updated.");
+			
+		} catch (SQLException e) {
+			System.out.println("[TransactionManager] - Update User Failed");
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				updateUser.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static boolean validateUser(User user) {
+		
+		/* int Id,
+		 * String username, 
+			String firstName, 
+			String lastName, 
+			String addressLine1, 
+			String addressLine2,
+			String city,
+			String state,
+			String zip */
+	
+		List<User> users = getUsers(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName(), user.getAddress1(), user.getAddress2(),
+				user.getCity(), user.getState(), user.getZip());
+
+		if(!users.isEmpty()){
+			System.out.println("[DBManager] - User " + user.getUsername() + " validated.");
+			return true;
+		} else {
+			System.out.println("[DBManager] - Transaction " + user.getUsername() + " not found.");
+			return false;
+		}
+	}
+	
+	public static void removeTransaction(Integer userId) {
+		Connection con = DBConnectionManager.getConnection();
+		Statement removeUser = null;
+		ResultSet rs = null;
+		
+		String sql = "DELETE Users WHERE ID = "  + userId; 
+		 
+		try {
+			removeUser = con.createStatement();
+			rs = removeUser.executeQuery(sql);
+			
+			System.out.println("[DBManager] - User " + userId + " removed.");
+			
+			//p.store(new FileOutputStream(propFilePath), null);
+		} catch (SQLException e) {
+			System.out.println("[TransactionManager] - Remove User Failed");
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				removeUser.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 	}

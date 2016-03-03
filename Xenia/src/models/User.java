@@ -2,6 +2,7 @@ package models;
 
 public class User {
 
+	private int Id;
 	private String username;
 	private String password;
 	private String firstName;
@@ -20,17 +21,16 @@ public class User {
 	}
 	
 	/**
-	 * @return
+	 * @return the iD
 	 */
-	public String getZip() {
-		return zip;
+	public int getId() {
+		return Id;
 	}
-
 	/**
-	 * @param zip
+	 * @param iD the iD to set
 	 */
-	public void setZip(String zip) {
-		this.zip = zip;
+	public void setId(int userId) {
+		Id = userId;
 	}
 
 	/**
@@ -143,6 +143,20 @@ public class User {
 	 */
 	public void setState(String state) {
 		this.state = state;
+	}
+	
+	/**
+	 * @return
+	 */
+	public String getZip() {
+		return zip;
+	}
+
+	/**
+	 * @param zip
+	 */
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 	
 	
