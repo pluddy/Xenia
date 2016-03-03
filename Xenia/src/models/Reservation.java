@@ -3,140 +3,160 @@ package models;
 import java.util.Date;
 
 public class Reservation {
+	private int id;
+	private int hotelId;
+	private Date checkInDate;
+	private Date checkOutDate;
+	private int numberOfRooms;
+	private String reservationNumber;
+	private int userId;
+	private int status;
+	private String notes;
+	private int roomTypeId;
+	
 	public Reservation() {
 
 	}
-	
-	private int ID;
-	private int HotelID;
-	private Date CheckInDate;
-	private Date CheckOutDate;
-	private int NumberOfRooms;
-	private String ReservationNumber;
-	private int UserID;
-	private int Status;
-	private String Notes;
-	private int RoomTypeID;
-	
-	
+
 	/**
-	 * @return the iD
+	 * @return the id
 	 */
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
+
 	/**
-	 * @param iD the iD to set
+	 * @param id the id to set
 	 */
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	/**
-	 * @return the hotelID
+	 * @return the hotelId
 	 */
-	public int getHotelID() {
-		return HotelID;
+	public int getHotelId() {
+		return hotelId;
 	}
+
 	/**
-	 * @param hotelID the hotelID to set
+	 * @param hotelId the hotelId to set
 	 */
-	public void setHotelID(int hotelID) {
-		HotelID = hotelID;
+	public void setHotelId(int hotelId) {
+		this.hotelId = hotelId;
 	}
+
 	/**
 	 * @return the checkInDate
 	 */
 	public Date getCheckInDate() {
-		return CheckInDate;
+		return checkInDate;
 	}
+
 	/**
 	 * @param checkInDate the checkInDate to set
 	 */
 	public void setCheckInDate(Date checkInDate) {
-		CheckInDate = checkInDate;
+		this.checkInDate = checkInDate;
 	}
+
 	/**
 	 * @return the checkOutDate
 	 */
 	public Date getCheckOutDate() {
-		return CheckOutDate;
+		return checkOutDate;
 	}
+
 	/**
 	 * @param checkOutDate the checkOutDate to set
 	 */
 	public void setCheckOutDate(Date checkOutDate) {
-		CheckOutDate = checkOutDate;
+		this.checkOutDate = checkOutDate;
 	}
+
 	/**
 	 * @return the numberOfRooms
 	 */
 	public int getNumberOfRooms() {
-		return NumberOfRooms;
+		return numberOfRooms;
 	}
+
 	/**
 	 * @param numberOfRooms the numberOfRooms to set
 	 */
 	public void setNumberOfRooms(int numberOfRooms) {
-		NumberOfRooms = numberOfRooms;
+		this.numberOfRooms = numberOfRooms;
 	}
+
 	/**
 	 * @return the reservationNumber
 	 */
 	public String getReservationNumber() {
-		return ReservationNumber;
+		return reservationNumber;
 	}
+
 	/**
 	 * @param reservationNumber the reservationNumber to set
 	 */
 	public void setReservationNumber(String reservationNumber) {
-		ReservationNumber = reservationNumber;
+		this.reservationNumber = reservationNumber;
 	}
+
 	/**
-	 * @return the userID
+	 * @return the userId
 	 */
-	public int getUserID() {
-		return UserID;
+	public int getUserId() {
+		return userId;
 	}
+
 	/**
-	 * @param userID the userID to set
+	 * @param userId the userId to set
 	 */
-	public void setUserID(int userID) {
-		UserID = userID;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
+
 	/**
 	 * @return the status
 	 */
 	public int getStatus() {
-		return Status;
+		return status;
 	}
+
 	/**
 	 * @param status the status to set
 	 */
 	public void setStatus(int status) {
-		Status = status;
+		this.status = status;
 	}
+
 	/**
 	 * @return the notes
 	 */
 	public String getNotes() {
-		return Notes;
+		return notes;
 	}
+
 	/**
 	 * @param notes the notes to set
 	 */
 	public void setNotes(String notes) {
-		Notes = notes;
+		this.notes = notes;
 	}
+
 	/**
-	 * @return the roomTypeID
+	 * @return the roomTypeId
 	 */
-	public int getRoomTypeID() {
-		return RoomTypeID;
+	public int getRoomTypeId() {
+		return roomTypeId;
 	}
+
 	/**
-	 * @param roomTypeID the roomTypeID to set
+	 * @param roomTypeId the roomTypeId to set
 	 */
-	public void setRoomTypeID(int roomTypeID) {
-		RoomTypeID = roomTypeID;
+	public void setRoomTypeId(int roomTypeId) {
+		this.roomTypeId = roomTypeId;
 	}
+
+	
 }

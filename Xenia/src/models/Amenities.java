@@ -2,38 +2,43 @@ package models;
 
 public class Amenities {
 
+	private int id;
+	private String name;
+	
 	/**
-	 * @param iD
+	 * @param amenityId
 	 * @param name
 	 */
 	public Amenities() {
 
 	}
-	private int ID;
-	private String Name;
+	
 	/**
-	 * @return the iD
+	 * @return the amenityId
 	 */
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
+	
 	/**
-	 * @param iD the iD to set
+	 * @param amenityId the amenityId to set
 	 */
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int amenityId) {
+		id = amenityId;
 	}
+	
 	/**
 	 * @return the name
 	 */
 	public String getName() {
-		return Name;
+		return name;
 	}
+	
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	
 }

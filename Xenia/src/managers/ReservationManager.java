@@ -1,19 +1,11 @@
 package managers;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Properties;
-
-import javax.servlet.ServletContext;
-
+import org.apache.commons.lang3.StringUtils;
 import models.Reservation;
-import models.Transaction;
 
 
 public final class ReservationManager {
@@ -31,9 +23,17 @@ public final class ReservationManager {
 	private Integer RoomTypeID;
 	 * 
 	 */
-	public static List<Reservation> getResrvations(Integer ID, Integer HotelID, 
-			Date CheckInDate, Date CheckOutDate, Integer NumberOfRooms, String ReservationNumber,
-			Integer UserID, Integer Status, String Notes, Integer RoomTypeID) {
+	public static List<Reservation> getResrvations(
+			int Id, 
+			int HotelId, 
+			Date CheckInDate, 
+			Date CheckOutDate, 
+			int NumberOfRooms, 
+			String ReservationNumber,
+			int UserId, 
+			int Status, 
+			String Notes, 
+			int RoomTypeId) {
 		Connection con = DBConnectionManager.getConnection();
 		List<Reservation> reservations = new ArrayList<Reservation>();
 		PreparedStatement ps = null;
@@ -44,13 +44,13 @@ public final class ReservationManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (ID != null && ID > 0) {
+		if (Id > 0) {
 		    clauses.add("ID = ?");
-		    parameters.add(ID);
+		    parameters.add(Id);
 		}
-		if (HotelID != null && HotelID > 0) {
+		if (HotelId > 0) {
 		    clauses.add("HotelID = ?");
-		    parameters.add(HotelID);
+		    parameters.add(HotelId);
 		} 
 		if (CheckInDate != null) {
 		    clauses.add("CheckInDate = ?");
@@ -60,7 +60,7 @@ public final class ReservationManager {
 		    clauses.add("CheckOutDate = ?");
 		    parameters.add(CheckOutDate);
 		} 
-		if (NumberOfRooms != null && NumberOfRooms > 0) {
+		if (NumberOfRooms > 0) {
 		    clauses.add("NumberOfRooms = ?");
 		    parameters.add(NumberOfRooms);
 		} 
@@ -68,11 +68,11 @@ public final class ReservationManager {
 		    clauses.add("ReservationNumber = ?");
 		    parameters.add(ReservationNumber);
 		}
-		 if (UserID != null && UserID > 0) {
+		 if (UserId > 0) {
 		    clauses.add("UserID = ?");
-		    parameters.add(UserID);
+		    parameters.add(UserId);
 		}
-		 if (Status != null && Status > 0) {
+		 if (Status > 0) {
 			    clauses.add("Status = ?");
 			    parameters.add(Status);
 			}
@@ -80,9 +80,9 @@ public final class ReservationManager {
 			    clauses.add("Notes = ?");
 			    parameters.add(Notes);
 			}
-		 if (RoomTypeID != null && RoomTypeID > 0) {
+		 if (RoomTypeId > 0) {
 			    clauses.add("RoomTypeID = ?");
-			    parameters.add(RoomTypeID);
+			    parameters.add(RoomTypeId);
 			}
 		
 		try {
@@ -101,20 +101,20 @@ public final class ReservationManager {
 			while (rs.next()){
 				
 				Reservation reservation = new Reservation();
-				reservation.setHotelID(rs.getInt("HotelID"));
+				reservation.setHotelId(rs.getInt("HotelID"));
 				reservation.setCheckInDate(rs.getDate("CheckInDate"));
 				reservation.setCheckOutDate(rs.getDate("CheckOutDate"));
 				reservation.setNumberOfRooms(rs.getInt("NumberOfRooms"));
 				reservation.setReservationNumber(rs.getString("ReservationNumber"));
-				reservation.setUserID(rs.getInt("UserID"));
+				reservation.setUserId(rs.getInt("UserID"));
 				reservation.setStatus(rs.getInt("Status"));
 				reservation.setNotes(rs.getString("Notes"));
-				reservation.setRoomTypeID(rs.getInt("RoomTypeID"));
+				reservation.setRoomTypeId(rs.getInt("RoomTypeID"));
 				reservations.add(reservation);
 			}
-			System.out.println("[TransactionManager] - Get Reservations Successful");
+			System.out.println("[ReservationManager] - Get Reservations Successful");
 		} catch (SQLException e) {
-			System.out.println("[TransactionManager] - Get Reservations Failed");
+			System.out.println("[ReservationManager] - Get Reservations Failed");
 			e.printStackTrace();
 		} finally {
 			try {
@@ -130,39 +130,38 @@ public final class ReservationManager {
 	
 	public static void addReservation(Reservation reservation) {
 		Connection con = DBConnectionManager.getConnection();
-		List<Reservation> reservations = new ArrayList<Reservation>();
 		Statement addReservation = null;
 		ResultSet rs = null;
 	
 		/*
-		 * 	private Integer ID;
-	private Integer HotelID;
-	private Date CheckInDate;
-	private Date CheckOutDate;
-	private Integer NumberOfRooms;
-	private String ReservationNumber;
-	private Integer UserID;
-	private Integer Status;
-	private String Notes;
-	private Integer RoomTypeID;
-		 */
+			private Integer ID;
+			private Integer HotelID;
+			private Date CheckInDate;
+			private Date CheckOutDate;
+			private Integer NumberOfRooms;
+			private String ReservationNumber;
+			private Integer UserID;
+			private Integer Status;
+			private String Notes;
+			private Integer RoomTypeID;
+		*/
 
 		String sql = "INSERT INTO CreditCards (HotelID, CheckInDate, CheckOutDate, NumberOfRooms, ReservationNumber, UserID, Status, Notes, RoomTypeID)" 
-		 + reservation.getHotelID() + ", " 
+		 + reservation.getHotelId() + ", " 
 		 + reservation.getCheckInDate() + ", "
 		 + reservation.getCheckOutDate() + ", "
 		 + reservation.getNumberOfRooms() + ", "
 		 + reservation.getReservationNumber() + ", "
-		 + reservation.getUserID() + ", "
+		 + reservation.getUserId() + ", "
 		 + reservation.getStatus() + ", "
 		 + reservation.getNotes() + ", "
-		 + reservation.getRoomTypeID() + ", ";
+		 + reservation.getRoomTypeId() + ", ";
 		
 		try {
 			addReservation = con.createStatement();
 			rs = addReservation.executeQuery(sql);
 		
-			System.out.println("[DBManager] - Reservation " + reservation.getID() + " created.");
+			System.out.println("[ReservationManager] - Reservation " + reservation.getId() + " created.");
 			
 		} catch (SQLException e) {
 			System.out.println("[ReservationManager] - Add Reservation Failed");

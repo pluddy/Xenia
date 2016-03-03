@@ -3,110 +3,119 @@ package models;
 import java.util.Date;
 
 public class HotelRooms {
+	
+	private int id;
+	private int roomTypeId;
+	private int hotelId;
+	private int availableNumber;
+	private double pricePerNight;
+	private Date startDate;
+	private Date endDate;
+	
 	/**
-	 * @param iD
-	 * @param roomTypeID
-	 * @param hotelID
-	 * @param availableNumber
-	 * @param pricePerNight
-	 * @param startDate
-	 * @param endDate
+	 *
 	 */
 	public HotelRooms() {
 
 	}
-	
-	private int ID;
-	private int RoomTypeID;
-	private int HotelID;
-	private int AvailableNumber;
-	private double PricePerNight;
-	private Date StartDate;
-	private Date EndDate;
-	
-	
+
 	/**
-	 * @return the iD
+	 * @return the id
 	 */
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
+
 	/**
-	 * @param iD the iD to set
+	 * @param id the id to set
 	 */
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	/**
-	 * @return the roomTypeID
+	 * @return the roomTypeId
 	 */
-	public int getRoomTypeID() {
-		return RoomTypeID;
+	public int getRoomTypeId() {
+		return roomTypeId;
 	}
+
 	/**
-	 * @param roomTypeID the roomTypeID to set
+	 * @param roomTypeId the roomTypeId to set
 	 */
-	public void setRoomTypeID(int roomTypeID) {
-		RoomTypeID = roomTypeID;
+	public void setRoomTypeId(int roomTypeId) {
+		this.roomTypeId = roomTypeId;
 	}
+
 	/**
-	 * @return the hotelID
+	 * @return the hotelId
 	 */
-	public int getHotelID() {
-		return HotelID;
+	public int getHotelId() {
+		return hotelId;
 	}
+
 	/**
-	 * @param hotelID the hotelID to set
+	 * @param hotelId the hotelId to set
 	 */
-	public void setHotelID(int hotelID) {
-		HotelID = hotelID;
+	public void setHotelId(int hotelId) {
+		this.hotelId = hotelId;
 	}
+
 	/**
 	 * @return the availableNumber
 	 */
 	public int getAvailableNumber() {
-		return AvailableNumber;
+		return availableNumber;
 	}
+
 	/**
 	 * @param availableNumber the availableNumber to set
 	 */
 	public void setAvailableNumber(int availableNumber) {
-		AvailableNumber = availableNumber;
+		this.availableNumber = availableNumber;
 	}
+
 	/**
 	 * @return the pricePerNight
 	 */
 	public double getPricePerNight() {
-		return PricePerNight;
+		return pricePerNight;
 	}
+
 	/**
 	 * @param pricePerNight the pricePerNight to set
 	 */
 	public void setPricePerNight(double pricePerNight) {
-		PricePerNight = pricePerNight;
+		this.pricePerNight = pricePerNight;
 	}
+
 	/**
 	 * @return the startDate
 	 */
 	public Date getStartDate() {
-		return StartDate;
+		return startDate;
 	}
+
 	/**
 	 * @param startDate the startDate to set
 	 */
 	public void setStartDate(Date startDate) {
-		StartDate = startDate;
+		this.startDate = startDate;
 	}
+
 	/**
 	 * @return the endDate
 	 */
 	public Date getEndDate() {
-		return EndDate;
+		return endDate;
 	}
+
 	/**
 	 * @param endDate the endDate to set
 	 */
 	public void setEndDate(Date endDate) {
-		EndDate = endDate;
+		this.endDate = endDate;
 	}
+	
+	
 }

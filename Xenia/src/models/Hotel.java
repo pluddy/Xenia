@@ -1,6 +1,8 @@
 package models;
 
 public class Hotel {
+	
+	private int id;
 	private String name;
 	private String description;
 	private String city;
@@ -8,19 +10,24 @@ public class Hotel {
 	private String address;
 	
 	/**
-	 * @param name
-	 * @param description
-	 * @param city
-	 * @param state
-	 * @param address
+	 *
 	 */
-	public Hotel(String name, String description, String city, String state, String address) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.city = city;
-		this.state = state;
-		this.address = address;
+	public Hotel() {
+		
+	}
+
+	/**
+	 * @return
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**

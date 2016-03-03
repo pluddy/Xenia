@@ -3,96 +3,104 @@ package models;
 import java.util.Date;
 
 public class HotelReviews {
+	
+	private int 	id;
+	private String 	reviewerName;
+	private Date 	reviewDate;
+	private int 	rating;
+	private String 	review;
+	private int 	hotelID;
+	
 	/**
-	 * @param iD
-	 * @param reviewerName
-	 * @param reviewDate
-	 * @param rating
-	 * @param review
-	 * @param hotelID
+	 *
 	 */
 	public HotelReviews() {
 
 	}
-	
-	private int ID;
-	private String ReviewerName;
-	private Date ReviewDate;
-	private int Rating;
-	private String Review;
-	private int HotelID;
-	
+
 	/**
-	 * @return the iD
+	 * @return the id
 	 */
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
+
 	/**
-	 * @param iD the iD to set
+	 * @param id the id to set
 	 */
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	/**
 	 * @return the reviewerName
 	 */
 	public String getReviewerName() {
-		return ReviewerName;
+		return reviewerName;
 	}
+
 	/**
 	 * @param reviewerName the reviewerName to set
 	 */
 	public void setReviewerName(String reviewerName) {
-		ReviewerName = reviewerName;
+		this.reviewerName = reviewerName;
 	}
+
 	/**
 	 * @return the reviewDate
 	 */
 	public Date getReviewDate() {
-		return ReviewDate;
+		return reviewDate;
 	}
+
 	/**
 	 * @param reviewDate the reviewDate to set
 	 */
 	public void setReviewDate(Date reviewDate) {
-		ReviewDate = reviewDate;
+		this.reviewDate = reviewDate;
 	}
+
 	/**
 	 * @return the rating
 	 */
 	public int getRating() {
-		return Rating;
+		return rating;
 	}
+
 	/**
 	 * @param rating the rating to set
 	 */
 	public void setRating(int rating) {
-		Rating = rating;
+		this.rating = rating;
 	}
+
 	/**
 	 * @return the review
 	 */
 	public String getReview() {
-		return Review;
+		return review;
 	}
+
 	/**
 	 * @param review the review to set
 	 */
 	public void setReview(String review) {
-		Review = review;
+		this.review = review;
 	}
+
 	/**
 	 * @return the hotelID
 	 */
 	public int getHotelID() {
-		return HotelID;
+		return hotelID;
 	}
+
 	/**
 	 * @param hotelID the hotelID to set
 	 */
 	public void setHotelID(int hotelID) {
-		HotelID = hotelID;
+		this.hotelID = hotelID;
 	}
-
+	
+	
 }

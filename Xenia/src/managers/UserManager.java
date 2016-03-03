@@ -177,10 +177,10 @@ public final class UserManager {
 			rs = updateUser.executeQuery(sql);
 			
 			
-			System.out.println("[DBManager] - User " + user.getId() + " updated.");
+			System.out.println("[UserManager] - User " + user.getId() + " updated.");
 			
 		} catch (SQLException e) {
-			System.out.println("[TransactionManager] - Update User Failed");
+			System.out.println("[UserManager] - Update User Failed");
 			e.printStackTrace();
 		} finally {
 			try {
@@ -209,10 +209,10 @@ public final class UserManager {
 				user.getCity(), user.getState(), user.getZip());
 
 		if(!users.isEmpty()){
-			System.out.println("[DBManager] - User " + user.getUsername() + " validated.");
+			System.out.println("[UserManager] - User " + user.getUsername() + " validated.");
 			return true;
 		} else {
-			System.out.println("[DBManager] - Transaction " + user.getUsername() + " not found.");
+			System.out.println("[UserManager] - User " + user.getUsername() + " not found.");
 			return false;
 		}
 	}
@@ -228,11 +228,10 @@ public final class UserManager {
 			removeUser = con.createStatement();
 			rs = removeUser.executeQuery(sql);
 			
-			System.out.println("[DBManager] - User " + userId + " removed.");
+			System.out.println("[UserManager] - User " + userId + " removed.");
 			
-			//p.store(new FileOutputStream(propFilePath), null);
 		} catch (SQLException e) {
-			System.out.println("[TransactionManager] - Remove User Failed");
+			System.out.println("[UserManager] - Remove User Failed");
 			e.printStackTrace();
 		} finally {
 			try {

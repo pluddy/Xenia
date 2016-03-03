@@ -71,13 +71,13 @@ public final class TransactionManager {
 			while (rs.next()){
 
 				Transaction transaction = new Transaction();
-				transaction.setID(rs.getInt("ID"));
+				transaction.setId(rs.getInt("ID"));
 				transaction.setCardHolderNumber(rs.getString("CardHolderNumber"));
 				transaction.setCreditCardNumber(rs.getString("CreditCardNumber"));
 				transaction.setBalance(rs.getFloat("Balance"));
 				transaction.setCardNickname(rs.getString("CardNickname"));
-				transaction.setUserID(rs.getInt("UserID"));
-				transaction.setCVV(rs.getString("CVV"));
+				transaction.setUserId(rs.getInt("UserID"));
+				transaction.setCvv(rs.getString("CVV"));
 				transactions.add(transaction);
 			}
 			System.out.println("[TransactionManager] - Get Transactions Successful");
@@ -115,14 +115,14 @@ public final class TransactionManager {
 		 + transaction.getCreditCardNumber() + ", "
 		 + transaction.getBalance() + ", "
 		 + transaction.getCardNickname() + ", "
-		 + transaction.getUserID() + ", "
-		 + transaction.getCVV();
+		 + transaction.getUserId() + ", "
+		 + transaction.getCvv();
 		
 		try {
 			addTransaction = con.createStatement();
 			rs = addTransaction.executeQuery(sql);
 
-			System.out.println("[DBManager] - Transaction " + transaction.getID() + " created.");
+			System.out.println("[TransactionManager] - Transaction " + transaction.getId() + " created.");
 		} catch (SQLException e) {
 			System.out.println("[TransactionManager] - Get Transactions Failed");
 			e.printStackTrace();
@@ -156,15 +156,15 @@ public final class TransactionManager {
 		+ " CreditCardNumber = " + transaction.getCreditCardNumber()
 		+ " Balance = " + transaction.getBalance()
 		+ " CardNickname = " + transaction.getCardNickname() 
-		+ " UserID = " + transaction.getUserID()
-		+ " CVV = " + transaction.getCVV() 
-		+ " WHERE ID = " + transaction.getID(); 
+		+ " UserID = " + transaction.getUserId()
+		+ " CVV = " + transaction.getCvv() 
+		+ " WHERE ID = " + transaction.getId(); 
 		
 		try {
 			updateTransaction = con.createStatement();
 			rs = updateTransaction.executeQuery(sql);
 			
-			System.out.println("[DBManager] - Transaction " + transaction.getID() + " updated.");
+			System.out.println("[TransactionManager] - Transaction " + transaction.getId() + " updated.");
 			
 		} catch (SQLException e) {
 			System.out.println("[TransactionManager] - Update Transactions Failed");
@@ -182,14 +182,14 @@ public final class TransactionManager {
 	
 	public static boolean validateTransaction(Transaction transaction) {
 	
-		List<Transaction> trans = getTransactions(transaction.getID(), transaction.getCardHolderNumber(), transaction.getCreditCardNumber(),
-				transaction.getBalance(), transaction.getCardNickname(), transaction.getUserID(), transaction.getCVV());
+		List<Transaction> trans = getTransactions(transaction.getId(), transaction.getCardHolderNumber(), transaction.getCreditCardNumber(),
+				transaction.getBalance(), transaction.getCardNickname(), transaction.getUserId(), transaction.getCvv());
 
 		if(!trans.isEmpty()){
-			System.out.println("[DBManager] - Transaction " + transaction.getCardNickname() + " validated.");
+			System.out.println("[TransactionManager] - Transaction " + transaction.getCardNickname() + " validated.");
 			return true;
 		} else {
-			System.out.println("[DBManager] - Transaction " + transaction.getCardNickname() + " not found.");
+			System.out.println("[TransactionManager] - Transaction " + transaction.getCardNickname() + " not found.");
 			return false;
 		}
 	}
@@ -205,7 +205,7 @@ public final class TransactionManager {
 			removeTransaction = con.createStatement();
 			rs = removeTransaction.executeQuery(sql);
 
-			System.out.println("[DBManager] - Transaction " + transactionID + " removed.");
+			System.out.println("[TransactionManager] - Transaction " + transactionID + " removed.");
 		} catch (SQLException e) {
 			System.out.println("[TransactionManager] - Remove Transaction Failed");
 			e.printStackTrace();

@@ -2,66 +2,67 @@ package models;
 
 public class HotelAmenities {
 
+	private int id;
+	private int hotelId;
+	private int amenityId;
+	private boolean value;
+	
 	/**
-	 * @param iD
-	 * @param hotelID
-	 * @param amenityID
-	 * @param value
+	 *
 	 */
 	public HotelAmenities() {
 
 	}
-	private int ID;
-	private int HotelID;
-	private int AmenityID;
-	private boolean Value;
+
 	/**
-	 * @return the iD
+	 * @return the id
 	 */
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
+
 	/**
-	 * @param iD the iD to set
+	 * @param id the id to set
 	 */
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	/**
 	 * @return the hotelID
 	 */
-	public int getHotelID() {
-		return HotelID;
+	public int getHotelId() {
+		return hotelId;
 	}
 	/**
-	 * @param hotelID the hotelID to set
+	 * @param hotelId the hotelId to set
 	 */
-	public void setHotelID(int hotelID) {
-		HotelID = hotelID;
+	public void setHotelId(int hotelId) {
+		this.hotelId = hotelId;
 	}
 	/**
 	 * @return the amenityID
 	 */
-	public int getAmenityID() {
-		return AmenityID;
+	public int getAmenityId() {
+		return amenityId;
 	}
 	/**
-	 * @param amenityID the amenityID to set
+	 * @param amenityId the amenityId to set
 	 */
-	public void setAmenityID(int amenityID) {
-		AmenityID = amenityID;
+	public void setAmenityId(int amenityId) {
+		this.amenityId = amenityId;
 	}
 	/**
 	 * @return the value
 	 */
 	public boolean isValue() {
-		return Value;
+		return value;
 	}
 	/**
 	 * @param value the value to set
 	 */
 	public void setValue(boolean value) {
-		Value = value;
+		this.value = value;
 	}
 	
 	

@@ -2,7 +2,7 @@ package models;
 
 public class User {
 
-	private int Id;
+	private int id;
 	private String username;
 	private String password;
 	private String firstName;
@@ -24,13 +24,13 @@ public class User {
 	 * @return the iD
 	 */
 	public int getId() {
-		return Id;
+		return id;
 	}
 	/**
 	 * @param iD the iD to set
 	 */
 	public void setId(int userId) {
-		Id = userId;
+		id = userId;
 	}
 
 	/**
