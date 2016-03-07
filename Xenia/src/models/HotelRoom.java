@@ -2,7 +2,7 @@ package models;
 
 import java.util.Date;
 
-public class HotelRooms {
+public class HotelRoom {
 	
 	private int id;
 	private int roomTypeId;
@@ -15,7 +15,7 @@ public class HotelRooms {
 	/**
 	 *
 	 */
-	public HotelRooms() {
+	public HotelRoom() {
 
 	}
 

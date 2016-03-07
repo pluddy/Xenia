@@ -9,15 +9,15 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import models.Amenities;
+import models.Amenity;
 
-public class AmenitiesManager {
+public class AmenityManager {
 
-	public static List<Amenities> getAmenities(
-			int Id, 
-			String Name) {
+	public static List<Amenity> getAmenities(
+			int id, 
+			String name) {
 		Connection con = DBConnectionManager.getConnection();
-		List<Amenities> amenities = new ArrayList<Amenities>();
+		List<Amenity> amenities = new ArrayList<Amenity>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 	
@@ -26,13 +26,13 @@ public class AmenitiesManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (Id > 0) {
+		if (id > 0) {
 		    clauses.add("Id = ?");
-		    parameters.add(Id);
+		    parameters.add(id);
 		}
-		if (Name != null) {
+		if (name != null) {
 		    clauses.add("Name = ?");
-		    parameters.add(Name);
+		    parameters.add(name);
 		} 
 		
 		try {
@@ -50,7 +50,7 @@ public class AmenitiesManager {
 
 			while (rs.next()){
 				
-				Amenities amenity = new Amenities();
+				Amenity amenity = new Amenity();
 				amenity.setId(rs.getInt("Id"));
 				amenity.setName(rs.getString("Name"));
 				amenities.add(amenity);

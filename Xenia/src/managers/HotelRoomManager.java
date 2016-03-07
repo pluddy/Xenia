@@ -11,11 +11,11 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import models.HotelRooms;
+import models.HotelRoom;
 
-public class HotelRoomsManager {
+public class HotelRoomManager {
 	
-	public static List<HotelRooms> getHotelRooms(
+	public static List<HotelRoom> getHotelRooms(
 			int Id, 
 			int RoomTypeId, 
 			int HotelId, 
@@ -24,7 +24,7 @@ public class HotelRoomsManager {
 			Date StartDate,
 			Date EndDate) {
 		Connection con = DBConnectionManager.getConnection();
-		List<HotelRooms> hotelRooms = new ArrayList<HotelRooms>();
+		List<HotelRoom> hotelRooms = new ArrayList<HotelRoom>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 	
@@ -77,7 +77,7 @@ public class HotelRoomsManager {
 
 			while (rs.next()){
 				
-				HotelRooms hotelRoom = new HotelRooms();
+				HotelRoom hotelRoom = new HotelRoom();
 				hotelRoom.setId(rs.getInt("Id"));
 				hotelRoom.setRoomTypeId(rs.getInt("RoomTypeId"));
 				hotelRoom.setHotelId(rs.getInt("HotelId"));
@@ -103,7 +103,7 @@ public class HotelRoomsManager {
 		return hotelRooms;
 	}
 	
-	public static void updateHotelRooms(HotelRooms hotelRoom) {
+	public static void updateHotelRooms(HotelRoom hotelRoom) {
 		Connection con = DBConnectionManager.getConnection();
 		Statement updateHotelRoom = null;
 		ResultSet rs = null;

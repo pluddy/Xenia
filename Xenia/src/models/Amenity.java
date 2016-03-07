@@ -1,6 +1,6 @@
 package models;
 
-public class Amenities {
+public class Amenity {
 
 	private int id;
 	private String name;
@@ -9,7 +9,7 @@ public class Amenities {
 	 * @param amenityId
 	 * @param name
 	 */
-	public Amenities() {
+	public Amenity() {
 
 	}
 	

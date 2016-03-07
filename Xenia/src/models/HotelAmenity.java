@@ -1,6 +1,6 @@
 package models;
 
-public class HotelAmenities {
+public class HotelAmenity {
 
 	private int id;
 	private int hotelId;
@@ -10,7 +10,7 @@ public class HotelAmenities {
 	/**
 	 *
 	 */
-	public HotelAmenities() {
+	public HotelAmenity() {
 
 	}
 

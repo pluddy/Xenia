@@ -9,17 +9,17 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import models.HotelAmenities;
+import models.HotelAmenity;
 
-public class HotelAmenitiesManager {
+public class HotelAmenityManager {
 
-	public static List<HotelAmenities> getHotelAmenities(
-			int Id, 
-			int HotelId, 
-			int AmenityId, 
-			Boolean Value) {
+	public static List<HotelAmenity> getHotelAmenities(
+			int id, 
+			int hotelId, 
+			int amenityId, 
+			Boolean value) {
 		Connection con = DBConnectionManager.getConnection();
-		List<HotelAmenities> hotelAmenities = new ArrayList<HotelAmenities>();
+		List<HotelAmenity> hotelAmenities = new ArrayList<HotelAmenity>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 	
@@ -28,21 +28,21 @@ public class HotelAmenitiesManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (Id > 0) {
+		if (id > 0) {
 		    clauses.add("Id = ?");
-		    parameters.add(Id);
+		    parameters.add(id);
 		}
-		if (HotelId > 0) {
+		if (hotelId > 0) {
 		    clauses.add("HotelId = ?");
-		    parameters.add(HotelId);
+		    parameters.add(hotelId);
 		} 
-		if (AmenityId > 0) {
+		if (amenityId > 0) {
 		    clauses.add("AmenityId = ?");
-		    parameters.add(AmenityId);
+		    parameters.add(amenityId);
 		} 
-		if (Value != null) {
+		if (value != null) {
 		    clauses.add("Value = ?");
-		    parameters.add(Value);
+		    parameters.add(value);
 		} 
 		
 		try {
@@ -60,7 +60,7 @@ public class HotelAmenitiesManager {
 
 			while (rs.next()){
 				
-				HotelAmenities hotelAmenity = new HotelAmenities();
+				HotelAmenity hotelAmenity = new HotelAmenity();
 				hotelAmenity.setHotelId(rs.getInt("HotelId"));
 				hotelAmenity.setId(rs.getInt("Id"));
 				hotelAmenity.setAmenityId(rs.getInt("AmenityId"));

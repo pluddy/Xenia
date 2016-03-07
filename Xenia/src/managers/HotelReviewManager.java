@@ -10,19 +10,19 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import models.HotelReviews;
+import models.HotelReview;
 
 public class HotelReviewManager {
 
-	public static List<HotelReviews> getHotelReviews(
-			int Id, 
-			String ReviewerName, 
-			Date ReviewDate, 
-			int Rating,
-			String Review,
-			int HotelId) {
+	public static List<HotelReview> getHotelReviews(
+			int id, 
+			String reviewerName, 
+			Date reviewDate, 
+			int rating,
+			String review,
+			int hotelId) {
 		Connection con = DBConnectionManager.getConnection();
-		List<HotelReviews> hotelReviews = new ArrayList<HotelReviews>();
+		List<HotelReview> hotelReviews = new ArrayList<HotelReview>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 	
@@ -31,25 +31,25 @@ public class HotelReviewManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (Id > 0) {
+		if (id > 0) {
 		    clauses.add("Id = ?");
-		    parameters.add(Id);
+		    parameters.add(id);
 		}
-		if (HotelId > 0) {
+		if (hotelId > 0) {
 		    clauses.add("HotelId = ?");
-		    parameters.add(HotelId);
+		    parameters.add(hotelId);
 		} 
-		if (ReviewerName != null) {
+		if (reviewerName != null) {
 		    clauses.add("ReviewerName = ?");
-		    parameters.add(ReviewerName);
+		    parameters.add(reviewerName);
 		} 
-		if (Rating > 0) {
+		if (rating > 0) {
 		    clauses.add("Rating = ?");
-		    parameters.add(Rating);
+		    parameters.add(rating);
 		} 
-		if (Review != null) {
+		if (review != null) {
 		    clauses.add("Review = ?");
-		    parameters.add(Review);
+		    parameters.add(review);
 		} 
 		
 		try {
@@ -67,7 +67,7 @@ public class HotelReviewManager {
 
 			while (rs.next()){
 				
-				HotelReviews hotelReview = new HotelReviews();
+				HotelReview hotelReview = new HotelReview();
 				hotelReview.setHotelId(rs.getInt("HotelId"));
 				hotelReview.setId(rs.getInt("Id"));
 				hotelReview.setReviewerName(rs.getString("ReviewerName"));

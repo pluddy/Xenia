@@ -2,7 +2,7 @@ package models;
 
 import java.util.Date;
 
-public class HotelReviews {
+public class HotelReview {
 	
 	private int 	id;
 	private String 	reviewerName;
@@ -14,7 +14,7 @@ public class HotelReviews {
 	/**
 	 *
 	 */
-	public HotelReviews() {
+	public HotelReview() {
 
 	}
 
