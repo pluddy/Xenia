@@ -45,11 +45,11 @@ public final class ReservationManager {
 		List<Object> parameters = new ArrayList<Object>();
 		
 		if (Id > 0) {
-		    clauses.add("ID = ?");
+		    clauses.add("Id = ?");
 		    parameters.add(Id);
 		}
 		if (HotelId > 0) {
-		    clauses.add("HotelID = ?");
+		    clauses.add("HotelId = ?");
 		    parameters.add(HotelId);
 		} 
 		if (CheckInDate != null) {
@@ -69,7 +69,7 @@ public final class ReservationManager {
 		    parameters.add(ReservationNumber);
 		}
 		 if (UserId > 0) {
-		    clauses.add("UserID = ?");
+		    clauses.add("UserId = ?");
 		    parameters.add(UserId);
 		}
 		 if (Status > 0) {
@@ -81,7 +81,7 @@ public final class ReservationManager {
 			    parameters.add(Notes);
 			}
 		 if (RoomTypeId > 0) {
-			    clauses.add("RoomTypeID = ?");
+			    clauses.add("RoomTypeId = ?");
 			    parameters.add(RoomTypeId);
 			}
 		
@@ -101,15 +101,15 @@ public final class ReservationManager {
 			while (rs.next()){
 				
 				Reservation reservation = new Reservation();
-				reservation.setHotelId(rs.getInt("HotelID"));
+				reservation.setHotelId(rs.getInt("HotelId"));
 				reservation.setCheckInDate(rs.getDate("CheckInDate"));
 				reservation.setCheckOutDate(rs.getDate("CheckOutDate"));
 				reservation.setNumberOfRooms(rs.getInt("NumberOfRooms"));
 				reservation.setReservationNumber(rs.getString("ReservationNumber"));
-				reservation.setUserId(rs.getInt("UserID"));
+				reservation.setUserId(rs.getInt("UserId"));
 				reservation.setStatus(rs.getInt("Status"));
 				reservation.setNotes(rs.getString("Notes"));
-				reservation.setRoomTypeId(rs.getInt("RoomTypeID"));
+				reservation.setRoomTypeId(rs.getInt("RoomTypeId"));
 				reservations.add(reservation);
 			}
 			System.out.println("[ReservationManager] - Get Reservations Successful");
@@ -146,7 +146,7 @@ public final class ReservationManager {
 			private Integer RoomTypeID;
 		*/
 
-		String sql = "INSERT INTO CreditCards (HotelID, CheckInDate, CheckOutDate, NumberOfRooms, ReservationNumber, UserID, Status, Notes, RoomTypeID)" 
+		String sql = "INSERT INTO CreditCards (HotelId, CheckInDate, CheckOutDate, NumberOfRooms, ReservationNumber, UserId, Status, Notes, RoomTypeId)" 
 		 + reservation.getHotelId() + ", " 
 		 + reservation.getCheckInDate() + ", "
 		 + reservation.getCheckOutDate() + ", "

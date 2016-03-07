@@ -170,7 +170,7 @@ public final class UserManager {
 		+ " City = " + user.getCity()
 		+ " State = " + user.getState()
 		+ " PostalCode = " + user.getZip()
-		+ " WHERE ID = " + user.getId(); 
+		+ " WHERE Id = " + user.getId(); 
 		
 		try {
 			updateUser = con.createStatement();
@@ -222,7 +222,7 @@ public final class UserManager {
 		Statement removeUser = null;
 		ResultSet rs = null;
 		
-		String sql = "DELETE Users WHERE ID = "  + userId; 
+		String sql = "DELETE Users WHERE Id = "  + userId; 
 		 
 		try {
 			removeUser = con.createStatement();

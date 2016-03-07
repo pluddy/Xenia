@@ -9,7 +9,7 @@ public class HotelReviews {
 	private Date 	reviewDate;
 	private int 	rating;
 	private String 	review;
-	private int 	hotelID;
+	private int 	hotelId;
 	
 	/**
 	 *
@@ -91,15 +91,15 @@ public class HotelReviews {
 	/**
 	 * @return the hotelID
 	 */
-	public int getHotelID() {
-		return hotelID;
+	public int getHotelId() {
+		return hotelId;
 	}
 
 	/**
 	 * @param hotelID the hotelID to set
 	 */
-	public void setHotelID(int hotelID) {
-		this.hotelID = hotelID;
+	public void setHotelId(int hotelId) {
+		this.hotelId = hotelId;
 	}
 	
 	

@@ -27,7 +27,7 @@ public final class TransactionManager {
 		List<Object> parameters = new ArrayList<Object>();
 		
 		if (Id > 0) {
-		    clauses.add("ID = ?");
+		    clauses.add("Id = ?");
 		    parameters.add(Id);
 		}
 		if (CardHolderNumber != null) {
@@ -47,7 +47,7 @@ public final class TransactionManager {
 		    parameters.add(CardNickname);
 		} 
 		if (userId > 0) {
-		    clauses.add("UserID = ?");
+		    clauses.add("UserId = ?");
 		    parameters.add(userId);
 		}
 		 if (CVV != null) {
@@ -71,12 +71,12 @@ public final class TransactionManager {
 			while (rs.next()){
 
 				Transaction transaction = new Transaction();
-				transaction.setId(rs.getInt("ID"));
+				transaction.setId(rs.getInt("Id"));
 				transaction.setCardHolderNumber(rs.getString("CardHolderNumber"));
 				transaction.setCreditCardNumber(rs.getString("CreditCardNumber"));
 				transaction.setBalance(rs.getFloat("Balance"));
 				transaction.setCardNickname(rs.getString("CardNickname"));
-				transaction.setUserId(rs.getInt("UserID"));
+				transaction.setUserId(rs.getInt("UserId"));
 				transaction.setCvv(rs.getString("CVV"));
 				transactions.add(transaction);
 			}
@@ -110,7 +110,7 @@ public final class TransactionManager {
 	private Integer UserID;
 	private String CVV;
 		 */
-		String sql = "INSERT INTO CreditCards (CardHolderNumber, CreditCardNumber, Balance, CardNickname, UserID, CVV)" 
+		String sql = "INSERT INTO CreditCards (CardHolderNumber, CreditCardNumber, Balance, CardNickname, UserId, CVV)" 
 		 + transaction.getCardHolderNumber() + ", " 
 		 + transaction.getCreditCardNumber() + ", "
 		 + transaction.getBalance() + ", "
@@ -156,9 +156,9 @@ public final class TransactionManager {
 		+ " CreditCardNumber = " + transaction.getCreditCardNumber()
 		+ " Balance = " + transaction.getBalance()
 		+ " CardNickname = " + transaction.getCardNickname() 
-		+ " UserID = " + transaction.getUserId()
+		+ " UserId = " + transaction.getUserId()
 		+ " CVV = " + transaction.getCvv() 
-		+ " WHERE ID = " + transaction.getId(); 
+		+ " WHERE Id = " + transaction.getId(); 
 		
 		try {
 			updateTransaction = con.createStatement();
@@ -199,7 +199,7 @@ public final class TransactionManager {
 		Statement removeTransaction = null;
 		ResultSet rs = null;
 		
-		String sql = "DELETE CreditCards WHERE ID = "  + transactionID; 
+		String sql = "DELETE CreditCards WHERE Id = "  + transactionID; 
 		 
 		try {
 			removeTransaction = con.createStatement();
