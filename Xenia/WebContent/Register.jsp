@@ -6,7 +6,7 @@
 <title>Register</title>
 </head>
 <body>
-	<jsp:include page="/Header.jsp"/>
+	<jsp:include page="/Header.jsp" />
 	<div class="container">
 
 		<h1>Register</h1>
@@ -14,20 +14,62 @@
 		<form class="form-horizontal" action="Register" method="post" id="registerform">
 			<div class="form-group" id="usernamegroup">
 				<label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<input type="text" class="form-control" placeholder="Username" name="username" id="username">
 				</div>
 			</div>
 			<div class="form-group" id="passwordgroup1">
 				<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<input type="password" class="form-control" placeholder="Password" name="password" id="password">
 				</div>
 			</div>
 			<div class="form-group" id="passwordgroup2">
 				<label for="inputPassword3" class="col-sm-2 control-label">Confirm Password</label>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<input type="password" class="form-control" placeholder="Password" name="confirmPassword" id="confirmPassword">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">First Name</label>
+				<div class="col-sm-6">
+					<input class="form-control" placeholder="John" name="firstname">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Last Name</label>
+				<div class="col-sm-6">
+					<input class="form-control" placeholder="Smith" name="lastname">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Address 1</label>
+				<div class="col-sm-6">
+					<input class="form-control" placeholder="1900 Appleseed Dr." name="address1">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Address 2 </label>
+				<div class="col-sm-6">
+					<input class="form-control" placeholder="Apt 104" name="address2">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">City </label>
+				<div class="col-sm-6">
+					<input class="form-control" placeholder="Potomac" name="city">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">State </label>
+				<div class="col-sm-6">
+					<input class="form-control" placeholder="VA" name="state">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">ZIP Code</label>
+				<div class="col-sm-6">
+					<input class="form-control" placeholder="22152" name="zip">
 				</div>
 			</div>
 			<div class="form-group">
@@ -37,7 +79,9 @@
 			</div>
 		</form>
 	</div>
-	<jsp:include page="/Footer.jsp"/>
+	</form>
+	</div>
+	<jsp:include page="/Footer.jsp" />
 	<script>
 	var usernameValid = false;
 	var passwordValid = false;

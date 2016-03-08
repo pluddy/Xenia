@@ -14,9 +14,9 @@ import models.HotelRoomType;
 public class HotelRoomTypeManager {
 	
 	public static List<HotelRoomType> getHotelRoomType(
-			int Id, 
-			String RoomType, 
-			String Description) {
+			Integer id, 
+			String roomType, 
+			String description) {
 		Connection con = DBConnectionManager.getConnection();
 		List<HotelRoomType> hotelRoomsType = new ArrayList<HotelRoomType>();
 		PreparedStatement ps = null;
@@ -27,17 +27,17 @@ public class HotelRoomTypeManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (Id > 0) {
+		if (id != null) {
 		    clauses.add("Id = ?");
-		    parameters.add(Id);
+		    parameters.add(id);
 		}
-		if (RoomType != null) {
+		if (roomType != null) {
 		    clauses.add("RoomType = ?");
-		    parameters.add(RoomType);
+		    parameters.add(roomType);
 		} 
-		if (Description != null) {
+		if (description != null) {
 		    clauses.add("Description = ?");
-		    parameters.add(Description);
+		    parameters.add(description);
 		} 
 		
 		

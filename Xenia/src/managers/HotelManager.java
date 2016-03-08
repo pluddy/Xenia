@@ -15,11 +15,11 @@ import models.Hotel;
 public final class HotelManager {
 	
 	public static List<Hotel> getHotels(
-			int id, 
+			Integer id, 
 			String name, 
 			String city, 
 			String state,
-			int owneruserid,
+			Integer owneruserid,
 			String description,
 			String nearestpoints,
 			String address) {
@@ -33,7 +33,7 @@ public final class HotelManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (id > 0) {
+		if (id != null) {
 		    clauses.add("Id = ?");
 		    parameters.add(id);
 		}

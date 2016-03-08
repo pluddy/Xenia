@@ -24,16 +24,16 @@ public final class ReservationManager {
 	 * 
 	 */
 	public static List<Reservation> getResrvations(
-			int Id, 
-			int HotelId, 
-			Date CheckInDate, 
-			Date CheckOutDate, 
-			int NumberOfRooms, 
-			String ReservationNumber,
-			int UserId, 
-			int Status, 
-			String Notes, 
-			int RoomTypeId) {
+			Integer id, 
+			Integer hotelId, 
+			Date checkInDate, 
+			Date checkOutDate, 
+			Integer numberOfRooms, 
+			String reservationNumber,
+			Integer userId, 
+			Integer status, 
+			String notes, 
+			Integer roomTypeId) {
 		Connection con = DBConnectionManager.getConnection();
 		List<Reservation> reservations = new ArrayList<Reservation>();
 		PreparedStatement ps = null;
@@ -44,45 +44,45 @@ public final class ReservationManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (Id > 0) {
+		if (id != null) {
 		    clauses.add("Id = ?");
-		    parameters.add(Id);
+		    parameters.add(id);
 		}
-		if (HotelId > 0) {
+		if (hotelId != null) {
 		    clauses.add("HotelId = ?");
-		    parameters.add(HotelId);
+		    parameters.add(hotelId);
 		} 
-		if (CheckInDate != null) {
+		if (checkInDate != null) {
 		    clauses.add("CheckInDate = ?");
-		    parameters.add(CheckInDate);
+		    parameters.add(checkInDate);
 		} 
-		if (CheckOutDate != null) {
+		if (checkOutDate != null) {
 		    clauses.add("CheckOutDate = ?");
-		    parameters.add(CheckOutDate);
+		    parameters.add(checkOutDate);
 		} 
-		if (NumberOfRooms > 0) {
+		if (numberOfRooms != null) {
 		    clauses.add("NumberOfRooms = ?");
-		    parameters.add(NumberOfRooms);
+		    parameters.add(numberOfRooms);
 		} 
-		if (ReservationNumber != null) {
+		if (reservationNumber != null) {
 		    clauses.add("ReservationNumber = ?");
-		    parameters.add(ReservationNumber);
+		    parameters.add(reservationNumber);
 		}
-		 if (UserId > 0) {
+		 if (userId != null) {
 		    clauses.add("UserId = ?");
-		    parameters.add(UserId);
+		    parameters.add(userId);
 		}
-		 if (Status > 0) {
+		 if (status != null) {
 			    clauses.add("Status = ?");
-			    parameters.add(Status);
+			    parameters.add(status);
 			}
-		 if (Notes != null) {
+		 if (notes != null) {
 			    clauses.add("Notes = ?");
-			    parameters.add(Notes);
+			    parameters.add(notes);
 			}
-		 if (RoomTypeId > 0) {
+		 if (roomTypeId != null) {
 			    clauses.add("RoomTypeId = ?");
-			    parameters.add(RoomTypeId);
+			    parameters.add(roomTypeId);
 			}
 		
 		try {

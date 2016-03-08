@@ -15,12 +15,12 @@ import models.HotelReview;
 public class HotelReviewManager {
 
 	public static List<HotelReview> getHotelReviews(
-			int id, 
+			Integer id, 
 			String reviewerName, 
 			Date reviewDate, 
-			int rating,
+			Integer rating,
 			String review,
-			int hotelId) {
+			Integer hotelId) {
 		Connection con = DBConnectionManager.getConnection();
 		List<HotelReview> hotelReviews = new ArrayList<HotelReview>();
 		PreparedStatement ps = null;
@@ -31,11 +31,11 @@ public class HotelReviewManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (id > 0) {
+		if (id != null) {
 		    clauses.add("Id = ?");
 		    parameters.add(id);
 		}
-		if (hotelId > 0) {
+		if (hotelId != null) {
 		    clauses.add("HotelId = ?");
 		    parameters.add(hotelId);
 		} 
@@ -43,7 +43,7 @@ public class HotelReviewManager {
 		    clauses.add("ReviewerName = ?");
 		    parameters.add(reviewerName);
 		} 
-		if (rating > 0) {
+		if (rating != null) {
 		    clauses.add("Rating = ?");
 		    parameters.add(rating);
 		} 

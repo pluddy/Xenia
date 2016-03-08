@@ -14,7 +14,7 @@ import models.Amenity;
 public class AmenityManager {
 
 	public static List<Amenity> getAmenities(
-			int id, 
+			Integer id, 
 			String name) {
 		Connection con = DBConnectionManager.getConnection();
 		List<Amenity> amenities = new ArrayList<Amenity>();

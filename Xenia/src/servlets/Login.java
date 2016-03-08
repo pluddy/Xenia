@@ -57,12 +57,8 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
-		ServletContext sc = this.getServletContext();
-		
-		User user = new User(username, password);
-		
-		if (UserManager.validateUser(user, sc)) {
+				
+		if (UserManager.validateUser(username, password)) {
 			if (GzipManager.isGzipSupported(request)) {
 				response.setHeader("Content-Encoding", "gzip");
 				response.sendRedirect("CustomerHomepage.jsp");

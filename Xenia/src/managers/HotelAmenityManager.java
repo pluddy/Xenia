@@ -14,9 +14,9 @@ import models.HotelAmenity;
 public class HotelAmenityManager {
 
 	public static List<HotelAmenity> getHotelAmenities(
-			int id, 
-			int hotelId, 
-			int amenityId, 
+			Integer id, 
+			Integer hotelId, 
+			Integer amenityId, 
 			Boolean value) {
 		Connection con = DBConnectionManager.getConnection();
 		List<HotelAmenity> hotelAmenities = new ArrayList<HotelAmenity>();
@@ -28,15 +28,15 @@ public class HotelAmenityManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (id > 0) {
+		if (id != null) {
 		    clauses.add("Id = ?");
 		    parameters.add(id);
 		}
-		if (hotelId > 0) {
+		if (hotelId != null) {
 		    clauses.add("HotelId = ?");
 		    parameters.add(hotelId);
 		} 
-		if (amenityId > 0) {
+		if (amenityId != null) {
 		    clauses.add("AmenityId = ?");
 		    parameters.add(amenityId);
 		} 

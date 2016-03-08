@@ -16,13 +16,13 @@ import models.HotelRoom;
 public class HotelRoomManager {
 	
 	public static List<HotelRoom> getHotelRooms(
-			int Id, 
-			int RoomTypeId, 
-			int HotelId, 
-			int AvailableNumber,
-			double PricePerNight,
-			Date StartDate,
-			Date EndDate) {
+			Integer id, 
+			Integer roomTypeId, 
+			Integer hotelId, 
+			Integer availableNumber,
+			Double pricePerNight,
+			Date startDate,
+			Date endDate) {
 		Connection con = DBConnectionManager.getConnection();
 		List<HotelRoom> hotelRooms = new ArrayList<HotelRoom>();
 		PreparedStatement ps = null;
@@ -33,33 +33,33 @@ public class HotelRoomManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (Id > 0) {
+		if (id != null) {
 		    clauses.add("Id = ?");
-		    parameters.add(Id);
+		    parameters.add(id);
 		}
-		if (RoomTypeId > 0) {
+		if (roomTypeId != null) {
 		    clauses.add("RoomTypeId = ?");
-		    parameters.add(RoomTypeId);
+		    parameters.add(roomTypeId);
 		} 
-		if (HotelId > 0) {
+		if (hotelId != null) {
 		    clauses.add("HotelId = ?");
-		    parameters.add(HotelId);
+		    parameters.add(hotelId);
 		} 
-		if (AvailableNumber > 0) {
+		if (availableNumber != null) {
 		    clauses.add("AvailableNumber = ?");
-		    parameters.add(AvailableNumber);
+		    parameters.add(availableNumber);
 		} 
-		if (PricePerNight > 0) {
+		if (pricePerNight != null) {
 		    clauses.add("PricePerNight = ?");
-		    parameters.add(PricePerNight);
+		    parameters.add(pricePerNight);
 		} 
-		if (StartDate != null) {
+		if (startDate != null) {
 		    clauses.add("StartDate = ?");
-		    parameters.add(StartDate);
+		    parameters.add(startDate);
 		} 
-		if (EndDate != null) {
+		if (endDate != null) {
 		    clauses.add("EndDate = ?");
-		    parameters.add(EndDate);
+		    parameters.add(endDate);
 		} 
 		
 		try {

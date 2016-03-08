@@ -9,13 +9,13 @@ import models.Transaction;
 public final class TransactionManager {
 	
 	public static List<Transaction> getTransactions(
-			int Id, 
-			String CardHolderNumber, 
-			String CreditCardNumber, 
-			double Balance, 
-			String CardNickname, 
-			int userId, 
-			String CVV) {
+			Integer id, 
+			String cardHolderNumber, 
+			String creditCardNumber, 
+			Double balance, 
+			String cardNickname, 
+			Integer userId, 
+			String cvv) {
 		Connection con = DBConnectionManager.getConnection();
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		PreparedStatement ps = null;
@@ -26,33 +26,33 @@ public final class TransactionManager {
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
-		if (Id > 0) {
+		if (id != null) {
 		    clauses.add("Id = ?");
-		    parameters.add(Id);
+		    parameters.add(id);
 		}
-		if (CardHolderNumber != null) {
+		if (cardHolderNumber != null) {
 		    clauses.add("CardHolderNumber = ?");
-		    parameters.add(CardHolderNumber);
+		    parameters.add(cardHolderNumber);
 		} 
-		if (CreditCardNumber != null) {
+		if (creditCardNumber != null) {
 		    clauses.add("CreditCardNumber = ?");
-		    parameters.add(CreditCardNumber);
+		    parameters.add(creditCardNumber);
 		} 
-		if (Balance > 0) {
+		if (balance != null) {
 		    clauses.add("Balance = ?");
-		    parameters.add(Balance);
+		    parameters.add(balance);
 		} 
-		if (CardNickname != null) {
+		if (cardNickname != null) {
 		    clauses.add("CardNickname = ?");
-		    parameters.add(CardNickname);
+		    parameters.add(cardNickname);
 		} 
-		if (userId > 0) {
+		if (userId != null) {
 		    clauses.add("UserId = ?");
 		    parameters.add(userId);
 		}
-		 if (CVV != null) {
+		 if (cvv != null) {
 		    clauses.add("CVV = ?");
-		    parameters.add(CVV);
+		    parameters.add(cvv);
 		}
 		
 		try {

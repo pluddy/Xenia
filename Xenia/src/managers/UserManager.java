@@ -9,7 +9,7 @@ import models.User;
 public final class UserManager {
 	
 	public static List<User> getUsers(
-			int Id,
+			Integer id,
 			String username, 
 			String firstName, 
 			String lastName, 
@@ -27,6 +27,11 @@ public final class UserManager {
 		String sql = "SELECT * FROM Users u";
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
+		
+		if (id != null){
+			clauses.add("u.Id = ?");
+			parameters.add(username);
+		}
 		
 		if (username != null){
 			clauses.add("u.Username = ?");
@@ -106,6 +111,62 @@ public final class UserManager {
 			}
 		}
 		return users;
+	}
+	
+	public static boolean validateUser(String username, String password) {
+		Connection con = DBConnectionManager.getConnection();
+		List<User> users = new ArrayList<User>();
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM Users u";
+		List<String> clauses = new ArrayList<String>();
+		List<Object> parameters = new ArrayList<Object>();
+		
+		clauses.add("u.Username = ?");
+		parameters.add(username);
+		
+		clauses.add("u.Password = ?");
+		parameters.add(password);
+		
+		sql += " WHERE " + StringUtils.join(clauses, " AND ");
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			for (int i = 0; i < parameters.size(); i++) {
+			    ps.setObject(i + 1, parameters.get(i));
+			}
+			
+			rs = ps.executeQuery();
+			
+			while (rs.next()){
+				User user = new User();
+				user.setUsername(rs.getString("Username"));
+				user.setFirstName(rs.getString("FirstName"));
+				user.setLastName(rs.getString("LastName"));
+				user.setAddress1(rs.getString("AddressLine1"));
+				user.setAddress2(rs.getString("AddressLine2"));
+				user.setCity(rs.getString("City"));
+				user.setState(rs.getString("State"));
+				user.setZip(rs.getString("PostalCode"));
+				users.add(user);
+			}
+			System.out.println("[UserManager] - Get Users Successful");
+		} catch (SQLException e) {
+			System.out.println("[UserManager] - Get Users Failed");
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (users.size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public static void addUser(User user) {
@@ -190,30 +251,6 @@ public final class UserManager {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
-	}
-	
-	public static boolean validateUser(User user) {
-		
-		/* int Id,
-		 * String username, 
-			String firstName, 
-			String lastName, 
-			String addressLine1, 
-			String addressLine2,
-			String city,
-			String state,
-			String zip */
-	
-		List<User> users = getUsers(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName(), user.getAddress1(), user.getAddress2(),
-				user.getCity(), user.getState(), user.getZip());
-
-		if(!users.isEmpty()){
-			System.out.println("[UserManager] - User " + user.getUsername() + " validated.");
-			return true;
-		} else {
-			System.out.println("[UserManager] - User " + user.getUsername() + " not found.");
-			return false;
 		}
 	}
 	
