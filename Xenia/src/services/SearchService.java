@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import beans.ReservationSearchQueryBean;
 import beans.ReservationSearchResultBean;
 import managers.HotelManager;
 import models.Hotel;
@@ -14,14 +15,14 @@ import models.HotelRoom;
 
 public class SearchService {
 
-	public static List<ReservationSearchResultBean> searchHotels(Calendar checkIn, Calendar checkOut, String city, int numRooms, String roomType, List<String> amenities) {
-		List<Hotel> hotels = HotelManager.getHotels(null, null, city, null, null, null, null, null);
+	public static List<ReservationSearchResultBean> searchHotels(ReservationSearchQueryBean queryBean) {
+		List<Hotel> hotels = HotelManager.getHotels(null, null, queryBean.getCity(), null, null, null, null, null);
 		List<ReservationSearchResultBean> hotelBeans = new ArrayList<ReservationSearchResultBean>();
 		
 		hotels: for (Iterator<Hotel> iterator = hotels.iterator(); iterator.hasNext();) {
 			Hotel h = iterator.next();
 			String hAmenities = "";
-			amenities: for (String a : amenities) {
+			amenities: for (String a : queryBean.getAmenities()) {
 				for (HotelAmenity ha : h.getAmenities()) {
 					if (ha.getAmenity().getName().equals(a)) {
 						continue amenities;
@@ -31,10 +32,10 @@ public class SearchService {
 				continue hotels;
 			}
 			for (HotelRoom r : h.getRooms()) {
-				if (checkIn.after(r.getStartDate()) && 
-						checkOut.before(r.getEndDate()) && 
-						numRooms < r.getAvailableNumber() &&
-						r.getRoomType().getRoomType().equals(roomType)) {
+				if (queryBean.getCheckIn().after(r.getStartDate()) && 
+						queryBean.getCheckOut().before(r.getEndDate()) && 
+						queryBean.getNumRooms() < r.getAvailableNumber() &&
+						r.getRoomType().getRoomType().equals(queryBean.getRoomType())) {
 					hotelBeans.add(new ReservationSearchResultBean(h.getName(), h.getAddress(), h.getDescription(), r.getRoomType().getRoomType(), 4.0, r.getPricePerNight(), h.getAmenitiesString()));
 				}
 			}

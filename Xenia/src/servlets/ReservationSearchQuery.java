@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.ReservationSearchQueryBean;
 import beans.ReservationSearchResultBean;
 import managers.GzipManager;
 import models.Hotel;
@@ -47,7 +48,6 @@ public class ReservationSearchQuery extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		
 		String checkInDate = request.getParameter("checkInDate");
 		String[] arr = checkInDate.split("/");
 		Calendar checkIn = Calendar.getInstance();
@@ -67,8 +67,10 @@ public class ReservationSearchQuery extends HttpServlet {
 		String roomType = request.getParameter("roomType");
 		List<String> amenities = Arrays.asList(request.getParameterValues("amenities"));
 		
+		ReservationSearchQueryBean queryBean = new ReservationSearchQueryBean(checkIn, checkOut, locationCity, Integer.parseInt(numberOfRooms), roomType, amenities);
+		session.setAttribute("query", queryBean);
 		
-		List<ReservationSearchResultBean> hotelBeans = SearchService.searchHotels(checkIn, checkOut, locationCity, Integer.parseInt(numberOfRooms), roomType, amenities);
+		List<ReservationSearchResultBean> hotelBeans = SearchService.searchHotels(queryBean);
 		
 		session.setAttribute("hotels", hotelBeans);
 		if (GzipManager.isGzipSupported(request)) {
