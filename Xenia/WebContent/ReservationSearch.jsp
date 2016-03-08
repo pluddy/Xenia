@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,11 +25,11 @@
 					</tr>
 				</thead>
 				<tbody>
+				<c:forEach var="hotel" items="${hotels}">
 					<tr>
-						<td>Hotel California</td>
-						<td>9999 Disney Dr.<br>Orlando, FL, USA
-						</td>
-						<td>A beautiful suite overlooking the Disney Hollywood Studios Park</td>
+						<td><c:out value="${hotel.getName()}"/></td>
+						<td><c:out value="${hotel.getAddress()}"/></td>
+						<td><c:out value="${hotel.getDescription()}"/></td>
 						<td>Suite</td>
 						<td><input id="rating" class="rating" data-size="xs" data-symbol="&#xe006;" data-readonly="true" value="4.5" data-show-clear="false" data-show-caption="false"></td>
 						<td>$499.00</td>
@@ -39,6 +40,7 @@
 							</form>
 						</td>
 					</tr>
+				</c:forEach>
 				</tbody>
 			</table>
 		</div>

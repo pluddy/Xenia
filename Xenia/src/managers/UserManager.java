@@ -113,7 +113,7 @@ public final class UserManager {
 		return users;
 	}
 	
-	public static boolean validateUser(String username, String password) {
+	public static User validateUser(String username, String password) {
 		Connection con = DBConnectionManager.getConnection();
 		List<User> users = new ArrayList<User>();
 		ResultSet rs = null;
@@ -163,9 +163,9 @@ public final class UserManager {
 			}
 		}
 		if (users.size() > 0) {
-			return true;
+			return users.get(0);
 		} else {
-			return false;
+			return null;
 		}
 	}
 	
@@ -173,22 +173,22 @@ public final class UserManager {
 		
 		Connection con = DBConnectionManager.getConnection();
 		Statement addUser = null;
-		ResultSet rs = null;
 		
-		String sql = "INSERT INTO Users ( Username, FirstName, LastName, AddressLine1, AddressLine2, City, State, PostalCode ) VALUES ("
-				+ user.getUsername() + ", "
-				+ user.getFirstName() + ", "
-				+ user.getLastName() + ", "
-				+ user.getAddress1() + ", "
-				+ user.getAddress2() + ", "
-				+ user.getCity() + ", "
-				+ user.getState() + ", "
-				+ user.getZip() + " )";
+		String sql = "INSERT INTO Users ( Username, FirstName, LastName, AddressLine1, AddressLine2, City, State, PostalCode, Password ) VALUES (\'"
+				+ user.getUsername() + "\', \'"
+				+ user.getFirstName() + "\', \'"
+				+ user.getLastName() + "\', \'"
+				+ user.getAddress1() + "\', \'"
+				+ user.getAddress2() + "\', \'"
+				+ user.getCity() + "\', \'"
+				+ user.getState() + "\', \'"
+				+ user.getZip() + "\', \'"
+				+ user.getPassword() + "\' )";
 		
 		try {
 			addUser = con.createStatement();
 			
-			rs = addUser.executeQuery(sql);
+			addUser.executeUpdate(sql);
 			
 			System.out.println("[UserManager] - User " + user.getUsername() + " Added");
 		} catch (SQLException e) {
@@ -196,7 +196,7 @@ public final class UserManager {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
+				addUser.close();
 				con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -254,7 +254,7 @@ public final class UserManager {
 		}
 	}
 	
-	public static void removeTransaction(Integer userId) {
+	public static void removeUser(Integer userId) {
 		Connection con = DBConnectionManager.getConnection();
 		Statement removeUser = null;
 		ResultSet rs = null;

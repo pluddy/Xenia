@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class HotelRoom {
@@ -9,8 +10,10 @@ public class HotelRoom {
 	private int hotelId;
 	private int availableNumber;
 	private double pricePerNight;
-	private Date startDate;
-	private Date endDate;
+	private Calendar startDate;
+	private Calendar endDate;
+	
+	private HotelRoomType roomType;
 	
 	/**
 	 *
@@ -92,29 +95,43 @@ public class HotelRoom {
 	/**
 	 * @return the startDate
 	 */
-	public Date getStartDate() {
+	public Calendar getStartDate() {
 		return startDate;
 	}
 
 	/**
 	 * @param startDate the startDate to set
 	 */
-	public void setStartDate(Date startDate) {
+	public void setStartDate(Calendar startDate) {
 		this.startDate = startDate;
 	}
 
 	/**
 	 * @return the endDate
 	 */
-	public Date getEndDate() {
+	public Calendar getEndDate() {
 		return endDate;
 	}
 
 	/**
 	 * @param endDate the endDate to set
 	 */
-	public void setEndDate(Date endDate) {
+	public void setEndDate(Calendar endDate) {
 		this.endDate = endDate;
+	}
+
+	/**
+	 * @return the roomType
+	 */
+	public HotelRoomType getRoomType() {
+		return roomType;
+	}
+
+	/**
+	 * @param roomType the roomType to set
+	 */
+	public void setRoomType(HotelRoomType roomType) {
+		this.roomType = roomType;
 	}
 	
 	

@@ -1,12 +1,13 @@
 package models;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class HotelReview {
 	
 	private int 	id;
 	private String 	reviewerName;
-	private Date 	reviewDate;
+	private Calendar 	reviewDate;
 	private int 	rating;
 	private String 	review;
 	private int 	hotelId;
@@ -49,14 +50,14 @@ public class HotelReview {
 	/**
 	 * @return the reviewDate
 	 */
-	public Date getReviewDate() {
+	public Calendar getReviewDate() {
 		return reviewDate;
 	}
 
 	/**
 	 * @param reviewDate the reviewDate to set
 	 */
-	public void setReviewDate(Date reviewDate) {
+	public void setReviewDate(Calendar reviewDate) {
 		this.reviewDate = reviewDate;
 	}
 

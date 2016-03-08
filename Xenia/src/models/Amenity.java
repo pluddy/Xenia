@@ -4,6 +4,7 @@ public class Amenity {
 
 	private int id;
 	private String name;
+	private String description;
 	
 	/**
 	 * @param amenityId
@@ -40,5 +41,21 @@ public class Amenity {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
 	
 }

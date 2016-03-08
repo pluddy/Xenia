@@ -11,6 +11,9 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 import models.Hotel;
+import models.HotelAmenity;
+import models.HotelReview;
+import models.HotelRoom;
 
 public final class HotelManager {
 	
@@ -72,7 +75,7 @@ public final class HotelManager {
 			rs = ps.executeQuery();
 
 			while (rs.next()){
-				
+				//TODO: DO IN SERVICE LAYER
 				Hotel hotel = new Hotel();
 				hotel.setId(rs.getInt("Id"));
 				hotel.setName(rs.getString("Name"));
@@ -80,6 +83,16 @@ public final class HotelManager {
 				hotel.setState(rs.getString("State"));
 				hotel.setDescription(rs.getString("Description"));
 				hotel.setAddress(rs.getString("Address"));
+				
+				List<HotelAmenity> amenities = HotelAmenityManager.getHotelAmenities(null, hotel.getId(), null, null);
+				hotel.setAmenities(amenities);
+				
+				List<HotelRoom> rooms = HotelRoomManager.getHotelRooms(null, null, hotel.getId(), null, null, null, null);
+				hotel.setRooms(rooms);
+				
+				List<HotelReview> reviews = HotelReviewManager.getHotelReviews(null, null, null, null, null, hotel.getId());
+				hotel.setReviews(reviews);
+				
 				hotels.add(hotel);
 			}
 			System.out.println("[HotelManager] - Get Hotel Successful");

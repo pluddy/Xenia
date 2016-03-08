@@ -39,15 +39,15 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String firstName = request.getParameter("firstname");
-		String lastName = request.getParameter("lastname");
-		String address1 = request.getParameter("address1");
-		String address2 = request.getParameter("address2");
-		String city = request.getParameter("city");
-		String state = request.getParameter("state");
-		String zip = request.getParameter("zip");
+		String username = 	request.getParameter("username");
+		String password = 	request.getParameter("password");
+		String firstName = 	request.getParameter("firstname");
+		String lastName = 	request.getParameter("lastname");
+		String address1 = 	request.getParameter("address1");
+		String address2 = 	request.getParameter("address2");
+		String city = 		request.getParameter("city");
+		String state = 		request.getParameter("state");
+		String zip = 		request.getParameter("zip");
 				
 		User user = new User();
 		user.setUsername(username);

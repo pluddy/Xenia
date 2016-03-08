@@ -6,12 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
 import models.HotelRoom;
+import models.HotelRoomType;
 
 public class HotelRoomManager {
 	
@@ -21,44 +24,44 @@ public class HotelRoomManager {
 			Integer hotelId, 
 			Integer availableNumber,
 			Double pricePerNight,
-			Date startDate,
-			Date endDate) {
+			Calendar startDate,
+			Calendar endDate) {
 		Connection con = DBConnectionManager.getConnection();
 		List<HotelRoom> hotelRooms = new ArrayList<HotelRoom>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 	
 		
-		String sql = "SELECT * FROM HotelRooms";
+		String sql = "SELECT HR.Id, HR.RoomTypeId, HR.HotelId, HR.AvailableNumber, HR.PricePerNight, HR.StartDate, HR.EndDate, HRT.RoomType, HRT.Description FROM HotelRooms HR JOIN HotelRoomType HRT ON HR.RoomTypeId = HRT.Id";
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
 		if (id != null) {
-		    clauses.add("Id = ?");
+		    clauses.add("HR.Id = ?");
 		    parameters.add(id);
 		}
 		if (roomTypeId != null) {
-		    clauses.add("RoomTypeId = ?");
+		    clauses.add("HR.RoomTypeId = ?");
 		    parameters.add(roomTypeId);
 		} 
 		if (hotelId != null) {
-		    clauses.add("HotelId = ?");
+		    clauses.add("HR.HotelId = ?");
 		    parameters.add(hotelId);
 		} 
 		if (availableNumber != null) {
-		    clauses.add("AvailableNumber = ?");
+		    clauses.add("HR.AvailableNumber = ?");
 		    parameters.add(availableNumber);
 		} 
 		if (pricePerNight != null) {
-		    clauses.add("PricePerNight = ?");
+		    clauses.add("HR.PricePerNight = ?");
 		    parameters.add(pricePerNight);
 		} 
 		if (startDate != null) {
-		    clauses.add("StartDate = ?");
+		    clauses.add("HR.StartDate = ?");
 		    parameters.add(startDate);
 		} 
 		if (endDate != null) {
-		    clauses.add("EndDate = ?");
+		    clauses.add("HR.EndDate = ?");
 		    parameters.add(endDate);
 		} 
 		
@@ -83,8 +86,20 @@ public class HotelRoomManager {
 				hotelRoom.setHotelId(rs.getInt("HotelId"));
 				hotelRoom.setAvailableNumber(rs.getInt("AvailableNumber"));
 				hotelRoom.setPricePerNight(rs.getDouble("PricePerNight"));
-				hotelRoom.setStartDate(rs.getDate("StartDate"));
-				hotelRoom.setEndDate(rs.getDate("EndDate"));
+				Calendar cal = new GregorianCalendar();
+		        cal.setTime(rs.getDate("StartDate"));
+				hotelRoom.setStartDate(cal);
+				cal = new GregorianCalendar();
+		        cal.setTime(rs.getDate("EndDate"));
+				hotelRoom.setEndDate(cal);
+				
+				HotelRoomType roomType = new HotelRoomType();
+				roomType.setId(rs.getInt("RoomTypeId"));
+				roomType.setRoomType(rs.getString("RoomType"));
+				roomType.setDescription(rs.getString("Description"));
+				
+				hotelRoom.setRoomType(roomType);
+				
 				hotelRooms.add(hotelRoom);
 			}
 			System.out.println("[HotelRoomsManager] - Get HotelRooms Successful");

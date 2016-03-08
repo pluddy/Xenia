@@ -2,7 +2,9 @@ package managers;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import models.Reservation;
@@ -26,8 +28,8 @@ public final class ReservationManager {
 	public static List<Reservation> getResrvations(
 			Integer id, 
 			Integer hotelId, 
-			Date checkInDate, 
-			Date checkOutDate, 
+			Calendar checkInDate, 
+			Calendar checkOutDate, 
 			Integer numberOfRooms, 
 			String reservationNumber,
 			Integer userId, 
@@ -102,8 +104,12 @@ public final class ReservationManager {
 				
 				Reservation reservation = new Reservation();
 				reservation.setHotelId(rs.getInt("HotelId"));
-				reservation.setCheckInDate(rs.getDate("CheckInDate"));
-				reservation.setCheckOutDate(rs.getDate("CheckOutDate"));
+				Calendar cal = new GregorianCalendar();
+		        cal.setTime(rs.getDate("CheckInDate"));
+		        reservation.setCheckInDate(cal);
+				cal = new GregorianCalendar();
+		        cal.setTime(rs.getDate("CheckOutDate"));
+		        reservation.setCheckOutDate(cal);
 				reservation.setNumberOfRooms(rs.getInt("NumberOfRooms"));
 				reservation.setReservationNumber(rs.getString("ReservationNumber"));
 				reservation.setUserId(rs.getInt("UserId"));

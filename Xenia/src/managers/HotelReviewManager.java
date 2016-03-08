@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -17,7 +19,7 @@ public class HotelReviewManager {
 	public static List<HotelReview> getHotelReviews(
 			Integer id, 
 			String reviewerName, 
-			Date reviewDate, 
+			Calendar reviewDate, 
 			Integer rating,
 			String review,
 			Integer hotelId) {
@@ -71,7 +73,9 @@ public class HotelReviewManager {
 				hotelReview.setHotelId(rs.getInt("HotelId"));
 				hotelReview.setId(rs.getInt("Id"));
 				hotelReview.setReviewerName(rs.getString("ReviewerName"));
-				hotelReview.setReviewDate(rs.getDate("ReviewDate"));
+				Calendar cal = new GregorianCalendar();
+		        cal.setTime(rs.getDate("ReviewDate"));
+				hotelReview.setReviewDate(cal);
 				hotelReview.setRating(rs.getInt("Rating"));
 				hotelReview.setReview(rs.getString("Review"));
 				hotelReviews.add(hotelReview);

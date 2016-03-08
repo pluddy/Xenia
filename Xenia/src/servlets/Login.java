@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import managers.UserManager;
 import managers.GzipManager;
@@ -57,14 +58,14 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-				
-		if (UserManager.validateUser(username, password)) {
-			if (GzipManager.isGzipSupported(request)) {
-				response.setHeader("Content-Encoding", "gzip");
-				response.sendRedirect("CustomerHomepage.jsp");
-			} else {
-				response.sendRedirect("CustomerHomepage.jsp");
-			}
+		
+		User user = UserManager.validateUser(username, password);
+		if (user != null) {
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("user", user);
+			
+			response.sendRedirect("CustomerHomepage.jsp");
 		} else {
 			response.sendRedirect("Login.jsp");
 		}

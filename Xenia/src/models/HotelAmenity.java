@@ -7,6 +7,8 @@ public class HotelAmenity {
 	private int amenityId;
 	private boolean value;
 	
+	private Amenity amenity;
+	
 	/**
 	 *
 	 */
@@ -63,6 +65,20 @@ public class HotelAmenity {
 	 */
 	public void setValue(boolean value) {
 		this.value = value;
+	}
+
+	/**
+	 * @return the amenity
+	 */
+	public Amenity getAmenity() {
+		return amenity;
+	}
+
+	/**
+	 * @param amenity the amenity to set
+	 */
+	public void setAmenity(Amenity amenity) {
+		this.amenity = amenity;
 	}
 	
 	

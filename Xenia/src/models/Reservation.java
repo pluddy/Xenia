@@ -1,12 +1,13 @@
 package models;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Reservation {
 	private int id;
 	private int hotelId;
-	private Date checkInDate;
-	private Date checkOutDate;
+	private Calendar checkInDate;
+	private Calendar checkOutDate;
 	private int numberOfRooms;
 	private String reservationNumber;
 	private int userId;
@@ -49,28 +50,28 @@ public class Reservation {
 	/**
 	 * @return the checkInDate
 	 */
-	public Date getCheckInDate() {
+	public Calendar getCheckInDate() {
 		return checkInDate;
 	}
 
 	/**
 	 * @param checkInDate the checkInDate to set
 	 */
-	public void setCheckInDate(Date checkInDate) {
+	public void setCheckInDate(Calendar checkInDate) {
 		this.checkInDate = checkInDate;
 	}
 
 	/**
 	 * @return the checkOutDate
 	 */
-	public Date getCheckOutDate() {
+	public Calendar getCheckOutDate() {
 		return checkOutDate;
 	}
 
 	/**
 	 * @param checkOutDate the checkOutDate to set
 	 */
-	public void setCheckOutDate(Date checkOutDate) {
+	public void setCheckOutDate(Calendar checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
 

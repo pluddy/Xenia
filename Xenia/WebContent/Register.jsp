@@ -33,43 +33,43 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">First Name</label>
 				<div class="col-sm-6">
-					<input class="form-control" placeholder="John" name="firstname">
+					<input class="form-control" placeholder="John" name="firstname" id="firstname">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Last Name</label>
 				<div class="col-sm-6">
-					<input class="form-control" placeholder="Smith" name="lastname">
+					<input class="form-control" placeholder="Smith" name="lastname" id="lastname">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Address 1</label>
 				<div class="col-sm-6">
-					<input class="form-control" placeholder="1900 Appleseed Dr." name="address1">
+					<input class="form-control" placeholder="1900 Appleseed Dr." name="address1" id="address1">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Address 2 </label>
 				<div class="col-sm-6">
-					<input class="form-control" placeholder="Apt 104" name="address2">
+					<input class="form-control" placeholder="Apt 104" name="address2" id="address2">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">City </label>
 				<div class="col-sm-6">
-					<input class="form-control" placeholder="Potomac" name="city">
+					<input class="form-control" placeholder="Potomac" name="city" id="city">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">State </label>
 				<div class="col-sm-6">
-					<input class="form-control" placeholder="VA" name="state">
+					<input class="form-control" placeholder="VA" name="state" id="state">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">ZIP Code</label>
 				<div class="col-sm-6">
-					<input class="form-control" placeholder="22152" name="zip">
+					<input class="form-control" placeholder="22152" name="zip" id="zip">
 				</div>
 			</div>
 			<div class="form-group">
@@ -79,45 +79,50 @@
 			</div>
 		</form>
 	</div>
-	</form>
-	</div>
 	<jsp:include page="/Footer.jsp" />
 	<script>
-	var usernameValid = false;
-	var passwordValid = false;
-	$('#username').on('keyup click', function() {
-		if ($('#username').val().length != 0) {
-			$('#usernamegroup').removeClass("has-error");
-			$('#usernamegroup').addClass("has-success");
-			usernameValid = true;
-		} else {
-			$('#usernamegroup').removeClass("has-success");
-			$('#usernamegroup').addClass("has-error");
-			usernameValid = false;
-		}
-	});
-	$('#password,#confirmPassword').on('keyup click', function() {
-		if ($('#password').val().length != 0 &&
-				$('#confirmPassword').val().length != 0 &&
-				$('#password').val() == $('#confirmPassword').val()) {
-			$('#passwordgroup1,#passwordgroup2').addClass("has-success");
-			$('#passwordgroup1,#passwordgroup2').removeClass("has-error");
-			$('#registerButton').removeClass("disabled");
-			passwordValid = true;
-		} else {
-			$('#passwordgroup1,#passwordgroup2').addClass("has-error");
-			$('#passwordgroup1,#passwordgroup2').removeClass("has-success");
-			$('#registerButton').addClass("disabled");
-			passwordValid = false;
-		}
-	});
-	
-	$('#registerform').on('keyup keypress', function(e) {
-		  var keyCode = e.keyCode || e.which;
-		  if (keyCode === 13 && (!usernameValid || !passwordValid)) { 
-		    e.preventDefault();
-		    return false;
-		  }
+		var usernameValid = false;
+		var passwordValid = false;
+		$('#username').on('keyup click', function() {
+			if ($('#username').val().length != 0) {
+				$('#usernamegroup').removeClass("has-error");
+				$('#usernamegroup').addClass("has-success");
+				usernameValid = true;
+			} else {
+				$('#usernamegroup').removeClass("has-success");
+				$('#usernamegroup').addClass("has-error");
+				usernameValid = false;
+			}
+		});
+		$('#password,#confirmPassword').on(
+				'keyup click',
+				function() {
+					if ($('#password').val().length != 0
+							&& $('#confirmPassword').val().length != 0
+							&& $('#password').val() == $('#confirmPassword')
+									.val()) {
+						$('#passwordgroup1,#passwordgroup2').addClass(
+								"has-success");
+						$('#passwordgroup1,#passwordgroup2').removeClass(
+								"has-error");
+						$('#registerButton').removeClass("disabled");
+						passwordValid = true;
+					} else {
+						$('#passwordgroup1,#passwordgroup2').addClass(
+								"has-error");
+						$('#passwordgroup1,#passwordgroup2').removeClass(
+								"has-success");
+						$('#registerButton').addClass("disabled");
+						passwordValid = false;
+					}
+				});
+
+		$('#registerform').on('keyup keypress', function(e) {
+			var keyCode = e.keyCode || e.which;
+			if (keyCode === 13 && (!usernameValid || !passwordValid)) {
+				e.preventDefault();
+				return false;
+			}
 		});
 	</script>
 </body>

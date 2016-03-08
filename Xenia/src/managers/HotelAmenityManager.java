@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
+import models.Amenity;
 import models.HotelAmenity;
 
 public class HotelAmenityManager {
@@ -24,24 +25,24 @@ public class HotelAmenityManager {
 		ResultSet rs = null;
 	
 		
-		String sql = "SELECT * FROM HotelAmenities";
+		String sql = "SELECT HA.Id, HA.HotelId, HA.AmenityId, HA.Value, A.Name, A.Description FROM HotelAmenities HA JOIN Amenities A ON HA.AmenityId = A.Id";
 		List<String> clauses = new ArrayList<String>();
 		List<Object> parameters = new ArrayList<Object>();
 		
 		if (id != null) {
-		    clauses.add("Id = ?");
+		    clauses.add("HA.Id = ?");
 		    parameters.add(id);
 		}
 		if (hotelId != null) {
-		    clauses.add("HotelId = ?");
+		    clauses.add("HA.HotelId = ?");
 		    parameters.add(hotelId);
 		} 
 		if (amenityId != null) {
-		    clauses.add("AmenityId = ?");
+		    clauses.add("HA.AmenityId = ?");
 		    parameters.add(amenityId);
 		} 
 		if (value != null) {
-		    clauses.add("Value = ?");
+		    clauses.add("HA.Value = ?");
 		    parameters.add(value);
 		} 
 		
@@ -65,6 +66,14 @@ public class HotelAmenityManager {
 				hotelAmenity.setId(rs.getInt("Id"));
 				hotelAmenity.setAmenityId(rs.getInt("AmenityId"));
 				hotelAmenity.setValue(rs.getBoolean("Value"));
+				
+				Amenity amenity = new Amenity();
+				amenity.setId(rs.getInt("AmenityId"));
+				amenity.setName(rs.getString("Name"));
+				amenity.setDescription(rs.getString("Description"));
+				
+				hotelAmenity.setAmenity(amenity);
+				
 				hotelAmenities.add(hotelAmenity);
 			}
 			System.out.println("[HotelAmenitiesManager] - Get HotelAmenities Successful");

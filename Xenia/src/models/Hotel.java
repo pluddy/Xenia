@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 public class Hotel {
 	
 	private int id;
@@ -8,6 +10,10 @@ public class Hotel {
 	private String city;
 	private String state;
 	private String address;
+	
+	private List<HotelAmenity> amenities;
+	private List<HotelReview> reviews;
+	private List<HotelRoom> rooms;
 	
 	/**
 	 *
@@ -98,6 +104,48 @@ public class Hotel {
 	 */
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	/**
+	 * @return the amenities
+	 */
+	public List<HotelAmenity> getAmenities() {
+		return amenities;
+	}
+
+	/**
+	 * @param amenities the amenities to set
+	 */
+	public void setAmenities(List<HotelAmenity> amenities) {
+		this.amenities = amenities;
+	}
+
+	/**
+	 * @return the reviews
+	 */
+	public List<HotelReview> getReviews() {
+		return reviews;
+	}
+
+	/**
+	 * @param reviews the reviews to set
+	 */
+	public void setReviews(List<HotelReview> reviews) {
+		this.reviews = reviews;
+	}
+
+	/**
+	 * @return the rooms
+	 */
+	public List<HotelRoom> getRooms() {
+		return rooms;
+	}
+
+	/**
+	 * @param rooms the rooms to set
+	 */
+	public void setRooms(List<HotelRoom> rooms) {
+		this.rooms = rooms;
 	}
 	
 	
