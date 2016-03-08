@@ -30,10 +30,10 @@
 						<td><c:out value="${hotel.getName()}"/></td>
 						<td><c:out value="${hotel.getAddress()}"/></td>
 						<td><c:out value="${hotel.getDescription()}"/></td>
-						<td>Suite</td>
+						<td><c:out value="${hotel.getRoomType()}"/></td>
 						<td><input id="rating" class="rating" data-size="xs" data-symbol="&#xe006;" data-readonly="true" value="4.5" data-show-clear="false" data-show-caption="false"></td>
-						<td>$499.00</td>
-						<td>Pool, Paid Internet Access, Pet Friendly</td>
+						<td><c:out value="${hotel.getPricePerNight()}"/></td>
+						<td><c:out value="${hotel.getAmenities()}"/></td>
 						<td>
 							<form class="form" action="ViewAndBookReservations.jsp">
 								<button class="btn btn-default pull-right" type="submit">View & Book</button>

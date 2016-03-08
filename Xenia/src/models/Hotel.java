@@ -148,6 +148,16 @@ public class Hotel {
 		this.rooms = rooms;
 	}
 	
+	public String getAmenitiesString() {
+		String amenities = "";
+		for (HotelAmenity a : this.amenities) {
+			amenities += a.getAmenity().getName() + ", ";
+		}
+		
+		amenities = amenities.substring(0, amenities.length()-2);
+		return amenities;
+	}
+	
 	
 	
 }

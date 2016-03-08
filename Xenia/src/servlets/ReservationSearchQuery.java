@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.ReservationSearchResultBean;
 import models.Hotel;
 import services.SearchService;
 
@@ -66,9 +67,9 @@ public class ReservationSearchQuery extends HttpServlet {
 		List<String> amenities = Arrays.asList(request.getParameterValues("amenities"));
 		
 		
-		List<Hotel> hotels = SearchService.searchHotels(checkIn, checkOut, locationCity, Integer.parseInt(numberOfRooms), roomType, amenities);
+		List<ReservationSearchResultBean> hotelBeans = SearchService.searchHotels(checkIn, checkOut, locationCity, Integer.parseInt(numberOfRooms), roomType, amenities);
 		
-		session.setAttribute("hotels", hotels);
+		session.setAttribute("hotels", hotelBeans);
 		
 		request.getRequestDispatcher("ReservationSearch.jsp").forward(request, response);
 		
