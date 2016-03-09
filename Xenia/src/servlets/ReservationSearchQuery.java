@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 
 import beans.ReservationSearchQueryBean;
 import beans.ReservationSearchResultBean;
-import managers.GzipManager;
 import models.Hotel;
 import services.SearchService;
 
@@ -73,15 +72,8 @@ public class ReservationSearchQuery extends HttpServlet {
 		List<ReservationSearchResultBean> hotelBeans = SearchService.searchHotels(queryBean);
 		
 		session.setAttribute("hotels", hotelBeans);
-		if (GzipManager.isGzipSupported(request)) {
-			response.setHeader("Content-Encoding", "gzip");
-			request.getRequestDispatcher("ReservationSearch.jsp").forward(request, response);
-		} else {
-			request.getRequestDispatcher("ReservationSearch.jsp").forward(request, response);
-		}
-
-			
 		
+		request.getRequestDispatcher("ReservationSearch.jsp").forward(request, response);
 		
 	}
 
