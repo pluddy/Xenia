@@ -1,6 +1,7 @@
 package beans;
 
 public class ReservationSearchResultBean {
+	private int id;
 	private String name;
 	private String address;
 	private String description;
@@ -26,9 +27,10 @@ public class ReservationSearchResultBean {
 	 * @param pricePerNight
 	 * @param amenities
 	 */
-	public ReservationSearchResultBean(String name, String address, String description, String roomType, double rating,
+	public ReservationSearchResultBean(int id, String name, String address, String description, String roomType, double rating,
 			double pricePerNight, String amenities) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.description = description;
@@ -39,6 +41,20 @@ public class ReservationSearchResultBean {
 	}
 
 
+	
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	/**
 	 * @return the name

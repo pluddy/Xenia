@@ -43,6 +43,10 @@ public class ReservationSearchQueryBean {
 	public Calendar getCheckIn() {
 		return checkIn;
 	}
+	
+	public String getCheckInString() {
+		return this.checkIn.MONTH + "/" + this.checkIn.DATE + "/" + this.checkIn.YEAR;
+	}
 	/**
 	 * @param checkIn the checkIn to set
 	 */
@@ -54,6 +58,10 @@ public class ReservationSearchQueryBean {
 	 */
 	public Calendar getCheckOut() {
 		return checkOut;
+	}
+	
+	public String getCheckOutString() {
+		return this.checkOut.MONTH + "/" + this.checkOut.DATE + "/" + this.checkOut.YEAR;
 	}
 	/**
 	 * @param checkOut the checkOut to set

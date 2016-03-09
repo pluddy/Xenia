@@ -36,7 +36,7 @@ public class SearchService {
 						queryBean.getCheckOut().before(r.getEndDate()) && 
 						queryBean.getNumRooms() < r.getAvailableNumber() &&
 						r.getRoomType().getRoomType().equals(queryBean.getRoomType())) {
-					hotelBeans.add(new ReservationSearchResultBean(h.getName(), h.getAddress(), h.getDescription(), r.getRoomType().getRoomType(), 4.0, r.getPricePerNight(), h.getAmenitiesString()));
+					hotelBeans.add(new ReservationSearchResultBean(h.getId(), h.getName(), h.getAddress(), h.getDescription(), r.getRoomType().getRoomType(), 4.0, r.getPricePerNight(), h.getAmenitiesString()));
 				}
 			}
 		}

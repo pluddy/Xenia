@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hotel {
@@ -148,6 +149,9 @@ public class Hotel {
 		this.rooms = rooms;
 	}
 	
+	/**
+	 * @return
+	 */
 	public String getAmenitiesString() {
 		String amenities = "";
 		for (HotelAmenity a : this.amenities) {
@@ -158,6 +162,29 @@ public class Hotel {
 		return amenities;
 	}
 	
+	/**
+	 * @return
+	 */
+	public List<String> getAmenitiesList() {
+		List<String> amenities = new ArrayList<String>();
+		for (HotelAmenity a : this.amenities) {
+			amenities.add(a.getAmenity().getName());
+		}
+		
+		return amenities;
+	}
+	
+	/**
+	 * @return
+	 */
+	public List<String> getReviewsList() {
+		List<String> reviews = new ArrayList<String>();
+		for (HotelReview hr : this.reviews) {
+			reviews.add(hr.getReview());
+		}
+		
+		return reviews;
+	}
 	
 	
 }

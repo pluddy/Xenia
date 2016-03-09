@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +16,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Hotel:</label>
 					<div class="col-sm-10">
-						<p class="form-control-static">Hotel California</p>
+						<p class="form-control-static"><c:out value="${hotel.getHotelName()}"/></p>
 					</div>
 				</div>
 				<div class="form-group">
