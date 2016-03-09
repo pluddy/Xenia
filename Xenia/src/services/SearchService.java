@@ -16,7 +16,12 @@ import models.HotelRoom;
 public class SearchService {
 
 	public static List<ReservationSearchResultBean> searchHotels(ReservationSearchQueryBean queryBean) {
-		List<Hotel> hotels = HotelManager.getHotels(null, null, queryBean.getCity(), null, null, null, null, null);
+		List<Hotel> hotels = new ArrayList<Hotel>();
+		if (!queryBean.getCity().equals("")) {
+			hotels = HotelManager.getHotels(null, null, queryBean.getCity(), null, null, null, null, null);
+		} else {
+			hotels = HotelManager.getHotels(null, null, null, null, null, null, null, null);
+		}
 		List<ReservationSearchResultBean> hotelBeans = new ArrayList<ReservationSearchResultBean>();
 		
 		hotels: for (Iterator<Hotel> iterator = hotels.iterator(); iterator.hasNext();) {
