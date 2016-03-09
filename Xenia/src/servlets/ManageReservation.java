@@ -44,7 +44,13 @@ public class ManageReservation extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		
+		User user = (User)session.getAttribute("user");
+		List<Reservation> reservations = ReservationManager.getResrvations(null, null, null, null, null, null, user.getId(), null, null, null);
+		
+		request.setAttribute("reservations", reservations);
+		request.getRequestDispatcher("ManageReservations.jsp").forward(request, response);
 	}
 
 }

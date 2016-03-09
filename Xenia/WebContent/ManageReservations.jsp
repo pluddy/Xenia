@@ -29,9 +29,15 @@
 						<td><c:out value="${reservation.getHotel().getCity()}"/></td>
 						<td><c:out value="${reservation.getCheckInDate()"/> " - " <c:out value="${reservation.getCheckOutDate()"/></td>
 						<td>
+							<p>
+    							<jsp:useBean id="today" class="java.util.Date" />
+   								 <b><c:out value="${today}"/></b>
+							</p>
+							<c:if test="${reservation.getCheckInDate() gt today ">
 							<form class="form" action="ReservationSearchResults" method="post">
-								<button class="btn btn-default pull-right" type="submit" name="hotelId" value="${reservation.getId()}">Cancel Reservation</button>
+								<button class="btn btn-default pull-right" type="submit" name="reservationId" value="${reservation.getId()}">Cancel Reservation</button>
 							</form>
+							</c:if>
 						</td>
 					</tr>
 				</c:forEach>
