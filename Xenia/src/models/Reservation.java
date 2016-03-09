@@ -15,6 +15,8 @@ public class Reservation {
 	private String notes;
 	private int roomTypeId;
 	
+	private Hotel hotel;
+	
 	public Reservation() {
 
 	}
@@ -157,6 +159,20 @@ public class Reservation {
 	 */
 	public void setRoomTypeId(int roomTypeId) {
 		this.roomTypeId = roomTypeId;
+	}
+
+	/**
+	 * @return the hotel
+	 */
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	/**
+	 * @param hotel the hotel to set
+	 */
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
 	}
 
 	

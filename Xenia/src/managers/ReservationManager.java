@@ -116,6 +116,7 @@ public final class ReservationManager {
 				reservation.setStatus(rs.getInt("Status"));
 				reservation.setNotes(rs.getString("Notes"));
 				reservation.setRoomTypeId(rs.getInt("RoomTypeId"));
+				reservation.setHotel(HotelManager.getHotels(rs.getInt("HotelId"), null, null, null, null, null, null, null).get(0));
 				reservations.add(reservation);
 			}
 			System.out.println("[ReservationManager] - Get Reservations Successful");
