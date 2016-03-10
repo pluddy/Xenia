@@ -103,19 +103,17 @@ public final class ReservationManager {
 			while (rs.next()){
 				
 				Reservation reservation = new Reservation();
+				reservation.setId(rs.getInt("Id"));
 				reservation.setHotelId(rs.getInt("HotelId"));
-				Calendar cal = new GregorianCalendar();
-		        cal.setTime(rs.getDate("CheckInDate"));
-		        reservation.setCheckInDate(cal);
-				cal = new GregorianCalendar();
-		        cal.setTime(rs.getDate("CheckOutDate"));
-		        reservation.setCheckOutDate(cal);
+		        reservation.setCheckInDate(rs.getDate("CheckInDate").toString());
+		        reservation.setCheckOutDate(rs.getDate("CheckOutDate").toString());
 				reservation.setNumberOfRooms(rs.getInt("NumberOfRooms"));
 				reservation.setReservationNumber(rs.getString("ReservationNumber"));
 				reservation.setUserId(rs.getInt("UserId"));
 				reservation.setStatus(rs.getInt("Status"));
 				reservation.setNotes(rs.getString("Notes"));
 				reservation.setRoomTypeId(rs.getInt("RoomTypeId"));
+				reservation.setHotel(HotelManager.getHotels(rs.getInt("HotelId"), null, null, null, null, null, null, null).get(0));
 				reservations.add(reservation);
 			}
 			System.out.println("[ReservationManager] - Get Reservations Successful");

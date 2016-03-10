@@ -140,6 +140,7 @@ public final class UserManager {
 			
 			while (rs.next()){
 				User user = new User();
+				user.setId(rs.getInt("Id"));
 				user.setUsername(rs.getString("Username"));
 				user.setFirstName(rs.getString("FirstName"));
 				user.setLastName(rs.getString("LastName"));

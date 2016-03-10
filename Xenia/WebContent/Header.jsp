@@ -16,7 +16,8 @@
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li>
-					<a href="ManageReservations.jsp">Manage</a>
+					<a href="ManageReservation">Manage</a>
+
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

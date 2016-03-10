@@ -49,4 +49,24 @@
     <servlet-name>ReservationSearchResults</servlet-name>
     <url-pattern>/ReservationSearchResults</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ManageReservation</display-name>
+    <servlet-name>ManageReservation</servlet-name>
+    <servlet-class>servlets.ManageReservation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManageReservation</servlet-name>
+    <url-pattern>/ManageReservation</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CancelReservation</display-name>
+    <servlet-name>CancelReservation</servlet-name>
+    <servlet-class>servlets.CancelReservation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CancelReservation</servlet-name>
+    <url-pattern>/CancelReservation</url-pattern>
+  </servlet-mapping>
 </web-app>
