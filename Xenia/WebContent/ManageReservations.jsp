@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,37 +23,25 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
 					<c:forEach var="reservation" items="${reservations}">
 					<tr>
 						<td><c:out value="${reservation.getHotel().getName()}"/></td>
 						<td><c:out value="${reservation.getHotel().getCity()}"/></td>
-						<td><c:out value="${reservation.getCheckInDate()"/> " - " <c:out value="${reservation.getCheckOutDate()"/></td>
+						<td><c:out value="${reservation.getCheckInDate()} - "/>  <c:out value="${reservation.getCheckOutDate()}"/></td>
 						<td>
-							<p>
-    							<jsp:useBean id="today" class="java.util.Date" />
-   								 <b><c:out value="${today}"/></b>
-							</p>
-							<c:if test="${reservation.getCheckInDate() gt today ">
-							<form class="form" action="ReservationSearchResults" method="post">
+							<form class="form" action="ManageReservation" method="post">
 								<button class="btn btn-default pull-right" type="submit" name="reservationId" value="${reservation.getId()}">Cancel Reservation</button>
 							</form>
-							</c:if>
+							<!--  <p>
+    							<jsp:useBean id="today" class="java.util.Date" />
+   								 <b><c:out value="${today}"/></b>
+							</p> -->
+							<!--<c:if test="${formatedDate gt today} "> -->
+							
+							<!--</c:if>-->
 						</td>
 					</tr>
 				</c:forEach>
-						<td>Hotel California</td>
-						<td>Orlando, Florida</td>
-						<td>10/31/2016 - 11/1/2016</td>
-						<td>
-							<form class="form" action="CancelReservations.jsp">
-								<button class="btn btn-danger pull-right" type="submit">
-									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-									Cancel
-								</button>
-							</form>
-						</td>
-					</tr>
 				</tbody>
 			</table>
 		</div>
