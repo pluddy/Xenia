@@ -60,7 +60,7 @@ public class CancelReservation extends HttpServlet {
 		
 		String paramater = request.getParameter("reservationId");
 		int id = Integer.parseInt(paramater);
-		 List<Reservation> reservation = ReservationManager.getResrvations(id, null, null, null, null, null, null, null, null, null);
+		 List<Reservation> reservation = ReservationManager.getReservations(id, null, null, null, null, null, null, null, null, null);
 		 
 		 ReservationManager.updateReservationStatus(id, 0);
 		 

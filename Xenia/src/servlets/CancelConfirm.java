@@ -31,7 +31,7 @@ public class CancelConfirm extends HttpServlet {
 		String reservationString = (String)request.getAttribute("reservationId");
 		int reservationId = Integer.parseInt(reservationString);
 		
-		Reservation hotelReservation = ReservationManager.getResrvations(reservationId, null, null, null, null, null, null, null, null, null).get(0);
+		Reservation hotelReservation = ReservationManager.getReservations(reservationId, null, null, null, null, null, null, null, null, null).get(0);
 		
 		request.setAttribute("reservation", hotelReservation);
 		request.getRequestDispatcher("CancelReservations.jsp").forward(request, response);
