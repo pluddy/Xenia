@@ -69,4 +69,14 @@
     <servlet-name>CancelReservation</servlet-name>
     <url-pattern>/CancelReservation</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CancelConfirm</display-name>
+    <servlet-name>CancelConfirm</servlet-name>
+    <servlet-class>servlets.CancelConfirm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CancelConfirm</servlet-name>
+    <url-pattern>/CancelConfirm</url-pattern>
+  </servlet-mapping>
 </web-app>

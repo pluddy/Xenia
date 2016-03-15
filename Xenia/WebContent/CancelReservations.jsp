@@ -22,17 +22,17 @@
 				<c:out value="${reservation.getHotel().getState()}"/></label>
 				<label class="col-sm-2">Dates:</label>
 				<label id="Dates" class="col-sm-10">
-				<c:out value="${reservation.getStartDate()} - "/>
-				<c:out value="${reservation.getEndDate()}"/>
+				<c:out value="${reservation.getCheckInDate() } - "/>
+				<c:out value="${reservation.getCheckOutDate() }"/>
 				</label>
 			</div>
 			<div class="panel-footer">
 				<div class="clearfix">
 					<form class="form" action="CancelReservation" method="post">
-						<button class="btn btn-danger pull-right" type="submit">Confirm Cancellation</button>
+						<button class="btn btn-danger pull-right" name="reservationId" type="submit" value="${reservation.getId()}">Confirm Cancellation</button>
 					</form>
-					<form class="form" action="ManageReservation">
-						<button class="btn btn-default pull-right" type="submit">Cancel</button>
+					<form class="form" action="ManageReservation" method="get">
+						<button class="btn btn-default pull-right" name="Cancel" type="submit" value="Cancel">Cancel</button>
 					</form>
 				</div>
 			</div>

@@ -1,28 +1,24 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import managers.ReservationManager;
 import models.Reservation;
-import models.User;
 
 /**
- * Servlet implementation class ManageReservation
+ * Servlet implementation class CancelConfirm
  */
-public class ManageReservation extends HttpServlet {
+public class CancelConfirm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageReservation() {
+    public CancelConfirm() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,23 +27,24 @@ public class ManageReservation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
+		String reservationString = (String)request.getAttribute("reservationId");
+		int reservationId = Integer.parseInt(reservationString);
 		
-		User user = (User)session.getAttribute("user");
-		List<Reservation> reservations = ReservationManager.getResrvations(null, null, null, null, null, null, user.getId(), null, null, null);
+		Reservation hotelReservation = ReservationManager.getResrvations(reservationId, null, null, null, null, null, null, null, null, null).get(0);
 		
-		request.setAttribute("reservations", reservations);
-		request.getRequestDispatcher("ManageReservations.jsp").forward(request, response);
+		request.setAttribute("reservation", hotelReservation);
+		request.getRequestDispatcher("CancelReservations.jsp").forward(request, response);
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		String paramater = request.getParameter("reservationId");
-		request.setAttribute("reservationId", request.getParameter("reservationId"));
-		request.getRequestDispatcher("CancelConfirm").forward(request, response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
+		
 	}
 
 }

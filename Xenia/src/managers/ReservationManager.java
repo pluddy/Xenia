@@ -181,4 +181,46 @@ public final class ReservationManager {
 		}
 	}
 	
+	public static void updateReservationStatus(int reservationId, int status) {
+		Connection con = DBConnectionManager.getConnection();
+		Statement updateReservation = null;
+		int rs;
+	
+		/*
+			private Integer ID;
+			private Integer HotelID;
+			private Date CheckInDate;
+			private Date CheckOutDate;
+			private Integer NumberOfRooms;
+			private String ReservationNumber;
+			private Integer UserID;
+			private Integer Status;
+			private String Notes;
+			private Integer RoomTypeID;
+		*/
+
+		String sql = "UPDATE HotelReservations SET Status = " 
+		 + status
+		 + " WHERE Id = " + reservationId;
+		
+		try {
+			updateReservation = con.createStatement();
+			rs = updateReservation.executeUpdate(sql);
+		
+			System.out.println("[ReservationManager] - Updated Reservation Status " + reservationId +" "+ status + " created.");
+			
+		} catch (SQLException e) {
+			System.out.println("[ReservationManager] - Update Reservation Status Failed");
+			e.printStackTrace();
+		} finally {
+			try {
+				//rs.close();
+				updateReservation.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 }

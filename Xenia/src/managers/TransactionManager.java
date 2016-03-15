@@ -10,7 +10,7 @@ public final class TransactionManager {
 	
 	public static List<Transaction> getTransactions(
 			Integer id, 
-			String cardHolderNumber, 
+			String cardHolderName, 
 			String creditCardNumber, 
 			Double balance, 
 			String cardNickname, 
@@ -30,9 +30,9 @@ public final class TransactionManager {
 		    clauses.add("Id = ?");
 		    parameters.add(id);
 		}
-		if (cardHolderNumber != null) {
-		    clauses.add("CardHolderNumber = ?");
-		    parameters.add(cardHolderNumber);
+		if (cardHolderName != null) {
+		    clauses.add("CardholderName = ?");
+		    parameters.add(cardHolderName);
 		} 
 		if (creditCardNumber != null) {
 		    clauses.add("CreditCardNumber = ?");
@@ -72,7 +72,7 @@ public final class TransactionManager {
 
 				Transaction transaction = new Transaction();
 				transaction.setId(rs.getInt("Id"));
-				transaction.setCardHolderNumber(rs.getString("CardHolderNumber"));
+				transaction.setCardHolderNumber(rs.getString("CardholderName"));
 				transaction.setCreditCardNumber(rs.getString("CreditCardNumber"));
 				transaction.setBalance(rs.getFloat("Balance"));
 				transaction.setCardNickname(rs.getString("CardNickname"));
@@ -140,7 +140,7 @@ public final class TransactionManager {
 	public static void updateTransaction(Transaction transaction) {
 		Connection con = DBConnectionManager.getConnection();
 		Statement updateTransaction = null;
-		ResultSet rs = null;
+		int rs;
 	
 		/*
 		 * 	private Integer ID;
@@ -152,17 +152,17 @@ public final class TransactionManager {
 	private String CVV;
 		 */
 		
-		String sql = "UPDATE CreditCards SET CardHolderNumber = " + transaction.getCardHolderNumber() 
-		+ " CreditCardNumber = " + transaction.getCreditCardNumber()
-		+ " Balance = " + transaction.getBalance()
-		+ " CardNickname = " + transaction.getCardNickname() 
-		+ " UserId = " + transaction.getUserId()
-		+ " CVV = " + transaction.getCvv() 
-		+ " WHERE Id = " + transaction.getId(); 
+		String sql = "UPDATE CreditCards SET CardholderName = \"" + transaction.getCardHolderNumber() 
+		+ "\" AND CreditCardNumber = \"" + transaction.getCreditCardNumber()
+		+ "\" AND Balance = \"" + transaction.getBalance()
+		+ "\" AND CardNickname = \"" + transaction.getCardNickname() 
+		+ "\" AND UserId = " + transaction.getUserId()
+		+ " AND CVV = \"" + transaction.getCvv() 
+		+ "\" WHERE Id = " + transaction.getId(); 
 		
 		try {
 			updateTransaction = con.createStatement();
-			rs = updateTransaction.executeQuery(sql);
+			updateTransaction.executeUpdate(sql);
 			
 			System.out.println("[TransactionManager] - Transaction " + transaction.getId() + " updated.");
 			
@@ -171,7 +171,7 @@ public final class TransactionManager {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
+				//rs.close();
 				updateTransaction.close();
 				con.close();
 			} catch (SQLException e) {
