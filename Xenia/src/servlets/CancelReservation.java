@@ -39,6 +39,13 @@ public class CancelReservation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
+		User user = (User)session.getAttribute("user");
+		if (user == null) {
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
+		}
+		
 		//HttpSession session = request.getSession();
 		/*String reservationString = (String)request.getAttribute("reservationId");
 		int reservationId = Integer.parseInt(reservationString);

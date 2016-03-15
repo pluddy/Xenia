@@ -34,6 +34,13 @@ public class ManageReservation extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		User user = (User)session.getAttribute("user");
+		if (user == null) {
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
+		}
+		
+		//HttpSession session = request.getSession();
+		
+		//User user = (User)session.getAttribute("user");
 		List<Reservation> reservations = ReservationManager.getReservations(null, null, null, null, null, null, user.getId(), null, null, null);
 		
 		request.setAttribute("reservations", reservations);
