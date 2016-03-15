@@ -3,6 +3,7 @@ package beans;
 import java.util.List;
 
 public class ViewBookDisplayBean {
+	private int hotelId;
 	private String hotelName;
 	private String hotelAddress;
 	private String reservationDates;
@@ -24,10 +25,11 @@ public class ViewBookDisplayBean {
 	 * @param hotelRating
 	 * @param reviews
 	 */
-	public ViewBookDisplayBean(String hotelName, String hotelAddress, String reservationDates, int numRooms,
+	public ViewBookDisplayBean(int hotelId, String hotelName, String hotelAddress, String reservationDates, int numRooms,
 			double pricePerNight, String hotelDescription, List<String> amenities, double hotelRating,
 			List<String> reviews) {
 		super();
+		this.hotelId = hotelId;
 		this.hotelName = hotelName;
 		this.hotelAddress = hotelAddress;
 		this.reservationDates = reservationDates;
@@ -37,6 +39,20 @@ public class ViewBookDisplayBean {
 		this.amenities = amenities;
 		this.hotelRating = hotelRating;
 		this.reviews = reviews;
+	}
+
+	/**
+	 * @return the hotelId
+	 */
+	public int getHotelId() {
+		return hotelId;
+	}
+
+	/**
+	 * @param hotelId the hotelId to set
+	 */
+	public void setHotelId(int hotelId) {
+		this.hotelId = hotelId;
 	}
 
 	/**

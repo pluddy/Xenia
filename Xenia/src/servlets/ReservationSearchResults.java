@@ -61,7 +61,8 @@ public class ReservationSearchResults extends HttpServlet {
 			response.sendError(500);
 		}		
 		
-		ViewBookDisplayBean viewBookBean = new ViewBookDisplayBean(hotel.getName(), 
+		ViewBookDisplayBean viewBookBean = new ViewBookDisplayBean(hotel.getId(),
+				hotel.getName(), 
 				hotel.getAddress(), 
 				query.getCheckInString() + "-" + query.getCheckOutString(), 
 				query.getNumRooms(), 
