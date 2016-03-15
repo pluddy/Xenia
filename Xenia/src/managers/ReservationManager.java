@@ -25,7 +25,7 @@ public final class ReservationManager {
 	private Integer RoomTypeID;
 	 * 
 	 */
-	public static List<Reservation> getResrvations(
+	public static List<Reservation> getReservations(
 			Integer id, 
 			Integer hotelId, 
 			Calendar checkInDate, 

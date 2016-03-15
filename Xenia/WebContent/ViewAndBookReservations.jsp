@@ -97,13 +97,16 @@
 				</div>
 			</div>
 			<div class="panel-footer clearfix">
-				<div class="col-sm-5">
+				<div class="col-sm-6">
 					<form class="form" action="ReservationSearch.jsp">
-						<button class="btn btn-default" type="submit">Back</button>
+						<button class="btn btn-default" type="submit">Back to Search Results</button>
+					</form>
+					<form class="form" action="CustomerHomepage.jsp">
+						<button class="btn btn-default" type="submit">New Search</button>
 					</form>
 				</div>
-				<div class="col-sm-5 pull-right">
-					<form class="form" action="ReservationTransaction.jsp">
+				<div class="col-sm-6">
+					<form class="form pull-right" action="ReservationTransaction.jsp">
 						<button class="btn btn-primary" type="submit">Book</button>
 					</form>
 				</div>

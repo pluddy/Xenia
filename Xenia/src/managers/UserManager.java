@@ -164,8 +164,10 @@ public final class UserManager {
 			}
 		}
 		if (users.size() > 0) {
+			System.out.println("[UserManager] - User " + users.get(0).getUsername() + " Validated");
 			return users.get(0);
 		} else {
+			System.out.println("[UserManager] - User Not Found");
 			return null;
 		}
 	}
