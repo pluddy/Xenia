@@ -46,7 +46,6 @@ public class ManageReservation extends HttpServlet {
 		//HttpSession session = request.getSession();
 		
 		//User user = (User)session.getAttribute("user");
-		List<Reservation> reservations = ReservationManager.getReservations(null, null, null, null, null, null, user.getId(), null, null, null);
 		for (int i=0; i< reservations.size(); i++){
 			if (reservations.get(i).getStatus() != 0){
 			checkDate(reservations.get(i).getCheckInDate(), reservations.get(i).getId());

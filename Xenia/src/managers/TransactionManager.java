@@ -10,13 +10,8 @@ public final class TransactionManager {
 	
 	public static List<Transaction> getTransactions(
 			Integer id, 
-<<<<<<< HEAD
 			String cardHolderName,
 			String creditCardNumber,
-=======
-			String cardHolderName, 
-			String creditCardNumber, 
->>>>>>> 6bb64ded54817e3ef42b24099723613f0e12d4cd
 			Double balance, 
 			String cardNickname, 
 			Integer userId, 
@@ -36,11 +31,8 @@ public final class TransactionManager {
 		    parameters.add(id);
 		}
 		if (cardHolderName != null) {
-<<<<<<< HEAD
 		    clauses.add("CardHolderName = ?");
-=======
-		    clauses.add("CardholderName = ?");
->>>>>>> 6bb64ded54817e3ef42b24099723613f0e12d4cd
+
 		    parameters.add(cardHolderName);
 		} 
 		if (creditCardNumber != null) {
@@ -81,11 +73,7 @@ public final class TransactionManager {
 
 				Transaction transaction = new Transaction();
 				transaction.setId(rs.getInt("Id"));
-<<<<<<< HEAD
 				transaction.setCardHolderName(rs.getString("CardHolderName"));
-=======
-				transaction.setCardHolderNumber(rs.getString("CardholderName"));
->>>>>>> 6bb64ded54817e3ef42b24099723613f0e12d4cd
 				transaction.setCreditCardNumber(rs.getString("CreditCardNumber"));
 				transaction.setBalance(rs.getFloat("Balance"));
 				transaction.setCardNickname(rs.getString("CardNickname"));
@@ -163,7 +151,6 @@ public final class TransactionManager {
 	private String CVV;
 		 */
 		
-<<<<<<< HEAD
 		String sql = "UPDATE CreditCards SET CardHolderName = " + transaction.getCardHolderName() 
 		+ " CreditCardNumber = " + transaction.getCreditCardNumber()
 		+ " Balance = " + transaction.getBalance()
@@ -171,15 +158,7 @@ public final class TransactionManager {
 		+ " UserId = " + transaction.getUserId()
 		+ " CVV = " + transaction.getCvv() 
 		+ " WHERE Id = " + transaction.getId(); 
-=======
-		String sql = "UPDATE CreditCards SET CardholderName = \"" + transaction.getCardHolderNumber() 
-		+ "\" AND CreditCardNumber = \"" + transaction.getCreditCardNumber()
-		+ "\" AND Balance = \"" + transaction.getBalance()
-		+ "\" AND CardNickname = \"" + transaction.getCardNickname() 
-		+ "\" AND UserId = " + transaction.getUserId()
-		+ " AND CVV = \"" + transaction.getCvv() 
-		+ "\" WHERE Id = " + transaction.getId(); 
->>>>>>> 6bb64ded54817e3ef42b24099723613f0e12d4cd
+
 		
 		try {
 			updateTransaction = con.createStatement();
