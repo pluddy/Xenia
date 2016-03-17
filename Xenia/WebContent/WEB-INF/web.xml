@@ -89,4 +89,34 @@
     <servlet-name>TransactionConfirmation</servlet-name>
     <url-pattern>/TransactionConfirmation</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CancelConfirm</display-name>
+    <servlet-name>CancelConfirm</servlet-name>
+    <servlet-class>servlets.CancelConfirm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CancelConfirm</servlet-name>
+    <url-pattern>/CancelConfirm</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>servlets.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConfrimCancellation</display-name>
+    <servlet-name>ConfrimCancellation</servlet-name>
+    <servlet-class>servlets.ConfrimCancellation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfrimCancellation</servlet-name>
+    <url-pattern>/ConfrimCancellation</url-pattern>
+  </servlet-mapping>
 </web-app>

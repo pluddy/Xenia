@@ -1,6 +1,7 @@
 <link rel='stylesheet' href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
 <link rel='stylesheet' href='webjars/bootstrap-datepicker/1.6.0/dist/css/bootstrap-datepicker.min.css'>
 <link rel='stylesheet' href='webjars/bootstrap-star-rating/3.5.4/css/star-rating.min.css'>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar navbar-default">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -20,9 +21,12 @@
 
 				</li>
 			</ul>
+			<p class="navbar-text navbar-right clearfix">
+					<span class="label label-default" display="inline-block"><c:out value="${user.getFirstName() }"></c:out></span>
+			</p>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="Login.jsp">Logout</a>
+					<a href="Logout">Logout</a>
 				</li>
 			</ul>
 		</div>

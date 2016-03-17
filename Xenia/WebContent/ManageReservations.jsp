@@ -29,16 +29,20 @@
 						<td><c:out value="${reservation.getHotel().getCity()}"/></td>
 						<td><c:out value="${reservation.getCheckInDate()} - "/>  <c:out value="${reservation.getCheckOutDate()}"/></td>
 						<td>
-							<form class="form" action="ManageReservation" method="post">
-								<button class="btn btn-default pull-right" type="submit" name="reservationId" value="${reservation.getId()}">Cancel Reservation</button>
-							</form>
+							 <form class="form" action="ManageReservation" method="post">
+							
+								<button class="btn btn-default pull-right ${reservation.getStatus()}" type="submit" name="reservationId" value="${reservation.getId()}"><c:out value="Cancel Reservation"></c:out></button>
+							 </form> 
 							<!--  <p>
     							<jsp:useBean id="today" class="java.util.Date" />
    								 <b><c:out value="${today}"/></b>
 							</p> -->
-							<!--<c:if test="${formatedDate gt today} "> -->
+							<!--<c:out value="${reservation.getStatus() eq 1}"/>-->
+							<!--<c:if test="${reservation.getStatus() eq 1} " >--> 
+
+									
+							<!--</c:if> -->
 							
-							<!--</c:if>-->
 						</td>
 					</tr>
 				</c:forEach>
@@ -47,5 +51,10 @@
 		</div>
 	</div>
 	<jsp:include page="/Footer.jsp"/>
+		<script type="text/javascript">
+	$(function() {
+		$(".0").css('display', 'none');
+	});
+</script>
 </body>
 </html>
