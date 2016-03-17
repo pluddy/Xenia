@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.ReservationSearchQueryBean;
-import beans.ViewBookDisplayBean;
+import beans.ReservationBean;
 import managers.HotelManager;
 import models.Hotel;
 import models.HotelAmenity;
@@ -61,16 +61,7 @@ public class ReservationSearchResults extends HttpServlet {
 			response.sendError(500);
 		}		
 		
-		ViewBookDisplayBean viewBookBean = new ViewBookDisplayBean(hotel.getId(),
-				hotel.getName(), 
-				hotel.getAddress(), 
-				query.getCheckInString() + "-" + query.getCheckOutString(), 
-				query.getNumRooms(), 
-				room.getPricePerNight(), 
-				hotel.getDescription(), 
-				hotel.getAmenitiesList(), 
-				4.0, 
-				hotel.getReviewsList());
+		ReservationBean viewBookBean = new ReservationBean(hotel, room, query);
 		
 		session.setAttribute("hotel", viewBookBean);
 		

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,38 +9,38 @@
 <body>
 	<jsp:include page="/Header.jsp"/>
 	<div class="container">
-		<form class="form-horizontal" id="reservationTransaction" action="ReservationTransactionConfirmation.jsp" method="post">
+		<form class="form-horizontal" id="reservationTransaction" action="TransactionConfirmation" method="post">
 			<div class="panel panel-default">
 				<div class="panel-heading">Booking Summary</div>
 				<div class="panel-body">
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Hotel: </label>
 						<div class="col-sm-10">
-							<p class="form-control-static">Hotel California</p>
+							<c:out value="${hotel.getHotel().getName() }" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Location: </label>
 						<div class="col-sm-10">
-							<p class="form-control-static">Orlando, FL</p>
+							<p class="form-control-static"><c:out value="${hotel.getHotel().getCity() }" />, <c:out value="${hotel.getHotel().getState() }" /></p>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Number of Rooms: </label>
 						<div class="col-sm-10">
-							<p class="form-control-static">4</p>
+							<p class="form-control-static"><c:out value="${hotel.getQuery().getNumRooms() }" /></p>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Dates: </label>
 						<div class="col-sm-10">
-							<p class="form-control-static">10/31/2016-11/1/2016</p>
+							<p class="form-control-static"><c:out value="${hotel.getQuery().getCheckInString() }" />-<c:out value="${hotel.getQuery().getCheckOutString() }" /></p>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Price: </label>
 						<div class="col-sm-10">
-							<p class="form-control-static">$499.00</p>
+							<p class="form-control-static">$<c:out value="${hotel.getRoom().getPricePerNight() }" /></p>
 						</div>
 					</div>
 				</div>
@@ -50,42 +51,42 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">First Name </label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="John">
+							<input class="form-control" placeholder="John" name="creditFirstName">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Last Name </label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="Smith">
+							<input class="form-control" placeholder="Smith" name="creditLastName">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Card Type </label>
 						<div class="col-sm-2">
 							<select class="form-control">
-								<option value="Visa">Visa</option>
-								<option value="Master Card">Master Card</option>
-								<option value="Discover">Discover</option>
-								<option value="American Express">American Express</option>
+								<option value="Visa" name="creditCardType">Visa</option>
+								<option value="Master Card" name="creditCardType">Master Card</option>
+								<option value="Discover" name="creditCardType">Discover</option>
+								<option value="American Express" name="creditCardType">American Express</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Card Number </label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="XXXX-XXXX-XXXX-1234">
+							<input class="form-control" placeholder="XXXX-XXXX-XXXX-1234" name="creditCardNumber">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Security Code </label>
 						<div class="col-sm-2">
-							<input class="form-control" placeholder="XXX">
+							<input class="form-control" placeholder="XXX" name="creditCardCVV">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Expires</label>
 						<div class="col-sm-2">
-							<input type="text" class="form-control datepicker" placeholder="mm/yyyy" name="expirationDate">
+							<input type="text" class="form-control datepicker" placeholder="mm/yyyy" name="creditCardExpirationDate">
 						</div>
 					</div>
 				</div>
@@ -96,55 +97,55 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">First Name</label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="John">
+							<input class="form-control" placeholder="John" name="billingFirstName">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Last Name</label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="Smith">
+							<input class="form-control" placeholder="Smith" name="billingLastName">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Address 1</label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="1900 Appleseed Dr.">
+							<input class="form-control" placeholder="1900 Appleseed Dr." name="billingAddress1">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Address 2 </label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="Apt 104">
+							<input class="form-control" placeholder="Apt 104" name="billingAddress2">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">City </label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="Potomac">
+							<input class="form-control" placeholder="Potomac" name="billingCity">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">State </label>
 						<div class="col-sm-2">
-							<input class="form-control" placeholder="VA">
+							<input class="form-control" placeholder="VA" name="billingState">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Country </label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="United States of America">
+							<input class="form-control" placeholder="United States of America" name="billingCountry">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">ZIP Code</label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="22152">
+							<input class="form-control" placeholder="22152" name="billingZip">
 						</div>
 					</div>
 				</div>
 				<div class="panel-footer clearfix">
 					<button class="btn btn-default" onclick="cancel()">Cancel</button>
-					<button class="btn btn-primary pull-right" onclick="submit()">Confirm Reservation</button>
+					<button class="btn btn-primary pull-right" type="submit">Confirm Reservation</button>
 				</div>
 			</div>
 		</form>

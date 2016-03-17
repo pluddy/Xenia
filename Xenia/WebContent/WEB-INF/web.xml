@@ -69,4 +69,24 @@
     <servlet-name>CancelReservation</servlet-name>
     <url-pattern>/CancelReservation</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewAndBook</display-name>
+    <servlet-name>ViewAndBook</servlet-name>
+    <servlet-class>servlets.ViewAndBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAndBook</servlet-name>
+    <url-pattern>/ViewAndBook</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TransactionConfirmation</display-name>
+    <servlet-name>TransactionConfirmation</servlet-name>
+    <servlet-class>servlets.TransactionConfirmation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransactionConfirmation</servlet-name>
+    <url-pattern>/TransactionConfirmation</url-pattern>
+  </servlet-mapping>
 </web-app>

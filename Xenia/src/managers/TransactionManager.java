@@ -10,8 +10,8 @@ public final class TransactionManager {
 	
 	public static List<Transaction> getTransactions(
 			Integer id, 
-			String cardHolderNumber, 
-			String creditCardNumber, 
+			String cardHolderName,
+			String creditCardNumber,
 			Double balance, 
 			String cardNickname, 
 			Integer userId, 
@@ -30,14 +30,14 @@ public final class TransactionManager {
 		    clauses.add("Id = ?");
 		    parameters.add(id);
 		}
-		if (cardHolderNumber != null) {
-		    clauses.add("CardHolderNumber = ?");
-		    parameters.add(cardHolderNumber);
+		if (cardHolderName != null) {
+		    clauses.add("CardHolderName = ?");
+		    parameters.add(cardHolderName);
 		} 
 		if (creditCardNumber != null) {
 		    clauses.add("CreditCardNumber = ?");
 		    parameters.add(creditCardNumber);
-		} 
+		}
 		if (balance != null) {
 		    clauses.add("Balance = ?");
 		    parameters.add(balance);
@@ -72,7 +72,7 @@ public final class TransactionManager {
 
 				Transaction transaction = new Transaction();
 				transaction.setId(rs.getInt("Id"));
-				transaction.setCardHolderNumber(rs.getString("CardHolderNumber"));
+				transaction.setCardHolderName(rs.getString("CardHolderName"));
 				transaction.setCreditCardNumber(rs.getString("CreditCardNumber"));
 				transaction.setBalance(rs.getFloat("Balance"));
 				transaction.setCardNickname(rs.getString("CardNickname"));
@@ -99,7 +99,6 @@ public final class TransactionManager {
 	public static void addTransaction(Transaction transaction) {
 		Connection con = DBConnectionManager.getConnection();
 		Statement addTransaction = null;
-		ResultSet rs = null;
 	
 		/*
 		 * 	private Integer ID;
@@ -110,17 +109,17 @@ public final class TransactionManager {
 	private Integer UserID;
 	private String CVV;
 		 */
-		String sql = "INSERT INTO CreditCards (CardHolderNumber, CreditCardNumber, Balance, CardNickname, UserId, CVV)" 
-		 + transaction.getCardHolderNumber() + ", " 
-		 + transaction.getCreditCardNumber() + ", "
-		 + transaction.getBalance() + ", "
-		 + transaction.getCardNickname() + ", "
-		 + transaction.getUserId() + ", "
-		 + transaction.getCvv();
+		String sql = "INSERT INTO CreditCards (CardHolderName, CreditCardNumber, Balance, CardNickname, UserId, CVV) VALUES (\'" 
+		 + transaction.getCardHolderName() + "\', \'"
+		 + transaction.getCreditCardNumber() + "\', \'"
+		 + transaction.getBalance() + "\', \'"
+		 + transaction.getCardNickname() + "\', \'"
+		 + transaction.getUserId() + "\', \'"
+		 + transaction.getCvv() + "\' )";
 		
 		try {
 			addTransaction = con.createStatement();
-			rs = addTransaction.executeQuery(sql);
+			addTransaction.executeUpdate(sql);
 
 			System.out.println("[TransactionManager] - Transaction " + transaction.getId() + " created.");
 		} catch (SQLException e) {
@@ -128,7 +127,6 @@ public final class TransactionManager {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
 				addTransaction.close();
 				con.close();
 			} catch (SQLException e) {
@@ -152,7 +150,7 @@ public final class TransactionManager {
 	private String CVV;
 		 */
 		
-		String sql = "UPDATE CreditCards SET CardHolderNumber = " + transaction.getCardHolderNumber() 
+		String sql = "UPDATE CreditCards SET CardHolderName = " + transaction.getCardHolderName() 
 		+ " CreditCardNumber = " + transaction.getCreditCardNumber()
 		+ " Balance = " + transaction.getBalance()
 		+ " CardNickname = " + transaction.getCardNickname() 
@@ -182,7 +180,7 @@ public final class TransactionManager {
 	
 	public static boolean validateTransaction(Transaction transaction) {
 	
-		List<Transaction> trans = getTransactions(transaction.getId(), transaction.getCardHolderNumber(), transaction.getCreditCardNumber(),
+		List<Transaction> trans = getTransactions(transaction.getId(), transaction.getCardHolderName(), transaction.getCreditCardNumber(),
 				transaction.getBalance(), transaction.getCardNickname(), transaction.getUserId(), transaction.getCvv());
 
 		if(!trans.isEmpty()){

@@ -186,5 +186,17 @@ public class Hotel {
 		return reviews;
 	}
 	
+	/**
+	 * @return
+	 */
+	public double getRating() {
+		double rating = 0;
+		for (HotelReview hr :  this.reviews) {
+			rating += hr.getRating();
+		}
+		rating /= this.reviews.size();
+		return rating;
+	}
+	
 	
 }

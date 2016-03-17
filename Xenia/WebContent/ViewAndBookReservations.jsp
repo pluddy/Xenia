@@ -11,92 +11,98 @@
 	<jsp:include page="/Header.jsp" />
 	<div class="container">
 		<div class="panel panel-default">
+
 			<div class="panel-heading">View and Book Reservation</div>
 			<div class="panel-body">
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Hotel:</label>
-					<div class="col-sm-10">
-						<p class="form-control-static">
-							<c:out value="${hotel.getHotelName()}" />
-						</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Address:</label>
-					<div class="col-sm-10">
-						<p class="form-control-static">
-							<c:out value="${hotel.getHotelAddress()}" />
-						</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Dates:</label>
-					<div class="col-sm-10">
-						<p class="form-control-static">
-							<c:out value="${hotel.getReservationDates()}" />
-						</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Number Of Rooms:</label>
-					<div class="col-sm-10">
-						<input type="number" class="form-control col-sm-4" placeholder="Number Of Rooms" name="numberOfRooms" value="${hotel.getNumRooms()}" min="1" max="15" />
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Price Per Night:</label>
-					<div class="col-sm-10">
-						<p class="form-control-static">
-							$
-							<c:out value="${hotel.getPricePerNight()}" />
-						</p>
-					</div>
-				</div>
+				<form class="form" action="ViewAndBook" method="post">
 
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Full Description:</label>
-					<div class="col-sm-10">
-						<p class="form-control-static">
-							<c:out value="${hotel.getHotelDescription()}" />
-						</p>
-					</div>
-				</div>
-
-				<div class="form-group clearfix">
-					<label class="col-sm-2 control-label">Amenities:</label>
-					<div class="col-sm-10">
-						<c:forEach var="amen" items="${hotel.getAmenities()}">
-							<span class="label label-default">
-								<c:out value="${amen}" />
-							</span>
-						</c:forEach>
-					</div>
-				</div>
-				<p></p>
-
-				<div class="form-group clearfix">
-					<label class="col-sm-2 control-label">Rating:</label>
-					<div class="col-sm-10">
-						<p class="form-control-static">
-							<input id="rating" class="rating" data-size="xs" data-symbol="&#xe006;" data-readonly="true" value="${hotel.getHotelRating()}" data-show-clear="false" data-show-caption="false">
-						</p>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Reviews:</label>
-					<div class="col-sm-10">
-						<c:forEach var="review" items="${hotel.getReviews()}">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Hotel:</label>
+						<div class="col-sm-10">
 							<p class="form-control-static">
-								"
-								<c:out value="${review}" />
-								"
+								<c:out value="${hotel.getHotel().getName()}" />
 							</p>
-						</c:forEach>
+						</div>
 					</div>
-				</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Address:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static">
+								<c:out value="${hotel.getHotel().getAddress()}" />
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Dates:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static">
+								<c:out value="${hotel.getQuery().getCheckInString()}" /> - <c:out value="${hotel.getQuery().getCheckOutString()}" />
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Number Of Rooms:</label>
+						<div class="col-sm-10">
+							<input type="number" class="form-control col-sm-4" placeholder="Number Of Rooms" name="numRooms" value="${hotel.getQuery().getNumRooms()}" min="1" max="15" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Price Per Night:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static">
+								$
+								<c:out value="${hotel.getRoom().getPricePerNight()}" />
+							</p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Full Description:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static">
+								<c:out value="${hotel.getHotel().getDescription()}" />
+							</p>
+						</div>
+					</div>
+
+					<div class="form-group clearfix">
+						<label class="col-sm-2 control-label">Amenities:</label>
+						<div class="col-sm-10">
+							<c:forEach var="amen" items="${hotel.getHotel().getAmenities()}">
+								<span class="label label-default">
+									<c:out value="${amen.getAmenity().getName()}" />
+								</span>
+							</c:forEach>
+						</div>
+					</div>
+					<p></p>
+
+					<div class="form-group clearfix">
+						<label class="col-sm-2 control-label">Rating:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static">
+								<input id="rating" class="rating" data-size="xs" data-symbol="&#xe006;" data-readonly="true" value="${hotel.getHotel().getRating()}" data-show-clear="false" data-show-caption="false">
+							</p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Reviews:</label>
+						<div class="col-sm-10">
+							<c:forEach var="review" items="${hotel.getHotel().getReviewsList()}">
+								<p class="form-control-static">
+									"
+									<c:out value="${review}" />
+									"
+								</p>
+							</c:forEach>
+						</div>
+					</div>
+					<button class="btn btn-success pull-right" type="submit">Book</button>
+				</form>
 			</div>
 			<div class="panel-footer clearfix">
+
 				<div class="col-sm-6">
 					<form class="form" action="ReservationSearch.jsp">
 						<button class="btn btn-default" type="submit">Back to Search Results</button>
@@ -105,11 +111,8 @@
 						<button class="btn btn-default" type="submit">New Search</button>
 					</form>
 				</div>
-				<div class="col-sm-6">
-					<form class="form pull-right" action="ReservationTransaction.jsp">
-						<button class="btn btn-primary" type="submit">Book</button>
-					</form>
-				</div>
+
+
 			</div>
 		</div>
 	</div>

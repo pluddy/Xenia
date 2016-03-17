@@ -31,7 +31,7 @@ public class CancelReservation extends HttpServlet {
 		HttpSession session = request.getSession();
 		int reservationId = (int)request.getAttribute("reservationId");
 		
-		Reservation hotelReservation = ReservationManager.getResrvations(reservationId, null, null, null, null, null, null, null, null, null).get(0);
+		Reservation hotelReservation = ReservationManager.getReservations(reservationId, null, null, null, null, null, null, null, null, null).get(0);
 		
 		request.setAttribute("reservation", hotelReservation);
 		request.getRequestDispatcher("CancelReservations.jsp").forward(request, response);

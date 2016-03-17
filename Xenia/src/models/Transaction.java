@@ -3,7 +3,7 @@ package models;
 public class Transaction {
 	
 	private int id;
-	private String cardHolderNumber;
+	private String cardHolderName;
 	private String creditCardNumber;
 	private double balance;
 	private String cardNickname;
@@ -34,15 +34,15 @@ public class Transaction {
 	/**
 	 * @return the cardHolderNumber
 	 */
-	public String getCardHolderNumber() {
-		return cardHolderNumber;
+	public String getCardHolderName() {
+		return cardHolderName;
 	}
 
 	/**
 	 * @param cardHolderNumber the cardHolderNumber to set
 	 */
-	public void setCardHolderNumber(String cardHolderNumber) {
-		this.cardHolderNumber = cardHolderNumber;
+	public void setCardHolderName(String cardHolderNumber) {
+		this.cardHolderName = cardHolderNumber;
 	}
 
 	/**

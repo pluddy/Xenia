@@ -135,7 +135,6 @@ public final class ReservationManager {
 	public static void addReservation(Reservation reservation) {
 		Connection con = DBConnectionManager.getConnection();
 		Statement addReservation = null;
-		ResultSet rs = null;
 	
 		/*
 			private Integer ID;
@@ -150,20 +149,20 @@ public final class ReservationManager {
 			private Integer RoomTypeID;
 		*/
 
-		String sql = "INSERT INTO CreditCards (HotelId, CheckInDate, CheckOutDate, NumberOfRooms, ReservationNumber, UserId, Status, Notes, RoomTypeId)" 
-		 + reservation.getHotelId() + ", " 
-		 + reservation.getCheckInDate() + ", "
-		 + reservation.getCheckOutDate() + ", "
-		 + reservation.getNumberOfRooms() + ", "
-		 + reservation.getReservationNumber() + ", "
-		 + reservation.getUserId() + ", "
-		 + reservation.getStatus() + ", "
-		 + reservation.getNotes() + ", "
-		 + reservation.getRoomTypeId() + ", ";
+		String sql = "INSERT INTO CreditCards (HotelId, CheckInDate, CheckOutDate, NumberOfRooms, ReservationNumber, UserId, Status, Notes, RoomTypeId) VALUES (\'" 
+		 + reservation.getHotelId() + "\', \'"
+		 + reservation.getCheckInDate() + "\', \'"
+		 + reservation.getCheckOutDate() + "\', \'"
+		 + reservation.getNumberOfRooms() + "\', \'"
+		 + reservation.getReservationNumber() + "\', \'"
+		 + reservation.getUserId() + "\', \'"
+		 + reservation.getStatus() + "\', \'"
+		 + reservation.getNotes() + "\', \'"
+		 + reservation.getRoomTypeId() + "\' )";
 		
 		try {
 			addReservation = con.createStatement();
-			rs = addReservation.executeQuery(sql);
+			addReservation.executeUpdate(sql);
 		
 			System.out.println("[ReservationManager] - Reservation " + reservation.getId() + " created.");
 			
@@ -172,7 +171,6 @@ public final class ReservationManager {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
 				addReservation.close();
 				con.close();
 			} catch (SQLException e) {

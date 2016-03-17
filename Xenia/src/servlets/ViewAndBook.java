@@ -9,20 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import managers.ReservationManager;
-import models.Reservation;
-import models.User;
+import beans.ReservationBean;
+import managers.HotelManager;
+import models.Hotel;
+import models.HotelRoom;
 
 /**
- * Servlet implementation class ManageReservation
+ * Servlet implementation class ViewAndBook
  */
-public class ManageReservation extends HttpServlet {
+public class ViewAndBook extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageReservation() {
+    public ViewAndBook() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,23 +32,27 @@ public class ManageReservation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		
-		User user = (User)session.getAttribute("user");
-		List<Reservation> reservations = ReservationManager.getReservations(null, null, null, null, null, null, user.getId(), null, null, null);
-		
-		request.setAttribute("reservations", reservations);
-		request.getRequestDispatcher("ManageReservations.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		String paramater = request.getParameter("reservationId");
-		request.setAttribute("reservationId", request.getParameter("reservationId"));
-		request.getRequestDispatcher("CancelReservation").forward(request, response);
+		HttpSession session = request.getSession();
+		ReservationBean reservation = (ReservationBean)session.getAttribute("hotel");
+		
+		int finalRooms = Integer.parseInt(request.getParameter("numRooms"));
+		if (reservation.getRoom().getAvailableNumber() < finalRooms) {
+			response.sendError(400, "Not enough rooms to satisfy number chosen");;
+		} else {
+			reservation.getQuery().setNumRooms(finalRooms);
+		}
+		
+		session.setAttribute("hotel", reservation);
+		
+		request.getRequestDispatcher("ReservationTransaction.jsp").forward(request, response);
 	}
 
 }
