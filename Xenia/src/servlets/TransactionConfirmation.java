@@ -82,7 +82,7 @@ public class TransactionConfirmation extends HttpServlet {
 		} else {
 			creditCard = creditCards.get(0);
 		}
-		if (reservation.getRoom().getPricePerNight() * reservation.getQuery().getDuration() < creditCard.getBalance()){
+		if (reservation.getRoom().getPricePerNight() < creditCard.getBalance()){
 			
 			creditCard.setBalance(creditCard.getBalance() - reservation.getRoom().getPricePerNight() * reservation.getQuery().getDuration());
 			TransactionManager.updateTransaction(creditCard);
@@ -92,7 +92,6 @@ public class TransactionConfirmation extends HttpServlet {
 			user.setCity(billingCity);
 			user.setState(billingState);
 			user.setZip(billingZip);
-			UserManager.updateUser(user);
 			session.setAttribute("user", user);
 			
 			res.setCheckInDate(reservation.getQuery().getCheckInString());

@@ -149,7 +149,7 @@ public final class ReservationManager {
 			private Integer RoomTypeID;
 		*/
 
-		String sql = "INSERT INTO CreditCards (HotelId, CheckInDate, CheckOutDate, NumberOfRooms, ReservationNumber, UserId, Status, Notes, RoomTypeId) VALUES (\'" 
+		String sql = "INSERT INTO HotelReservations (HotelId, CheckInDate, CheckOutDate, NumberOfRooms, ReservationNumber, UserId, Status, Notes, RoomTypeId) VALUES (\'" 
 		 + reservation.getHotelId() + "\', \'"
 		 + reservation.getCheckInDate() + "\', \'"
 		 + reservation.getCheckOutDate() + "\', \'"

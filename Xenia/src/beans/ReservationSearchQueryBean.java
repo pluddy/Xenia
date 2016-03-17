@@ -41,7 +41,8 @@ public class ReservationSearchQueryBean {
 	 * @return
 	 */
 	public int getDuration() {
-		return this.daysBetween(this.checkIn, this.checkOut);
+		int test = this.daysBetween(this.checkIn, this.checkOut);
+		return test;
 	}
 	
 	public int daysBetween(Calendar day1, Calendar day2){

@@ -9,7 +9,7 @@
 <body>
 	<jsp:include page="/Header.jsp"/>
 	<div class="container">
-		<div class="alert alert-success" role="alert">Your Reservation has been Confirmed</div>
+		<div class="alert alert-success" role="alert"><c:out value="${message }" /></div>
 		<form class="form-horizontal" id="reservationTransaction" action="ReservationTransactionConfirmation.jsp" method="post">
 			<div class="panel panel-default">
 				<div class="panel-heading">Booking Summary</div>
