@@ -119,4 +119,14 @@
     <servlet-name>ConfrimCancellation</servlet-name>
     <url-pattern>/ConfrimCancellation</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateReservationHistory</display-name>
+    <servlet-name>UpdateReservationHistory</servlet-name>
+    <servlet-class>servlets.UpdateReservationHistory</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateReservationHistory</servlet-name>
+    <url-pattern>/UpdateReservationHistory</url-pattern>
+  </servlet-mapping>
 </web-app>

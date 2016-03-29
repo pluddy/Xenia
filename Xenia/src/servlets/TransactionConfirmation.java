@@ -67,7 +67,7 @@ public class TransactionConfirmation extends HttpServlet {
 		String billingState = request.getParameter("billingState");
 		String billingCountry = request.getParameter("billingCountry");
 		String billingZip = request.getParameter("billingZip");
-		
+	/*	
 		List<Transaction> creditCards = TransactionManager.getTransactions(null, null, creditCardNumber, null,null, null, creditCardCVV);
 		Transaction creditCard = null;
 		if (creditCards.isEmpty()) {
@@ -86,7 +86,7 @@ public class TransactionConfirmation extends HttpServlet {
 			
 			creditCard.setBalance(creditCard.getBalance() - reservation.getRoom().getPricePerNight() * reservation.getQuery().getDuration());
 			TransactionManager.updateTransaction(creditCard);
-			
+			*/
 			user.setAddress1(billingAddress1);
 			user.setAddress2(billingAddress2);
 			user.setCity(billingCity);
@@ -113,19 +113,19 @@ public class TransactionConfirmation extends HttpServlet {
 			}
 			res.setUserId(user.getId());
 			ReservationManager.addReservation(res);
-			session.setAttribute("transaction", creditCard);
+			//session.setAttribute("transaction", creditCard);
 			session.setAttribute("reservation", res);
 			
 			message = "Transaction successfully completed, your reservation number is: " + res.getReservationNumber();
 			success = true;
-		} else {
-			message = "Transaction failed, insufficient funds";
-			success = false;
-		}
+		//} else {
+		//	message = "Transaction failed, insufficient funds";
+		//	success = false;
+		//}
 		
 		session.setAttribute("message", message);
 		session.setAttribute("success", success);
-		request.getRequestDispatcher("ReservationTransactionConfirmation.jsp").forward(request, response);
+		request.getRequestDispatcher("CustomerHomepage.jsp").forward(request, response);
 	}
 
 }
