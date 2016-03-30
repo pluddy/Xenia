@@ -7,44 +7,57 @@
 <title>Reservation Transaction</title>
 </head>
 <body>
-	<jsp:include page="/Header.jsp"/>
+	<jsp:include page="/Header.jsp" />
 	<div class="container">
 		<form class="form-horizontal" id="reservationTransaction" action="TransactionConfirmation" method="post">
-			<div class="panel panel-default">
-				<div class="panel-heading">Booking Summary</div>
-				<div class="panel-body">
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Hotel: </label>
-						<div class="col-sm-10">
-							<c:out value="${hotel.getHotel().getName() }" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Location: </label>
-						<div class="col-sm-10">
-							<p class="form-control-static"><c:out value="${hotel.getHotel().getCity() }" />, <c:out value="${hotel.getHotel().getState() }" /></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Number of Rooms: </label>
-						<div class="col-sm-10">
-							<p class="form-control-static"><c:out value="${hotel.getQuery().getNumRooms() }" /></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Dates: </label>
-						<div class="col-sm-10">
-							<p class="form-control-static"><c:out value="${hotel.getQuery().getCheckInString() }" />-<c:out value="${hotel.getQuery().getCheckOutString() }" /></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Price: </label>
-						<div class="col-sm-10">
-							<p class="form-control-static">$<c:out value="${hotel.getRoom().getPricePerNight() }" /></p>
-						</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">Booking Summary</div>
+					<div class="panel-body">
+						<table id="ReservationTable" class="table">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Address</th>
+									<th>Description</th>
+									<th>Room Type</th>
+									<th>Check In</th>
+									<th>Check Out</th>
+									<th>Price/Night</th>
+									<th>Rooms</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="item" items="${shoppingCart.getReservations()}">
+									<tr>
+										<td><c:out value="${item.getHotel().getName()}" /></td>
+										<td><c:out value="${item.getHotel().getAddress()}" /></td>
+										<td><c:out value="${item.getHotel().getDescription()}" /></td>
+										<td><c:out value="${item.getRoom().getRoomType().getRoomType()}" /></td>
+										<td><c:out value="${item.getQuery().getCheckInString()}" /></td>
+										<td><c:out value="${item.getQuery().getCheckOutString()}" /></td>
+										<td>$<c:out value="${item.getRoom().getPricePerNight()}" /></td>
+										<td><c:out value="${item.getQuery().getNumRooms()}" /></td>
+										<td>$<c:out value="${item.getPrice()}" /></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th>Total</th>
+									<td>$<c:out value="${shoppingCart.getTotalPrice()}" /></td>
+								</tr>
+							</tfoot>
+						</table>
 					</div>
 				</div>
-			</div>
 			<div class="panel panel-default">
 				<div class="panel-heading">Credit Card Information</div>
 				<div class="panel-body">
@@ -152,23 +165,23 @@
 	</div>
 
 
-	<jsp:include page="/Footer.jsp"/>
+	<jsp:include page="/Footer.jsp" />
 	<script type="text/javascript">
-			$(".datepicker").datepicker( {
-			    format: "mm/yyyy",
-			    startView: "months", 
-			    minViewMode: "months"
-			});
-			var form = document.getElementById("reservationTransaction");
-			
-			function cancel() {
-				form.action="ReservationSearch.jsp";
-				form.submit();
-			}
-			function submit() {
-				form.action="ReservationTransactionConfirmation.jsp";
-				form.submit();
-			}
-			</script>
+		$(".datepicker").datepicker({
+			format : "mm/yyyy",
+			startView : "months",
+			minViewMode : "months"
+		});
+		var form = document.getElementById("reservationTransaction");
+
+		function cancel() {
+			form.action = "ReservationSearch.jsp";
+			form.submit();
+		}
+		function submit() {
+			form.action = "ReservationTransactionConfirmation.jsp";
+			form.submit();
+		}
+	</script>
 </body>
 </html>

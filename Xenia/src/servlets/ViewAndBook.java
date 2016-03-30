@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.ReservationBean;
+import beans.ShoppingCartBean;
 import managers.HotelManager;
 import models.Hotel;
 import models.HotelRoom;
@@ -42,6 +43,10 @@ public class ViewAndBook extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		ReservationBean reservation = (ReservationBean)session.getAttribute("hotel");
+		ShoppingCartBean shoppingCart = (ShoppingCartBean)session.getAttribute("shoppingCart");
+		if (shoppingCart == null) {
+			shoppingCart = new ShoppingCartBean();
+		}
 		
 		int finalRooms = Integer.parseInt(request.getParameter("numRooms"));
 		if (reservation.getRoom().getAvailableNumber() < finalRooms) {
@@ -49,10 +54,12 @@ public class ViewAndBook extends HttpServlet {
 		} else {
 			reservation.getQuery().setNumRooms(finalRooms);
 		}
+				
+		shoppingCart.addReservation(reservation);
+				
+		session.setAttribute("shoppingCart", shoppingCart);
 		
-		session.setAttribute("hotel", reservation);
-		
-		request.getRequestDispatcher("ReservationTransaction.jsp").forward(request, response);
+		request.getRequestDispatcher("ReservationSearch.jsp").forward(request, response);
 	}
 
 }

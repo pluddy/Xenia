@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -49,17 +50,15 @@ public class ReservationSearchQuery extends HttpServlet {
 		
 		String checkInDate = request.getParameter("checkInDate");
 		String[] arr = checkInDate.split("/");
-		Calendar checkIn = Calendar.getInstance();
-		checkIn.set(Calendar.YEAR, Integer.parseInt(arr[2]));
-		checkIn.set(Calendar.MONTH, Integer.parseInt(arr[1]));
-		checkIn.set(Calendar.DATE, Integer.parseInt(arr[0]));
+		Calendar checkIn = GregorianCalendar.getInstance();
+		checkIn.set(Integer.parseInt(arr[2]), Integer.parseInt(arr[0]), Integer.parseInt(arr[1]));
+		System.out.println(checkIn.get(Calendar.DAY_OF_MONTH));
 		
 		String checkOutDate = request.getParameter("checkOutDate");
 		arr = checkOutDate.split("/");
-		Calendar checkOut = Calendar.getInstance();
-		checkIn.set(Calendar.YEAR, Integer.parseInt(arr[2]));
-		checkIn.set(Calendar.MONTH, Integer.parseInt(arr[1]));
-		checkIn.set(Calendar.DATE, Integer.parseInt(arr[0]));
+		Calendar checkOut = GregorianCalendar.getInstance();
+		checkOut.set(Integer.parseInt(arr[2]), Integer.parseInt(arr[0]), Integer.parseInt(arr[1]));
+		System.out.println(checkOut.get(Calendar.DAY_OF_MONTH));
 		
 		String locationCity = request.getParameter("locationCity");
 		String numberOfRooms = request.getParameter("numberOfRooms");

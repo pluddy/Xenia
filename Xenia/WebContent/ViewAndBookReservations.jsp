@@ -98,7 +98,7 @@
 							</c:forEach>
 						</div>
 					</div>
-					<button class="btn btn-success pull-right" type="submit">Book</button>
+					<button class="btn btn-success pull-right" type="submit">Add to Cart</button>
 				</form>
 			</div>
 			<div class="panel-footer clearfix">

@@ -56,5 +56,9 @@ public class ReservationBean {
 		this.query = query;
 	}
 	
+	public double getPrice() {
+		return this.query.getDuration() * this.room.getPricePerNight() * this.query.getNumRooms();
+	}
+	
 	
 }

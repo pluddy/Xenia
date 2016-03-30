@@ -44,7 +44,7 @@ public class ReservationSearchQueryBean {
 		int test = this.daysBetween(this.checkIn, this.checkOut);
 		return test;
 	}
-	
+		
 	public int daysBetween(Calendar day1, Calendar day2){
 	    Calendar dayOne = (Calendar) day1.clone(),
 	            dayTwo = (Calendar) day2.clone();
@@ -80,7 +80,7 @@ public class ReservationSearchQueryBean {
 	}
 	
 	public String getCheckInString() {
-		return this.checkIn.MONTH + "/" + this.checkIn.DATE + "/" + this.checkIn.YEAR;
+		return this.checkIn.get(Calendar.MONTH) + "/" + this.checkIn.get(Calendar.DAY_OF_MONTH) + "/" + this.checkIn.get(Calendar.YEAR);
 	}
 	/**
 	 * @param checkIn the checkIn to set
@@ -96,7 +96,7 @@ public class ReservationSearchQueryBean {
 	}
 	
 	public String getCheckOutString() {
-		return this.checkOut.MONTH + "/" + this.checkOut.DATE + "/" + this.checkOut.YEAR;
+		return this.checkOut.get(Calendar.MONTH) + "/" + this.checkOut.get(Calendar.DAY_OF_MONTH) + "/" + this.checkOut.get(Calendar.YEAR);
 	}
 	/**
 	 * @param checkOut the checkOut to set

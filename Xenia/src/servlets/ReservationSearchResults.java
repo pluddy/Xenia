@@ -48,7 +48,9 @@ public class ReservationSearchResults extends HttpServlet {
 		List<Hotel> hotelsList = HotelManager.getHotels(hotelId, null, null, null, null, null, null, null);
 		Hotel hotel = hotelsList.get(0);
 		
-		ReservationSearchQueryBean query = (ReservationSearchQueryBean)session.getAttribute("query");
+		ReservationSearchQueryBean _query = (ReservationSearchQueryBean)session.getAttribute("query");
+		ReservationSearchQueryBean query = new ReservationSearchQueryBean(_query.getCheckIn(),_query.getCheckOut(),_query.getCity(),_query.getNumRooms(),_query.getRoomType(),_query.getAmenities());
+		
 		
 		List<HotelRoom> rooms = hotel.getRooms();
 		HotelRoom room = null;

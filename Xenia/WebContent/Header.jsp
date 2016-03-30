@@ -1,7 +1,7 @@
 <link rel='stylesheet' href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
 <link rel='stylesheet' href='webjars/bootstrap-datepicker/1.6.0/dist/css/bootstrap-datepicker.min.css'>
 <link rel='stylesheet' href='webjars/bootstrap-star-rating/3.5.4/css/star-rating.min.css'>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar navbar-default">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -15,20 +15,36 @@
 			<a class="navbar-brand" href="CustomerHomepage.jsp">Xenia</a>
 		</div>
 		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li>
-					<a href="ManageReservation">Manage</a>
+			<c:if test="${user != null}">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="ManageReservation">Manage</a>
 
-				</li>
-			</ul>
-			<p class="navbar-text navbar-right clearfix">
-					<span class="label label-default" display="inline-block"><c:out value="${user.getFirstName() }"></c:out></span>
-			</p>
-			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<a href="Logout">Logout</a>
-				</li>
-			</ul>
+					</li>
+				</ul>
+				<p class="navbar-text navbar-right clearfix" style="padding-top:3px">
+					<span class="label label-default" display="inline-block">
+						<c:out value="${user.getFirstName() }"></c:out>
+					</span>
+				</p>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<form class="form" action="ShoppingCart.jsp">
+							<button type="submit" class="btn btn-default navbar-btn">
+								<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+								<c:if test="${shoppingCart.getReservations().size() > 0}">
+									<span class="badge">
+										<c:out value="${shoppingCart.getReservations().size()}"></c:out>
+									</span>
+								</c:if>
+							</button>
+						</form>
+					</li>
+					<li>
+						<a href="Logout">Logout</a>
+					</li>
+				</ul>
+			</c:if>
 		</div>
 	</div>
 </nav>

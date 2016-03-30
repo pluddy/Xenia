@@ -119,4 +119,14 @@
     <servlet-name>ConfrimCancellation</servlet-name>
     <url-pattern>/ConfrimCancellation</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShoppingCart</display-name>
+    <servlet-name>ShoppingCart</servlet-name>
+    <servlet-class>servlets.ShoppingCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingCart</servlet-name>
+    <url-pattern>/ShoppingCart</url-pattern>
+  </servlet-mapping>
 </web-app>
