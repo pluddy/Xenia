@@ -9,7 +9,12 @@
 <body>
 	<jsp:include page="/Header.jsp"/>
 	<div class="container">
+		<div id="results">
+	</div>
 		<form class="form-horizontal" id="reservationTransaction" action="TransactionConfirmation" method="post">
+		
+			<button class="btn btn-primary pull-right" type="submit" id="makeReservation" style="display:none">Finish Reservation</button>
+		
 			<div class="panel panel-default">
 				<div class="panel-heading">Booking Summary</div>
 				<div class="panel-body">
@@ -40,7 +45,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Price: </label>
 						<div class="col-sm-10">
-							<p class="form-control-static">$<c:out value="${hotel.getRoom().getPricePerNight() }" /></p>
+							<p class="form-control-static" id="price">$<c:out value="${hotel.getRoom().getPricePerNight() }" /></p>
 						</div>
 					</div>
 				</div>
@@ -74,13 +79,13 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Card Number </label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="XXXX-XXXX-XXXX-1234" name="creditCardNumber">
+							<input class="form-control" placeholder="XXXX-XXXX-XXXX-1234" id="creditCardNumber" name="creditCardNumber">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Security Code </label>
 						<div class="col-sm-2">
-							<input class="form-control" placeholder="XXX" name="creditCardCVV">
+							<input class="form-control" placeholder="XXX" id="creditCardCVV" name="creditCardCVV">
 						</div>
 					</div>
 					<div class="form-group">
@@ -144,11 +149,11 @@
 					</div>
 				</div>
 				<div class="panel-footer clearfix">
-					<button class="btn btn-default" onclick="cancel()">Cancel</button>
-					<button class="btn btn-primary pull-right" type="submit">Confirm Reservation</button>
+					<button class="btn btn-default" type="button" onclick="cancel()">Cancel</button>
+					<button class="btn btn-primary pull-right" type="button" id="submitButton">Confirm Reservation</button>
 				</div>
 			</div>
-		</form>
+						</form>
 	</div>
 
 
@@ -166,9 +171,33 @@
 				form.submit();
 			}
 			function submit() {
-				form.action="ReservationTransactionConfirmation.jsp";
-				form.submit();
+
+				var creditCardNumber = $("#creditCardNumbr").val();
+				var creditCardCVV  = $("#creditCardCVV").val();
+				var totalCost = $("#price").val();
+				alert("Before Get");
+			    $.get("../Banking/BankServlet", {creditCardNumber:creditCardNumber, CVV:creditCardCVV, totalCost:totalCost}, function(data,status) {
+			    	alert(data);
+			    	$("#results").html(data);
+			    });
+			    alert("After Get");
+				//form.action="ReservationTransactionConfirmation.jsp";
+				//form.submit();
 			}
+			
+			$("#submitButton").click(function(){
+				var creditCardNumber = $("#creditCardNumber").val();
+				var creditCardCVV  = $("#creditCardCVV").val();
+				var totalCost = $("#price").text();
+
+			    $.get("../Banking/Bank", {creditCardNumber:creditCardNumber, CVV:creditCardCVV, totalCost:totalCost}, function(data,status) {
+			    	alert(data);
+			    	$("#results").html(data);
+			    });
+			    
+			    $("#makeReservation").show();
+
+			});
 			</script>
 </body>
 </html>
