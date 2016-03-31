@@ -61,6 +61,7 @@ public final class TransactionManager {
 			if (!clauses.isEmpty()) {
 			    sql += " where " + StringUtils.join(clauses, " and ");
 			}
+			System.out.println("[Banking-TransactionManager] - Get Transactions Sql " + sql +" "+ creditCardNumber +" "+ cvv);
 
 			ps = con.prepareStatement(sql);
 			for (int i = 0; i < parameters.size(); i++) {
@@ -70,6 +71,7 @@ public final class TransactionManager {
 			rs = ps.executeQuery();
 			
 			while (rs.next()){
+				System.out.println("[Banking-TransactionManager] - Setting Transaction Model");
 
 				Transaction transaction = new Transaction();
 				transaction.setId(rs.getInt("Id"));
@@ -151,13 +153,13 @@ public final class TransactionManager {
 	private String CVV;
 		 */
 		
-		String sql = "UPDATE CreditCards SET CardHolderName = " + transaction.getCardHolderName() 
-		+ " CreditCardNumber = " + transaction.getCreditCardNumber()
-		+ " Balance = " + transaction.getBalance()
-		+ " CardNickname = " + transaction.getCardNickname() 
-		+ " UserId = " + transaction.getUserId()
-		+ " CVV = " + transaction.getCvv() 
-		+ " WHERE Id = " + transaction.getId(); 
+		String sql = "UPDATE CreditCards SET CardHolderName = '" + transaction.getCardHolderName() 
+		+ "', CreditCardNumber = '" + transaction.getCreditCardNumber()
+		+ "', Balance = " + transaction.getBalance()
+		+ ", CardNickname = '" + transaction.getCardNickname() 
+		+ "', UserId = " + transaction.getUserId()
+		+ ", CVV = '" + transaction.getCvv() 
+		+ "' WHERE Id = " + transaction.getId(); 
 
 		
 		try {
