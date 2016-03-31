@@ -87,13 +87,13 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Card Number </label>
 						<div class="col-sm-4">
-							<input class="form-control" placeholder="XXXX-XXXX-XXXX-1234" name="creditCardNumber">
+							<input class="form-control" id="creditCardNumber" placeholder="XXXX-XXXX-XXXX-1234" name="creditCardNumber">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Security Code </label>
 						<div class="col-sm-2">
-							<input class="form-control" placeholder="XXX" name="creditCardCVV">
+							<input class="form-control" id ="creditCardCVV" placeholder="XXX" name="creditCardCVV">
 						</div>
 					</div>
 					<div class="form-group">
@@ -167,21 +167,29 @@
 
 	<jsp:include page="/Footer.jsp" />
 	<script type="text/javascript">
-		$(".datepicker").datepicker({
-			format : "mm/yyyy",
-			startView : "months",
-			minViewMode : "months"
-		});
-		var form = document.getElementById("reservationTransaction");
+			$(".datepicker").datepicker( {
+			    format: "mm/yyyy",
+			    startView: "months", 
+			    minViewMode: "months"
+			});
+			var form = document.getElementById("reservationTransaction");
+			
+			function cancel() {
+				form.action="ReservationSearch.jsp";
+				form.submit();
+			}
+			function submit() {
 
-		function cancel() {
-			form.action = "ReservationSearch.jsp";
-			form.submit();
-		}
-		function submit() {
-			form.action = "ReservationTransactionConfirmation.jsp";
-			form.submit();
-		}
-	</script>
+				var creditCardNumber = $("#creditCardNumbr").val();
+				var creditCardCVV  = $("#creditCardCVV").val();
+				var totalCost = $("#price").val();
+				
+			    $.get("../Banking/BankServlet", {creditCardNumber:creditCardNumber, CVV:creditCardCVV, totalCost:totalCost}, function(data,status) {
+
+			    });
+				form.action="ReservationTransactionConfirmation.jsp";
+				form.submit();
+			}
+			</script>
 </body>
 </html>
