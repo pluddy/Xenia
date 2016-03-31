@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.ReservationBean;
+import beans.ShoppingCartBean;
 import managers.ReservationManager;
 import managers.TransactionManager;
 import managers.UserManager;
@@ -44,7 +45,8 @@ public class TransactionConfirmation extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		ReservationBean reservation = (ReservationBean)session.getAttribute("hotel");
+		ShoppingCartBean shoppingCart = (ShoppingCartBean)session.getAttribute("shoppingCart");
+		
 		User user = (User)session.getAttribute("user");
 		Transaction trans = new Transaction();
 		Reservation res = new Reservation();
@@ -93,26 +95,28 @@ public class TransactionConfirmation extends HttpServlet {
 			user.setState(billingState);
 			user.setZip(billingZip);
 			session.setAttribute("user", user);
-			
-			res.setCheckInDate(reservation.getQuery().getCheckInString());
-			res.setCheckOutDate(reservation.getQuery().getCheckOutString());
-			res.setHotel(reservation.getHotel());
-			res.setHotelId(reservation.getHotel().getId());
-			res.setNumberOfRooms(reservation.getQuery().getNumRooms());
-			res.setReservationNumber("" + (int)(Math.random() * 9999));
-			switch (reservation.getQuery().getRoomType()) {
-			case "Suite":
-				res.setRoomTypeId(1);
-				break;
-			case "Standard":
-				res.setRoomTypeId(2);
-				break;
-			case "Family":
-				res.setRoomTypeId(3);
-				break;
+			for (ReservationBean reservation : shoppingCart.getReservations()) {
+				res.setCheckIn(reservation.getQuery().getCheckIn());
+				res.setCheckOut(reservation.getQuery().getCheckOut());
+				res.setHotel(reservation.getHotel());
+				res.setHotelId(reservation.getHotel().getId());
+				res.setNumberOfRooms(reservation.getQuery().getNumRooms());
+				res.setReservationNumber("" + (int)(Math.random() * 9999));
+				switch (reservation.getQuery().getRoomType()) {
+				case "Suite":
+					res.setRoomTypeId(1);
+					break;
+				case "Standard":
+					res.setRoomTypeId(2);
+					break;
+				case "Family":
+					res.setRoomTypeId(3);
+					break;
+				}
+				res.setUserId(user.getId());
+				ReservationManager.addReservation(res);
 			}
-			res.setUserId(user.getId());
-			ReservationManager.addReservation(res);
+			
 			//session.setAttribute("transaction", creditCard);
 			session.setAttribute("reservation", res);
 			

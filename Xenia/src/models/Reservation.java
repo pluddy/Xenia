@@ -6,8 +6,8 @@ import java.util.Date;
 public class Reservation {
 	private int id;
 	private int hotelId;
-	private String checkInDate;
-	private String checkOutDate;
+	private Calendar checkIn;
+	private Calendar checkOut;
 	private int numberOfRooms;
 	private String reservationNumber;
 	private int userId;
@@ -52,29 +52,29 @@ public class Reservation {
 	/**
 	 * @return the checkInDate
 	 */
-	public String getCheckInDate() {
-		return checkInDate;
+	public Calendar getCheckIn() {
+		return checkIn;
 	}
 
 	/**
 	 * @param checkInDate the checkInDate to set
 	 */
-	public void setCheckInDate(String checkInDate) {
-		this.checkInDate = checkInDate;
+	public void setCheckIn(Calendar checkIn) {
+		this.checkIn = checkIn;
 	}
 
 	/**
 	 * @return the checkOutDate
 	 */
-	public String getCheckOutDate() {
-		return checkOutDate;
+	public Calendar getCheckOut() {
+		return checkOut;
 	}
 
 	/**
 	 * @param checkOutDate the checkOutDate to set
 	 */
-	public void setCheckOutDate(String checkOutDate) {
-		this.checkOutDate = checkOutDate;
+	public void setCheckOut(Calendar checkOut) {
+		this.checkOut = checkOut;
 	}
 
 	/**

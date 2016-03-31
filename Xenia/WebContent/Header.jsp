@@ -19,7 +19,6 @@
 				<ul class="nav navbar-nav">
 					<li>
 						<a href="ManageReservation">Manage</a>
-
 					</li>
 				</ul>
 				<p class="navbar-text navbar-right clearfix" style="padding-top:3px">
@@ -42,6 +41,13 @@
 					</li>
 					<li>
 						<a href="Logout">Logout</a>
+					</li>
+				</ul>
+			</c:if>
+			<c:if test="${user == null}">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="Login">Login</a>
 					</li>
 				</ul>
 			</c:if>

@@ -27,7 +27,7 @@
 					<tr>
 						<td><c:out value="${reservation.getHotel().getName()}"/></td>
 						<td><c:out value="${reservation.getHotel().getCity()}"/></td>
-						<td><c:out value="${reservation.getCheckInDate()} - "/>  <c:out value="${reservation.getCheckOutDate()}"/></td>
+						<td><c:out value="${reservation.getCheckIn().getTime().toString()} - "/>  <c:out value="${reservation.getCheckOut().getTime().toString()}"/></td>
 						<td>
 							 <form class="form" action="ManageReservation" method="post">
 							

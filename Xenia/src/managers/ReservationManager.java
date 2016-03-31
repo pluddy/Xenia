@@ -105,8 +105,18 @@ public final class ReservationManager {
 				Reservation reservation = new Reservation();
 				reservation.setId(rs.getInt("Id"));
 				reservation.setHotelId(rs.getInt("HotelId"));
-		        reservation.setCheckInDate(rs.getDate("CheckInDate").toString());
-		        reservation.setCheckOutDate(rs.getDate("CheckOutDate").toString());
+				
+				java.sql.Date date = java.sql.Date.valueOf(rs.getDate("CheckInDate").toString());
+
+		        Calendar cal = new GregorianCalendar();
+		        cal.setTime(date);
+		        reservation.setCheckIn(cal);
+		        
+		        java.sql.Date date2 = java.sql.Date.valueOf(rs.getDate("CheckOutDate").toString());
+
+		        Calendar cal2 = new GregorianCalendar();
+		        cal2.setTime(date2);
+		        reservation.setCheckOut(cal2);
 				reservation.setNumberOfRooms(rs.getInt("NumberOfRooms"));
 				reservation.setReservationNumber(rs.getString("ReservationNumber"));
 				reservation.setUserId(rs.getInt("UserId"));
@@ -151,8 +161,8 @@ public final class ReservationManager {
 
 		String sql = "INSERT INTO HotelReservations (HotelId, CheckInDate, CheckOutDate, NumberOfRooms, ReservationNumber, UserId, Status, Notes, RoomTypeId) VALUES (\'" 
 		 + reservation.getHotelId() + "\', \'"
-		 + reservation.getCheckInDate() + "\', \'"
-		 + reservation.getCheckOutDate() + "\', \'"
+		 + reservation.getCheckIn().get(Calendar.YEAR) + "-" + reservation.getCheckIn().get(Calendar.MONTH) + "-" + reservation.getCheckIn().get(Calendar.DAY_OF_MONTH) + "\', \'"
+		 + reservation.getCheckOut().get(Calendar.YEAR) + "-" + reservation.getCheckOut().get(Calendar.MONTH) + "-" + reservation.getCheckOut().get(Calendar.DAY_OF_MONTH) + "\', \'"
 		 + reservation.getNumberOfRooms() + "\', \'"
 		 + reservation.getReservationNumber() + "\', \'"
 		 + reservation.getUserId() + "\', \'"

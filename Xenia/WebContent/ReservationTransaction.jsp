@@ -12,6 +12,7 @@
 		<div id="results">
 	</div>
 		<form class="form-horizontal" id="reservationTransaction" action="TransactionConfirmation" method="post">
+		<button class="btn btn-primary pull-right" type="submit" id="makeReservation" style="display: none">Finish Reservation</button>
 				<div class="panel panel-default">
 					<div class="panel-heading">Booking Summary</div>
 					<div class="panel-body">
@@ -54,7 +55,7 @@
 									<th></th>
 									<th></th>
 									<th>Total</th>
-									<td>$<c:out value="${shoppingCart.getTotalPrice()}" /></td>
+									<td id="totalPrice">$<c:out value="${shoppingCart.getTotalPrice()}" /></td>
 								</tr>
 							</tfoot>
 						</table>
@@ -198,7 +199,7 @@
 			$("#submitButton").click(function(){
 				var creditCardNumber = $("#creditCardNumber").val();
 				var creditCardCVV  = $("#creditCardCVV").val();
-				var totalCost = $("#price").text();
+				var totalCost = $("#totalPrice").text();
 
 			    $.get("../Banking/Bank", {creditCardNumber:creditCardNumber, CVV:creditCardCVV, totalCost:totalCost}, function(data,status) {
 			    	alert(data);
