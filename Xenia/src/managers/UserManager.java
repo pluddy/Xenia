@@ -9,7 +9,7 @@ import org.apache.commons.lang3.*;
 import org.apache.log4j.Logger;
 
 import models.User;
-import services.PasswordService;
+import services.HashService;
 
 public final class UserManager {
 	
@@ -135,7 +135,7 @@ public final class UserManager {
 		
 		clauses.add("u.Password = ?");
 		try {
-			password = PasswordService.hashPassword(password);
+			password = HashService.hash(password);
 		} catch (NoSuchAlgorithmException e1) {
 			log.error("failed to instantiate MessageDigest", e1);
 			e1.printStackTrace();
@@ -194,7 +194,7 @@ public final class UserManager {
 		Statement addUser = null;
 
 		try {
-			user.setPassword(PasswordService.hashPassword(user.getPassword()));
+			user.setPassword(HashService.hash(user.getPassword()));
 		} catch (NoSuchAlgorithmException e1) {
 			log.error("failed to instantiate MessageDigest", e1);
 			e1.printStackTrace();
@@ -249,18 +249,20 @@ public final class UserManager {
 		*/
 		
 		
-		String sql = "UPDATE Users SET Username = " + user.getUsername() 
-		+ " Password = " + user.getPassword()
-		+ " FirstName = " + user.getFirstName()
-		+ " LastName = " + user.getLastName()
-		+ " AddressLine1 = " + user.getAddress1()
-		+ " AddressLine2 = " + user.getAddress2() 
-		+ " City = " + user.getCity()
-		+ " State = " + user.getState()
-		+ " PostalCode = " + user.getZip()
-		+ " WHERE Id = " + user.getId(); 
+		
 		
 		try {
+			String sql = "UPDATE Users SET Username = " + user.getUsername() 
+			+ " Password = " + HashService.hash(user.getPassword())
+			+ " FirstName = " + user.getFirstName()
+			+ " LastName = " + user.getLastName()
+			+ " AddressLine1 = " + user.getAddress1()
+			+ " AddressLine2 = " + user.getAddress2() 
+			+ " City = " + user.getCity()
+			+ " State = " + user.getState()
+			+ " PostalCode = " + user.getZip()
+			+ " WHERE Id = " + user.getId(); 
+			
 			updateUser = con.createStatement();
 			rs = updateUser.executeQuery(sql);
 			
@@ -268,7 +270,10 @@ public final class UserManager {
 			log.info("User " + user.getId() + " updated.");
 			
 		} catch (SQLException e) {
-			log.error("Update User Failed");
+			log.error("Update User Failed",e);
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			log.error("Message Digest couldnt be instantiated",e);
 			e.printStackTrace();
 		} finally {
 			try {
