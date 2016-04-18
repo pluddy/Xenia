@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import models.Hotel;
 import models.HotelAmenity;
@@ -16,6 +17,8 @@ import models.HotelReview;
 import models.HotelRoom;
 
 public final class HotelManager {
+	
+	final static Logger log = Logger.getLogger(HotelManager.class.getName());
 	
 	public static List<Hotel> getHotels(
 			Integer id, 
@@ -95,17 +98,16 @@ public final class HotelManager {
 				
 				hotels.add(hotel);
 			}
-			System.out.println("[HotelManager] - Get Hotel Successful");
+			log.info("Get Hotel Successful");
 		} catch (SQLException e) {
-			System.out.println("[HotelManager] - Get Hotel Failed");
-			e.printStackTrace();
+			log.error("Get Hotel Failed",e);
 		} finally {
 			try {
 				rs.close();
 				ps.close();
 				con.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error("Close connection failed", e);
 			}
 		}
 		return hotels;
@@ -141,18 +143,17 @@ public final class HotelManager {
 			rs = updateHotel.executeQuery(sql);
 			
 			
-			System.out.println("[HotelManager] - Hotel " + hotel.getId() + " updated.");
+			log.info("Hotel " + hotel.getId() + " updated.");
 			
 		} catch (SQLException e) {
-			System.out.println("[HotelManager] - Update Hotel Failed");
-			e.printStackTrace();
+			log.error("Update Hotel Failed" , e);
 		} finally {
 			try {
 				rs.close();
 				updateHotel.close();
 				con.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error("Close connection failed", e);
 			}
 		}
 	}

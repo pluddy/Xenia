@@ -4,9 +4,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.*;
+import org.apache.log4j.Logger;
+
 import models.User;
 
 public final class UserManager {
+	
+	final static Logger log = Logger.getLogger(UserManager.class.getName());
 	
 	public static List<User> getUsers(
 			Integer id,
@@ -97,9 +101,9 @@ public final class UserManager {
 				user.setZip(rs.getString("PostalCode"));
 				users.add(user);
 			}
-			System.out.println("[UserManager] - Get Users Successful");
+			log.info("Get Users Successful");
 		} catch (SQLException e) {
-			System.out.println("[UserManager] - Get Users Failed");
+			log.error("Get Users Failed", e);
 			e.printStackTrace();
 		} finally {
 			try {
@@ -107,6 +111,7 @@ public final class UserManager {
 				getUsers.close();
 				con.close();
 			} catch (SQLException e) {
+				log.error("Close connection failed", e);
 				e.printStackTrace();
 			}
 		}
@@ -151,23 +156,24 @@ public final class UserManager {
 				user.setZip(rs.getString("PostalCode"));
 				users.add(user);
 			}
-			System.out.println("[UserManager] - Get Users Successful");
+			log.info("Get Users Successful");
 		} catch (SQLException e) {
-			System.out.println("[UserManager] - Get Users Failed");
+			log.error("Get Users Failed", e);
 			e.printStackTrace();
 		} finally {
 			try {
 				rs.close();
 				con.close();
 			} catch (SQLException e) {
+				log.error("Close connection failed", e);
 				e.printStackTrace();
 			}
 		}
 		if (users.size() > 0) {
-			System.out.println("[UserManager] - User " + users.get(0).getUsername() + " Validated");
+			log.info("User " + users.get(0).getUsername() + " Validated");
 			return users.get(0);
 		} else {
-			System.out.println("[UserManager] - User Not Found");
+			log.info("User Not Found");
 			return null;
 		}
 	}
@@ -193,15 +199,16 @@ public final class UserManager {
 			
 			addUser.executeUpdate(sql);
 			
-			System.out.println("[UserManager] - User " + user.getUsername() + " Added");
+			log.info("User " + user.getUsername() + " Added");
 		} catch (SQLException e) {
-			System.out.println("[UserManager] - Add User Failed");
+			log.error("Add User Failed",e);
 			e.printStackTrace();
 		} finally {
 			try {
 				addUser.close();
 				con.close();
 			} catch (SQLException e) {
+				log.error("Close connection failed", e);
 				e.printStackTrace();
 			}
 		}
@@ -241,10 +248,10 @@ public final class UserManager {
 			rs = updateUser.executeQuery(sql);
 			
 			
-			System.out.println("[UserManager] - User " + user.getId() + " updated.");
+			log.info("User " + user.getId() + " updated.");
 			
 		} catch (SQLException e) {
-			System.out.println("[UserManager] - Update User Failed");
+			log.error("Update User Failed");
 			e.printStackTrace();
 		} finally {
 			try {
@@ -252,6 +259,7 @@ public final class UserManager {
 				updateUser.close();
 				con.close();
 			} catch (SQLException e) {
+				log.error("Close connection failed", e);
 				e.printStackTrace();
 			}
 		}
@@ -268,10 +276,10 @@ public final class UserManager {
 			removeUser = con.createStatement();
 			rs = removeUser.executeQuery(sql);
 			
-			System.out.println("[UserManager] - User " + userId + " removed.");
+			log.info("User " + userId + " removed.");
 			
 		} catch (SQLException e) {
-			System.out.println("[UserManager] - Remove User Failed");
+			log.error("Remove User Failed", e);
 			e.printStackTrace();
 		} finally {
 			try {
@@ -279,6 +287,7 @@ public final class UserManager {
 				removeUser.close();
 				con.close();
 			} catch (SQLException e) {
+				log.error("Close connection failed", e);
 				e.printStackTrace();
 			}
 		}

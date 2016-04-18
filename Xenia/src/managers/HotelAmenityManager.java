@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import models.Amenity;
 import models.HotelAmenity;
 
 public class HotelAmenityManager {
+	
+	final static Logger log = Logger.getLogger(HotelAmenityManager.class.getName());
 
 	public static List<HotelAmenity> getHotelAmenities(
 			Integer id, 
@@ -76,9 +79,9 @@ public class HotelAmenityManager {
 				
 				hotelAmenities.add(hotelAmenity);
 			}
-			System.out.println("[HotelAmenitiesManager] - Get HotelAmenities Successful");
+			log.info("Get HotelAmenities Successful");
 		} catch (SQLException e) {
-			System.out.println("[HotelAmenitiesManager] - Get HotelAmenities Failed");
+			log.error("Get HotelAmenities Failed", e);
 			e.printStackTrace();
 		} finally {
 			try {
@@ -86,6 +89,7 @@ public class HotelAmenityManager {
 				ps.close();
 				con.close();
 			} catch (SQLException e) {
+				log.error("Closing connection failed",e);
 				e.printStackTrace();
 			}
 		}

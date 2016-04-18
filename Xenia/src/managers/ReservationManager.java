@@ -7,10 +7,14 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+
 import models.Reservation;
 
 
 public final class ReservationManager {
+	
+	final static Logger log = Logger.getLogger(ReservationManager.class.getName());
 
 	/*
 	 * 	private Integer ID;
@@ -126,17 +130,16 @@ public final class ReservationManager {
 				reservation.setHotel(HotelManager.getHotels(rs.getInt("HotelId"), null, null, null, null, null, null, null).get(0));
 				reservations.add(reservation);
 			}
-			System.out.println("[ReservationManager] - Get Reservations Successful");
+			log.info("Get Reservations Successful");
 		} catch (SQLException e) {
-			System.out.println("[ReservationManager] - Get Reservations Failed");
-			e.printStackTrace();
+			log.error("Get Reservations Failed", e);
 		} finally {
 			try {
 				rs.close();
 				ps.close();
 				con.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error("Close connection failed", e);
 			}
 		}
 		return reservations;
@@ -174,16 +177,16 @@ public final class ReservationManager {
 			addReservation = con.createStatement();
 			addReservation.executeUpdate(sql);
 		
-			System.out.println("[ReservationManager] - Reservation " + reservation.getId() + " created.");
+			log.info("Reservation " + reservation.getId() + " created.");
 			
 		} catch (SQLException e) {
-			System.out.println("[ReservationManager] - Add Reservation Failed");
-			e.printStackTrace();
+			log.error("Add Reservation Failed", e);
 		} finally {
 			try {
 				addReservation.close();
 				con.close();
 			} catch (SQLException e) {
+				log.error("Close connection failed", e);
 				e.printStackTrace();
 			}
 		}
@@ -215,17 +218,17 @@ public final class ReservationManager {
 			updateReservation = con.createStatement();
 			rs = updateReservation.executeUpdate(sql);
 		
-			System.out.println("[ReservationManager] - Updated Reservation Status " + reservationId +" "+ status + " created.");
+			log.info("Updated Reservation Status " + reservationId +" "+ status + " created.");
 			
 		} catch (SQLException e) {
-			System.out.println("[ReservationManager] - Update Reservation Status Failed");
+			log.info("Update Reservation Status Failed");
 			e.printStackTrace();
 		} finally {
 			try {
-				//rs.close();
 				updateReservation.close();
 				con.close();
 			} catch (SQLException e) {
+				log.error("Close connection failed", e);
 				e.printStackTrace();
 			}
 		}

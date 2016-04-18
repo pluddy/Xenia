@@ -4,9 +4,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+
 import models.Transaction;
 
 public final class TransactionManager {
+	
+	final static Logger log = Logger.getLogger(TransactionManager.class.getName());
 	
 	public static List<Transaction> getTransactions(
 			Integer id, 
@@ -81,9 +85,9 @@ public final class TransactionManager {
 				transaction.setCvv(rs.getString("CVV"));
 				transactions.add(transaction);
 			}
-			System.out.println("[TransactionManager] - Get Transactions Successful");
+			log.info("Get Transactions Successful");
 		} catch (SQLException e) {
-			System.out.println("[TransactionManager] - Get Transactions Failed");
+			log.error("Get Transactions Failed",e);
 			e.printStackTrace();
 		} finally {
 			try {
@@ -91,6 +95,7 @@ public final class TransactionManager {
 				ps.close();
 				con.close();
 			} catch (SQLException e) {
+				log.error("Close connection failed", e);
 				e.printStackTrace();
 			}
 		}
@@ -122,15 +127,16 @@ public final class TransactionManager {
 			addTransaction = con.createStatement();
 			addTransaction.executeUpdate(sql);
 
-			System.out.println("[TransactionManager] - Transaction " + transaction.getId() + " created.");
+			log.info("Transaction " + transaction.getId() + " created.");
 		} catch (SQLException e) {
-			System.out.println("[TransactionManager] - Get Transactions Failed");
+			log.error("Get Transactions Failed", e);
 			e.printStackTrace();
 		} finally {
 			try {
 				addTransaction.close();
 				con.close();
 			} catch (SQLException e) {
+				log.error("Close connection failed", e);
 				e.printStackTrace();
 			}
 		}
@@ -164,10 +170,10 @@ public final class TransactionManager {
 			updateTransaction = con.createStatement();
 			updateTransaction.executeUpdate(sql);
 			
-			System.out.println("[TransactionManager] - Transaction " + transaction.getId() + " updated.");
+			log.info("Transaction " + transaction.getId() + " updated.");
 			
 		} catch (SQLException e) {
-			System.out.println("[TransactionManager] - Update Transactions Failed");
+			log.error("Update Transactions Failed",e);
 			e.printStackTrace();
 		} finally {
 			try {
@@ -175,6 +181,7 @@ public final class TransactionManager {
 				updateTransaction.close();
 				con.close();
 			} catch (SQLException e) {
+				log.error("Close connection failed", e);
 				e.printStackTrace();
 			}
 		}
@@ -186,10 +193,10 @@ public final class TransactionManager {
 				transaction.getBalance(), transaction.getCardNickname(), transaction.getUserId(), transaction.getCvv());
 
 		if(!trans.isEmpty()){
-			System.out.println("[TransactionManager] - Transaction " + transaction.getCardNickname() + " validated.");
+			log.info("Transaction " + transaction.getCardNickname() + " validated.");
 			return true;
 		} else {
-			System.out.println("[TransactionManager] - Transaction " + transaction.getCardNickname() + " not found.");
+			log.info("Transaction " + transaction.getCardNickname() + " not found.");
 			return false;
 		}
 	}
@@ -205,9 +212,9 @@ public final class TransactionManager {
 			removeTransaction = con.createStatement();
 			rs = removeTransaction.executeQuery(sql);
 
-			System.out.println("[TransactionManager] - Transaction " + transactionID + " removed.");
+			log.info("Transaction " + transactionID + " removed.");
 		} catch (SQLException e) {
-			System.out.println("[TransactionManager] - Remove Transaction Failed");
+			log.error("Remove Transaction Failed",e);
 			e.printStackTrace();
 		} finally {
 			try {

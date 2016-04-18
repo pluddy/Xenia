@@ -12,11 +12,14 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import models.HotelRoom;
 import models.HotelRoomType;
 
 public class HotelRoomManager {
+	
+	final static Logger log = Logger.getLogger(HotelRoomManager.class.getName());
 	
 	public static List<HotelRoom> getHotelRooms(
 			Integer id, 
@@ -102,17 +105,16 @@ public class HotelRoomManager {
 				
 				hotelRooms.add(hotelRoom);
 			}
-			System.out.println("[HotelRoomsManager] - Get HotelRooms Successful");
+			log.info("Get HotelRooms Successful");
 		} catch (SQLException e) {
-			System.out.println("[HotelRoomsManager] - Get HotelRooms Failed");
-			e.printStackTrace();
+			log.error("Get HotelRooms Failed", e);
 		} finally {
 			try {
 				rs.close();
 				ps.close();
 				con.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error("Close connection failed", e);
 			}
 		}
 		return hotelRooms;

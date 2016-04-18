@@ -2,7 +2,11 @@ package managers;
 
 import java.sql.*;
 
+import org.apache.log4j.Logger;
+
 public final class DBConnectionManager {
+	
+	final static Logger log = Logger.getLogger(DBConnectionManager.class.getName());
 	
 	private static String url = "jdbc:mysql://cse.unl.edu:3306/pluddy";    
     private static String driverName = "com.mysql.jdbc.Driver";   
@@ -15,12 +19,12 @@ public final class DBConnectionManager {
             Class.forName(driverName);
             con = DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException e) {
-            System.out.println("[DBConnectionManager] - Driver Not Found"); 
+            log.error("Driver Not Found", e); 
         	e.printStackTrace();
         } catch (SQLException e) {
-            System.out.println("[DBConnectionManager] - Failed to create the database connection."); 
+        	log.error("Failed to create the database connection.", e); 
         }
-        System.out.println("[DBConnectionManager] - Connected to " + url);
+        log.info("Connected to " + url);
         return con;
     }
 }

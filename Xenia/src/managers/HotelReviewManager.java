@@ -11,10 +11,13 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import models.HotelReview;
 
 public class HotelReviewManager {
+	
+	final static Logger log = Logger.getLogger(HotelReviewManager.class.getName());
 
 	public static List<HotelReview> getHotelReviews(
 			Integer id, 
@@ -80,17 +83,16 @@ public class HotelReviewManager {
 				hotelReview.setReview(rs.getString("Review"));
 				hotelReviews.add(hotelReview);
 			}
-			System.out.println("[HotelReviewsManager] - Get HotelReviews Successful");
+			log.info("Get HotelReviews Successful");
 		} catch (SQLException e) {
-			System.out.println("[HotelReviewsManager] - Get HotelReviews Failed");
-			e.printStackTrace();
+			log.error("Get HotelReviews Failed", e);
 		} finally {
 			try {
 				rs.close();
 				ps.close();
 				con.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error("Close connection failed", e);
 			}
 		}
 		return hotelReviews;

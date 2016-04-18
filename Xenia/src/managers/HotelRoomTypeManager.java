@@ -8,10 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import models.HotelRoomType;
 
 public class HotelRoomTypeManager {
+	
+	final static Logger log = Logger.getLogger(HotelRoomTypeManager.class.getName());
 	
 	public static List<HotelRoomType> getHotelRoomType(
 			Integer id, 
@@ -62,17 +65,16 @@ public class HotelRoomTypeManager {
 				hotelRoomType.setDescription(rs.getString("Description"));
 				hotelRoomsType.add(hotelRoomType);
 			}
-			System.out.println("[HotelRoomsTypeManager] - Get HotelRoomsType Successful");
+			log.info("Get HotelRoomsType Successful");
 		} catch (SQLException e) {
-			System.out.println("[HotelRoomsTypeManager] - Get HotelRoomsType Failed");
-			e.printStackTrace();
+			log.error("Get HotelRoomsType Failed", e);
 		} finally {
 			try {
 				rs.close();
 				ps.close();
 				con.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error("Close connection failed", e);
 			}
 		}
 		return hotelRoomsType;

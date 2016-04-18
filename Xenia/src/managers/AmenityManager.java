@@ -8,10 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import models.Amenity;
 
 public class AmenityManager {
+	
+	final static Logger log = Logger.getLogger(AmenityManager.class.getName());
 
 	public static List<Amenity> getAmenities(
 			Integer id, 
