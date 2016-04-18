@@ -1,5 +1,7 @@
 package managers;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +9,7 @@ import org.apache.commons.lang3.*;
 import org.apache.log4j.Logger;
 
 import models.User;
+import services.PasswordService;
 
 public final class UserManager {
 	
@@ -131,6 +134,13 @@ public final class UserManager {
 		parameters.add(username);
 		
 		clauses.add("u.Password = ?");
+		try {
+			password = PasswordService.hashPassword(password);
+		} catch (NoSuchAlgorithmException e1) {
+			log.error("failed to instantiate MessageDigest", e1);
+			e1.printStackTrace();
+		}
+		
 		parameters.add(password);
 		
 		sql += " WHERE " + StringUtils.join(clauses, " AND ");
@@ -182,6 +192,13 @@ public final class UserManager {
 		
 		Connection con = DBConnectionManager.getConnection();
 		Statement addUser = null;
+
+		try {
+			user.setPassword(PasswordService.hashPassword(user.getPassword()));
+		} catch (NoSuchAlgorithmException e1) {
+			log.error("failed to instantiate MessageDigest", e1);
+			e1.printStackTrace();
+		}
 		
 		String sql = "INSERT INTO Users ( Username, FirstName, LastName, AddressLine1, AddressLine2, City, State, PostalCode, Password ) VALUES (\'"
 				+ user.getUsername() + "\', \'"

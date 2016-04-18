@@ -30,3 +30,8 @@
 2016-04-17 20:53:06 INFO  DBConnectionManager:27 - Connected to jdbc:mysql://cse.unl.edu:3306/pluddy
 2016-04-17 20:53:06 INFO  HotelReviewManager:86 - Get HotelReviews Successful
 2016-04-17 20:53:06 INFO  HotelManager:101 - Get Hotel Successful
+2016-04-18 15:13:26 INFO  DBConnectionManager:27 - Connected to jdbc:mysql://cse.unl.edu:3306/pluddy
+2016-04-18 15:13:26 INFO  UserManager:221 - User pluddy Added
+2016-04-18 15:13:34 INFO  DBConnectionManager:27 - Connected to jdbc:mysql://cse.unl.edu:3306/pluddy
+2016-04-18 15:13:34 INFO  UserManager:171 - Get Users Successful
+2016-04-18 15:13:34 INFO  UserManager:185 - User pluddy Validated
