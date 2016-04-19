@@ -95,7 +95,7 @@ public class CancelReservation extends HttpServlet {
 		session.setAttribute("reservation", reservation);
 		session.setAttribute("moneyBack", cost);
 
-		request.getRequestDispatcher("ConfrimCancellation").forward(request, response);
+		request.getRequestDispatcher("ConfirmCancellation").forward(request, response);
 	}
 
 }

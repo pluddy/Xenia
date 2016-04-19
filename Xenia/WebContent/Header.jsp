@@ -21,6 +21,11 @@
 						<a href="ManageReservation">Manage</a>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="Client/ClientHomepage.jsp">Client Homepage</a>
+					</li>
+				</ul>
 				<p class="navbar-text navbar-right clearfix" style="padding-top:3px">
 					<span class="label label-default" display="inline-block">
 						<c:out value="${user.getFirstName() }"></c:out>

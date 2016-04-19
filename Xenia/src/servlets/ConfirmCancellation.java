@@ -15,13 +15,13 @@ import models.User;
 /**
  * Servlet implementation class ConfrimCancellation
  */
-public class ConfrimCancellation extends HttpServlet {
+public class ConfirmCancellation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConfrimCancellation() {
+    public ConfirmCancellation() {
         super();
         // TODO Auto-generated constructor stub
     }

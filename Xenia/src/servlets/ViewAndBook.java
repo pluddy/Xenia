@@ -12,8 +12,11 @@ import javax.servlet.http.HttpSession;
 import beans.ReservationBean;
 import beans.ShoppingCartBean;
 import managers.HotelManager;
+import managers.ReservationManager;
 import models.Hotel;
 import models.HotelRoom;
+import models.Reservation;
+import models.User;
 
 /**
  * Servlet implementation class ViewAndBook
@@ -33,6 +36,7 @@ public class ViewAndBook extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -42,6 +46,11 @@ public class ViewAndBook extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		
+		User user = (User)session.getAttribute("user");
+		if (user == null) {
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
+		}
 		ReservationBean reservation = (ReservationBean)session.getAttribute("hotel");
 		ShoppingCartBean shoppingCart = (ShoppingCartBean)session.getAttribute("shoppingCart");
 		if (shoppingCart == null) {

@@ -9,6 +9,30 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <security-role>
+  	<description>Client</description>
+  	<role-name>client</role-name>
+  </security-role>
+  <security-role>
+  	<description>Customer</description>
+  	<role-name>customer</role-name>
+  </security-role>
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>CLient Area</web-resource-name>
+  		<url-pattern>/Client/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>client</role-name>
+  	</auth-constraint>
+  	<user-data-constraint>
+  		<transport-guarantee>NONE</transport-guarantee>
+  	</user-data-constraint>
+  </security-constraint>
+  <login-config>
+  	<auth-method>BASIC</auth-method>
+  	<realm-name>Client Login</realm-name>
+  </login-config>
   <servlet>
     <description></description>
     <display-name>Login</display-name>
@@ -111,13 +135,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ConfrimCancellation</display-name>
-    <servlet-name>ConfrimCancellation</servlet-name>
-    <servlet-class>servlets.ConfrimCancellation</servlet-class>
+    <display-name>ConfirmCancellation</display-name>
+    <servlet-name>ConfirmCancellation</servlet-name>
+    <servlet-class>servlets.ConfirmCancellation</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ConfrimCancellation</servlet-name>
-    <url-pattern>/ConfrimCancellation</url-pattern>
+    <servlet-name>ConfirmCancellation</servlet-name>
+    <url-pattern>/ConfirmCancellation</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
