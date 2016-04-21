@@ -86,6 +86,7 @@ public class HotelReviewManager {
 			log.info("Get HotelReviews Successful");
 		} catch (SQLException e) {
 			log.error("Get HotelReviews Failed", e);
+			return null;
 		} finally {
 			try {
 				rs.close();
@@ -93,6 +94,7 @@ public class HotelReviewManager {
 				con.close();
 			} catch (SQLException e) {
 				log.error("Close connection failed", e);
+				return null;
 			}
 		}
 		return hotelReviews;

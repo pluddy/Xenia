@@ -68,6 +68,7 @@ public class HotelRoomTypeManager {
 			log.info("Get HotelRoomsType Successful");
 		} catch (SQLException e) {
 			log.error("Get HotelRoomsType Failed", e);
+			return null;
 		} finally {
 			try {
 				rs.close();
@@ -75,6 +76,7 @@ public class HotelRoomTypeManager {
 				con.close();
 			} catch (SQLException e) {
 				log.error("Close connection failed", e);
+				return null;
 			}
 		}
 		return hotelRoomsType;

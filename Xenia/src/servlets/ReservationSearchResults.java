@@ -46,6 +46,11 @@ public class ReservationSearchResults extends HttpServlet {
 		int hotelId = Integer.parseInt(request.getParameter("hotelId"));
 		
 		List<Hotel> hotelsList = HotelManager.getHotels(hotelId, null, null, null, null, null, null, null);
+		
+		if (hotelsList == null){
+			request.getRequestDispatcher("ErrorHandler.jsp").forward(request, response);
+		}
+		
 		Hotel hotel = hotelsList.get(0);
 		
 		ReservationSearchQueryBean _query = (ReservationSearchQueryBean)session.getAttribute("query");

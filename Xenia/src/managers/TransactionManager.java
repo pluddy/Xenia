@@ -92,9 +92,11 @@ public final class TransactionManager {
 		} catch (SQLException e) {
 			log.error("Get Transactions Failed",e);
 			e.printStackTrace();
+			return null;
 		} catch (NoSuchAlgorithmException e) {
 			log.error("Message Digest could not be instantiated",e);
 			e.printStackTrace();
+			return null;
 		} finally {
 			try {
 				rs.close();
@@ -102,7 +104,7 @@ public final class TransactionManager {
 				con.close();
 			} catch (SQLException e) {
 				log.error("Close connection failed", e);
-				e.printStackTrace();
+				return null;
 			}
 		}
 		return transactions;

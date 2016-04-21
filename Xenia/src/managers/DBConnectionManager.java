@@ -21,8 +21,10 @@ public final class DBConnectionManager {
         } catch (ClassNotFoundException e) {
             log.error("Driver Not Found", e); 
         	e.printStackTrace();
+        	return null;
         } catch (SQLException e) {
         	log.error("Failed to create the database connection.", e); 
+        	return null;
         }
         log.info("Connected to " + url);
         return con;

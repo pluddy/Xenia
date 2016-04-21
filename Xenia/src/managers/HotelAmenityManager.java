@@ -83,6 +83,7 @@ public class HotelAmenityManager {
 		} catch (SQLException e) {
 			log.error("Get HotelAmenities Failed", e);
 			e.printStackTrace();
+			return null;
 		} finally {
 			try {
 				rs.close();
@@ -91,6 +92,7 @@ public class HotelAmenityManager {
 			} catch (SQLException e) {
 				log.error("Closing connection failed",e);
 				e.printStackTrace();
+				return null;
 			}
 		}
 		return hotelAmenities;
