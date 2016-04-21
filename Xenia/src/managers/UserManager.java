@@ -94,6 +94,7 @@ public final class UserManager {
 			
 			while (rs.next()){
 				User user = new User();
+				user.setId(rs.getInt("Id"));
 				user.setUsername(rs.getString("Username"));
 				user.setFirstName(rs.getString("FirstName"));
 				user.setLastName(rs.getString("LastName"));
@@ -102,6 +103,7 @@ public final class UserManager {
 				user.setCity(rs.getString("City"));
 				user.setState(rs.getString("State"));
 				user.setZip(rs.getString("PostalCode"));
+				user.setPassword(rs.getString("Password"));
 				users.add(user);
 			}
 			log.info("Get Users Successful");
@@ -111,11 +113,12 @@ public final class UserManager {
 		} finally {
 			try {
 				rs.close();
-				getUsers.close();
 				con.close();
 			} catch (SQLException e) {
 				log.error("Close connection failed", e);
 				e.printStackTrace();
+			} catch (Exception ex) {
+				log.error("Close connection failed", ex);
 			}
 		}
 		return users;
@@ -234,7 +237,7 @@ public final class UserManager {
 	public static void updateUser(User user) {
 		Connection con = DBConnectionManager.getConnection();
 		Statement updateUser = null;
-		ResultSet rs = null;
+		int rs = 0;
 	
 		/*
 			private String username;
@@ -252,19 +255,20 @@ public final class UserManager {
 		
 		
 		try {
-			String sql = "UPDATE Users SET Username = " + user.getUsername() 
-			+ " Password = " + HashService.hash(user.getPassword())
-			+ " FirstName = " + user.getFirstName()
-			+ " LastName = " + user.getLastName()
-			+ " AddressLine1 = " + user.getAddress1()
-			+ " AddressLine2 = " + user.getAddress2() 
-			+ " City = " + user.getCity()
-			+ " State = " + user.getState()
-			+ " PostalCode = " + user.getZip()
-			+ " WHERE Id = " + user.getId(); 
+			String sql = "UPDATE Users SET Username = '" + user.getUsername() 
+			+ "', Password = '" + HashService.hash(user.getPassword())
+			+ "', FirstName = '" + user.getFirstName()
+			+ "', LastName = '" + user.getLastName()
+			+ "', AddressLine1 = '" + user.getAddress1()
+			+ "', AddressLine2 = '" + user.getAddress2() 
+			+ "', City = '" + user.getCity()
+			+ "', State = '" + user.getState()
+			+ "', PostalCode = '" + user.getZip()
+			+ "' WHERE Id = " + user.getId(); 
 			
+			log.info(sql);
 			updateUser = con.createStatement();
-			rs = updateUser.executeQuery(sql);
+			rs = updateUser.executeUpdate(sql);
 			
 			
 			log.info("User " + user.getId() + " updated.");
@@ -277,8 +281,7 @@ public final class UserManager {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
-				updateUser.close();
+				//rs.close();
 				con.close();
 			} catch (SQLException e) {
 				log.error("Close connection failed", e);

@@ -10,28 +10,28 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <security-role>
-  	<description>Client</description>
-  	<role-name>client</role-name>
+    <description>Client</description>
+    <role-name>client</role-name>
   </security-role>
   <security-role>
-  	<description>Customer</description>
-  	<role-name>customer</role-name>
+    <description>Customer</description>
+    <role-name>customer</role-name>
   </security-role>
   <security-constraint>
-  	<web-resource-collection>
-  		<web-resource-name>CLient Area</web-resource-name>
-  		<url-pattern>/Client/*</url-pattern>
-  	</web-resource-collection>
-  	<auth-constraint>
-  		<role-name>client</role-name>
-  	</auth-constraint>
-  	<user-data-constraint>
-  		<transport-guarantee>NONE</transport-guarantee>
-  	</user-data-constraint>
+    <web-resource-collection>
+      <web-resource-name>CLient Area</web-resource-name>
+      <url-pattern>/Client/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>client</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
   </security-constraint>
   <login-config>
-  	<auth-method>BASIC</auth-method>
-  	<realm-name>Client Login</realm-name>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Client Login</realm-name>
   </login-config>
   <servlet>
     <description></description>
@@ -162,5 +162,18 @@
   <servlet-mapping>
     <servlet-name>UpdateReservationHistory</servlet-name>
     <url-pattern>/UpdateReservationHistory</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>5</session-timeout>
+  </session-config>
+  <servlet>
+    <description></description>
+    <display-name>UpdatePassword</display-name>
+    <servlet-name>UpdatePassword</servlet-name>
+    <servlet-class>servlets.UpdatePassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePassword</servlet-name>
+    <url-pattern>/UpdatePassword</url-pattern>
   </servlet-mapping>
 </web-app>

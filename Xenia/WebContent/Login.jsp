@@ -43,6 +43,9 @@
 		<form class="form" action="Register.jsp">
 			<button class="btn btn-default" type="submit">Register</button>
 		</form>
+				<form class="form" action="UpdatePassword.jsp">
+			<button class="btn btn-default" type="submit">Update Password</button>
+		</form>
 	</div>
 	<jsp:include page="/Footer.jsp"/>
 	<script type="text/javascript">
