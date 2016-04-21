@@ -43,6 +43,10 @@ public class ManageReservation extends HttpServlet {
 		if (user == null) {
 			request.getRequestDispatcher("Login.jsp").forward(request, response);
 		}
+		
+		if (reservations == null){
+			request.getRequestDispatcher("ErrorHandler.jsp").forward(request, response);
+		}
 
 		//HttpSession session = request.getSession();
 

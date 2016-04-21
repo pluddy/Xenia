@@ -60,10 +60,11 @@ public class AmenityManager {
 				amenity.setName(rs.getString("Name"));
 				amenities.add(amenity);
 			}
-			System.out.println("[AmenitiesManager] - Get Amenities Successful");
+			log.info("Get Amenities Successful");
 		} catch (SQLException e) {
-			System.out.println("[AmenitiesManager] - Get Amenities Failed");
-			e.printStackTrace();
+			log.error("Get Amenities Failed", e);
+			//e.printStackTrace();
+			return null;
 		} finally {
 			try {
 				rs.close();
@@ -71,6 +72,8 @@ public class AmenityManager {
 				con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error("Failed to close connection", e);
+				return null;
 			}
 		}
 		return amenities;

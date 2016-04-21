@@ -69,6 +69,10 @@ public class CancelReservation extends HttpServlet {
 		int id = Integer.parseInt(paramater);
 		List<Reservation> reservation = ReservationManager.getReservations(id, null, null, null, null, null, null, null, null, null);
 
+		if (reservation == null){
+			request.getRequestDispatcher("ErrorHandler.jsp").forward(request, response);
+		}
+		
 		ReservationManager.updateReservationStatus(id, 0);
 
 
@@ -80,6 +84,10 @@ public class CancelReservation extends HttpServlet {
 
 		List<HotelRoom> hotelRoom =  HotelRoomManager.getHotelRooms(null, reservation.get(0).getRoomTypeId(), reservation.get(0).getHotelId(), null, null, null, null);
 
+		if (hotelRoom == null){
+			request.getRequestDispatcher("ErrorHandler.jsp").forward(request, response);
+		}
+		
 		double cost = hotelRoom.get(0).getPricePerNight() * dayDiff;
 
 		List<Transaction> transaction =  TransactionManager.getTransactions(null, null, null, null, null, user.getId(), null);

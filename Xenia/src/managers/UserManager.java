@@ -110,15 +110,17 @@ public final class UserManager {
 		} catch (SQLException e) {
 			log.error("Get Users Failed", e);
 			e.printStackTrace();
+			return null;
 		} finally {
 			try {
 				rs.close();
 				con.close();
 			} catch (SQLException e) {
 				log.error("Close connection failed", e);
-				e.printStackTrace();
+				return null;
 			} catch (Exception ex) {
 				log.error("Close connection failed", ex);
+				return null;
 			}
 		}
 		return users;

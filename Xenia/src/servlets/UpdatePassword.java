@@ -52,6 +52,10 @@ public class UpdatePassword extends HttpServlet {
 	
 		List<User> userForUsername = UserManager.getUsers(null, username, null, null, null, null, null, null, null);
 		
+		if (userForUsername == null){
+			request.getRequestDispatcher("ErrorHandler.jsp").forward(request, response);
+		}
+		
 		String hashedPassword = "";
 		try {
 			 hashedPassword = HashService.hash(oldpassword);

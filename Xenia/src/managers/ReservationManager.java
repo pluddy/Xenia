@@ -133,6 +133,7 @@ public final class ReservationManager {
 			log.info("Get Reservations Successful");
 		} catch (SQLException e) {
 			log.error("Get Reservations Failed", e);
+			return null;
 		} finally {
 			try {
 				rs.close();
@@ -140,6 +141,7 @@ public final class ReservationManager {
 				con.close();
 			} catch (SQLException e) {
 				log.error("Close connection failed", e);
+				return null;
 			}
 		}
 		return reservations;

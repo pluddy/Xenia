@@ -101,6 +101,7 @@ public final class HotelManager {
 			log.info("Get Hotel Successful");
 		} catch (SQLException e) {
 			log.error("Get Hotel Failed",e);
+			return null;
 		} finally {
 			try {
 				rs.close();
@@ -108,6 +109,7 @@ public final class HotelManager {
 				con.close();
 			} catch (SQLException e) {
 				log.error("Close connection failed", e);
+				return null;
 			}
 		}
 		return hotels;
