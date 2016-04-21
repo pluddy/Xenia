@@ -35,7 +35,7 @@
 						<td><c:out value="${hotel.getPricePerNight()}"/></td>
 						<td><c:out value="${hotel.getAmenities()}"/></td>
 						<td>
-							<form class="form" action="ReservationSearchResults" method="post">
+							<form class="form" action="<c:url value='/ReservationSearchResults' />" method="post">
 								<button class="btn btn-default pull-right" type="submit" name="hotelId" value="${hotel.getId()}">View & Book</button>
 							</form>
 						</td>

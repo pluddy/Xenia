@@ -104,7 +104,7 @@
 			<div class="panel-footer clearfix">
 
 				<div class="col-sm-6">
-					<form class="form" action="ReservationSearch.jsp">
+					<form class="form" action="<c:url value='/ReservationSearch.jsp' />">
 						<button class="btn btn-default" type="submit">Back to Search Results</button>
 					</form>
 					<form class="form" action="CustomerHomepage.jsp">

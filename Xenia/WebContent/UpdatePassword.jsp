@@ -11,7 +11,7 @@
 	<jsp:include page="/Header.jsp" />
 	<div class="container">
 
-		<h1>Register</h1>
+		<h1>Change Password</h1>
 
 		<form class="form-horizontal" action="UpdatePassword" method="post" id="updatePasswordForm">
 						<div class="form-group" id="usernamegroup">
@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="form-group" id="previousPasswordgroup">
-				<label for="previousPassword" class="col-sm-2 control-label">Previous Password</label>
+				<label for="previousPassword" class="col-sm-2 control-label">Old Password</label>
 				<div class="col-sm-6">
 					<input type="password" class="form-control" placeholder="Previous Password" name="previousPassword" id="previousPassword">
 				</div>
